@@ -40,9 +40,9 @@
     /* Hero / About */
     .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center}
     .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,138,0,.08);color:var(--accent);padding:6px 10px;border-radius:999px;font-weight:500}
-    .title{font-size:clamp(24px,4.6vw,36px);line-height:1.2;margin:10px 0} /* smaller now */
-    .slogan{display:none} /* removed per request */
-    .story p{margin:0 0 10px} /* airy, line-by-line */
+    .title{font-size:clamp(24px,4.6vw,36px);line-height:1.2;margin:10px 0} /* smaller title */
+    .slogan{display:none} /* removed line per request */
+    .story p{margin:0 0 10px}
 
     .hero-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)}
 
@@ -71,8 +71,8 @@
     .lightbox img{max-width:90vw;max-height:80vh;border-radius:12px}
     .lightbox .close,.lightbox .prev,.lightbox .next{position:absolute;background:rgba(255,255,255,.92);border:none;border-radius:999px;width:48px;height:48px;cursor:pointer;box-shadow:var(--shadow);font-size:24px}
     .lightbox .close{top:20px;inset-inline-end:20px}
-    .lightbox .prev{inset-inline-start:24px}
-    .lightbox .next{inset-inline-end:24px}
+    .lightbox .prev{left:24px}
+    .lightbox .next{right:24px}
 
     /* Contact */
     form{display:grid;gap:12px;max-width:520px}
@@ -81,9 +81,22 @@
     input{padding:12px 14px;border-radius:12px;border:1px solid var(--border);background:#fff}
     button[type=submit]{padding:12px 14px;border-radius:12px;border:1px solid var(--brand-2);background:var(--brand-2);color:#fff;font-weight:700;cursor:pointer}
 
-    /* Bigger classic WhatsApp button, bottom-left */
-    .whatsapp{position:fixed;bottom:24px;inset-inline-start:24px;z-index:1100;width:80px;height:80px;border-radius:999px;background:var(--whatsapp);display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow)}
-    .whatsapp svg{width:42px;height:42px;fill:#fff}
+    /* BIG WhatsApp button, classic glyph, pinned bottom-left (physical left, not logical) */
+    .whatsapp{
+      position:fixed;
+      bottom:24px;
+      left:24px;          /* always left side */
+      z-index:1100;
+      width:84px;
+      height:84px;
+      border-radius:999px;
+      background:var(--whatsapp);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow:var(--shadow)
+    }
+    .whatsapp img{width:44px;height:44px;display:block} /* classic logo image */
     .whatsapp:focus,.whatsapp:hover{transform:translateY(-2px)}
 
     /* Footer */
@@ -250,13 +263,10 @@
     </section>
   </main>
 
-  <!-- Floating WhatsApp Button (classic glyph) -->
+  <!-- Floating WhatsApp Button (classic logo image, forced left) -->
   <a class="whatsapp" id="wa-float" href="https://wa.me/972533431726" target="_blank" rel="noopener" aria-label="פתיחת וואטסאפ">
-    <!-- classic WhatsApp speech-bubble + phone -->
-    <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false">
-      <path d="M16 3C9.38 3 4 8.38 4 15c0 2.08.53 4.03 1.46 5.75L4 29l8.45-1.39C14.1 28.52 15.03 29 16 29c6.62 0 12-5.38 12-12S22.62 3 16 3zm0 22c-.83 0-1.65-.12-2.43-.36l-.58-.18-4.84.8.84-4.72-.3-.49A9.06 9.06 0 0 1 7 15c0-4.97 4.03-9 9-9s9 4.03 9 9-4.03 9-9 9z"/>
-      <path d="M21.26 18.17c-.12-.2-.45-.32-.94-.55-.49-.24-2.92-1.44-3.37-1.6-.45-.16-.77-.24-1.1.24-.33.49-1.26 1.6-1.54 1.92-.28.32-.57.36-1.05.12-.49-.24-2.07-.76-3.95-2.43-1.46-1.3-2.45-2.9-2.73-3.38-.28-.49-.03-.76.21-1 .21-.21.49-.57.73-.85.24-.28.32-.49.49-.81.16-.32.08-.61-.04-.85-.12-.24-1.1-2.64-1.52-3.6-.4-.94-.8-.81-1.1-.81s-.65-.01-1.01-.01c-.36 0-.94.13-1.43.65C2.45 5.6 2 6.78 2 8.26c0 1.49 1.08 2.97 1.24 3.18.16.2 2.26 3.45 5.47 4.86 3.21 1.41 3.21.94 3.79.89.57-.05 1.86-.76 2.13-1.49.28-.73.28-1.36.2-1.49z"/>
-    </svg>
+    <!-- Using the classic official logo SVG hosted by Wikipedia -->
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
   </a>
 
   <footer><div class="container">© <span id="year"></span> חופה ישראלית · כל הזכויות שמורות</div></footer>
@@ -326,7 +336,7 @@
       });
     })();
 
-    // Mirror inline WhatsApp to floating button (in case you change the number)
+    // Mirror inline WhatsApp to floating button (if you change the number later)
     const wa = document.getElementById('wa-float');
     const inline = document.querySelector('#contact a[href^="https://wa.me"]');
     if(wa && inline) inline.setAttribute('href', wa.getAttribute('href'));
