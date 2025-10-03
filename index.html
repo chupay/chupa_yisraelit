@@ -19,6 +19,8 @@
     body{margin:0;font-family:'Heebo',system-ui,-apple-system,Segoe UI,Roboto,Heebo,Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
     a{color:var(--brand);text-decoration:none}
     img{max-width:100%;height:auto;display:block}
+
+    /* Nav */
     .nav{position:sticky;top:0;z-index:1000;backdrop-filter:saturate(140%) blur(6px);background:rgba(255,255,255,.88);border-bottom:1px solid var(--border)}
     .nav-inner{max-width:var(--container);margin-inline:auto;display:flex;align-items:center;gap:24px;padding:10px 16px}
     .logo{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--brand-2)}
@@ -27,16 +29,24 @@
     .menu a{padding:10px 12px;border-radius:12px;color:var(--text)}
     .menu a:hover{background:var(--card)}
     .menu a.active{color:var(--brand-2);background:rgba(30,136,229,.08)}
+
+    /* Layout & Sections */
     section{padding:56px 16px}
     .container{max-width:var(--container);margin-inline:auto}
     .section-header{display:flex;align-items:center;gap:10px;margin-bottom:16px}
     .section-header h2{margin:0;font-size:clamp(20px,3.2vw,30px)}
     .section-desc{color:var(--muted);margin:6px 0 22px}
+
+    /* Hero / About */
     .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center}
     .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,138,0,.08);color:var(--accent);padding:6px 10px;border-radius:999px;font-weight:500}
-    .title{font-size:clamp(28px,5vw,44px);line-height:1.2;margin:10px 0}
-    .slogan{font-size:clamp(16px,2.6vw,20px);color:var(--muted)}
+    .title{font-size:clamp(24px,4.6vw,36px);line-height:1.2;margin:10px 0} /* smaller now */
+    .slogan{display:none} /* removed per request */
+    .story p{margin:0 0 10px} /* airy, line-by-line */
+
     .hero-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)}
+
+    /* Products */
     .products{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
     .product{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:12px}
     .pill{display:inline-block;padding:.25rem .6rem;background:#eef5ff;color:var(--brand-2);border-radius:999px;font-size:12px}
@@ -48,10 +58,14 @@
     .details-inner{padding:10px 0 0;border-top:1px dashed var(--border)}
     .specs{margin:0;padding:0 1rem}
     .specs li{margin:.4rem 0}
+
+    /* Galleries */
     .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}
     .gallery figure{margin:0;background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden}
     .gallery img{aspect-ratio:4/3;object-fit:cover;width:100%}
     .photos .gallery img{aspect-ratio:16/10}
+
+    /* Lightbox */
     .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.8);display:none;align-items:center;justify-content:center;z-index:1200}
     .lightbox.active{display:flex}
     .lightbox img{max-width:90vw;max-height:80vh;border-radius:12px}
@@ -59,16 +73,28 @@
     .lightbox .close{top:20px;inset-inline-end:20px}
     .lightbox .prev{inset-inline-start:24px}
     .lightbox .next{inset-inline-end:24px}
+
+    /* Contact */
     form{display:grid;gap:12px;max-width:520px}
     label{font-weight:600}
     input, button[type=submit]{font:inherit}
     input{padding:12px 14px;border-radius:12px;border:1px solid var(--border);background:#fff}
     button[type=submit]{padding:12px 14px;border-radius:12px;border:1px solid var(--brand-2);background:var(--brand-2);color:#fff;font-weight:700;cursor:pointer}
-    .whatsapp{position:fixed;bottom:18px;inset-inline-start:18px;z-index:1100;width:64px;height:64px;border-radius:999px;background:var(--whatsapp);display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow)}
-    .whatsapp svg{width:34px;height:34px;fill:#fff}
+
+    /* Bigger classic WhatsApp button, bottom-left */
+    .whatsapp{position:fixed;bottom:24px;inset-inline-start:24px;z-index:1100;width:80px;height:80px;border-radius:999px;background:var(--whatsapp);display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow)}
+    .whatsapp svg{width:42px;height:42px;fill:#fff}
     .whatsapp:focus,.whatsapp:hover{transform:translateY(-2px)}
+
+    /* Footer */
     footer{padding:24px 16px;color:var(--muted);text-align:center}
-    @media (max-width:800px){.hero{grid-template-columns:1fr}.menu{gap:4px}.nav-inner{gap:12px}}
+
+    /* Small screens */
+    @media (max-width:800px){
+      .hero{grid-template-columns:1fr}
+      .menu{gap:4px}
+      .nav-inner{gap:12px}
+    }
   </style>
 </head>
 <body>
@@ -88,23 +114,24 @@
   </header>
 
   <main>
+    <!-- Section 1: About -->
     <section id="about">
       <div class="container">
         <div class="hero">
           <div>
             <span class="badge">מחיר נגיש · הרכבה קלה · חוויה שמחה</span>
-            <h1 class="title">חופה ישראלית</h1>
-            <p class="slogan">חופות להשכרה בצפון: כמה פשוט ככה מושלם.</p>
-            <p class="section-desc">חופה ישראלית נולדה איפשהו בין קרית שמונה לביירות,
-בסבב מילואים שלישי, הפעם בצפון.
-אחרי עוד לוויה של חבר צוות אהוב,
-חתונה אחת קטנה ושמחה בתנאי שטח
-הכניסה בכולנו אור ותקווה.
-נזכרנו שלא צריך הפקות ענק
-כדי לחגוג המשכיות, אהבה וחיים.
-רק ארבעה מקלות, בד לבן ואהבת אמת.
-ככה נולדה חופה ישראלית:
-נגישה, פשוטה, מסורתית, ישראלית.</p>
+            <h1 class="title">מי אנחנו</h1>
+            <div class="story">
+              <p>חופה ישראלית נולדה איפשהו בין קריית שמונה לביירות,</p>
+              <p>במהלך סבב מילואים שלישי בצפון.</p>
+              <p>אחרי עוד לוויה של חבר צוות אהוב,</p>
+              <p>חתונה קטנה ושמחה בתנאי שטח</p>
+              <p>הכניסה בכולנו אור ותקווה.</p>
+              <p>נזכרנו שלא צריך הפקות ענק כדי לחגוג</p>
+              <p>המשכיות, אהבה וחיים.</p>
+              <p>רק ארבעה מקלות, בד לבן ואהבת אמת.</p>
+              <p>ככה נולדה חופה ישראלית — נגישה, פשוטה, מסורתית, ישראלית.</p>
+            </div>
           </div>
           <div class="hero-card" aria-label="תמונת מחשה">
             <img src="assets/chuppah_full.jpg" alt="חופה מסורתית – תמונת הדגמה" />
@@ -113,6 +140,7 @@
       </div>
     </section>
 
+    <!-- Section 2: Products -->
     <section id="products">
       <div class="container">
         <div class="section-header">
@@ -120,6 +148,7 @@
           <span class="pill">ניתן להוסיף מוצרים נוספים</span>
         </div>
         <div class="products">
+          <!-- Product Card: חופה מסורתית -->
           <article class="product" aria-labelledby="prod1-title">
             <header>
               <h3 id="prod1-title">חופה מסורתית</h3>
@@ -137,7 +166,7 @@
                 <h4>מפרט ומידות</h4>
                 <ul class="specs">
                   <li>4 מקלות במבוק משויפים, קוטר ~50 מ״מ, גובה ~2.5 מ׳</li>
-                  <li>בד לבן בגודל כ‑240×240 ס״מ, לולאות חיבור בקצוות</li>
+                  <li>בד לבן בגודל כ-240×240 ס״מ, לולאות חיבור בקצוות</li>
                   <li>הרכבה פשוטה וקלילה, קשירת הלולאות לחורים בראש המקלות</li>
                 </ul>
                 <h4>גלריה</h4>
@@ -150,6 +179,7 @@
             </div>
           </article>
 
+          <!-- Upcoming Product Placeholder -->
           <article class="product" aria-labelledby="prod2-title">
             <header>
               <h3 id="prod2-title">בקרוב: חופה עומדת עצמאית</h3>
@@ -167,6 +197,7 @@
       </div>
     </section>
 
+    <!-- Section 4: Photos -->
     <section id="photos" class="photos">
       <div class="container">
         <div class="section-header"><h2>תמונות</h2></div>
@@ -179,17 +210,28 @@
       </div>
     </section>
 
+    <!-- Section 5: Testimonials -->
     <section id="testimonials">
       <div class="container">
         <div class="section-header"><h2>המלצות</h2></div>
-        <div class="testimonials">
-          <article class="testimonial"><div class="name">רותם א.</div><div class="quote">שירות נהדר ומקצועי! ההרכבה הייתה מהירה ומדויקת.</div></article>
-          <article class="testimonial"><div class="name">שחר ל.</div><div class="quote">מחיר הוגן והתקנה קלה. החופה נראתה מדהים!</div></article>
-          <article class="testimonial"><div class="name">מריה ק.</div><div class="quote">ממליצה בחום – יחס אישי ותוצאות יפות.</div></article>
+        <div class="testimonials" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px">
+          <article class="testimonial" style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)">
+            <div class="name" style="font-weight:700">דנה ויואב</div>
+            <div class="quote" style="color:var(--muted)">“חיפשנו חופה יפה ופשוטה בלי כאב ראש. קיבלנו יחס חם, הרכבה קלה וחופה שנראתה מדהים בתמונות. ממליצים בלב מלא!”</div>
+          </article>
+          <article class="testimonial" style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)">
+            <div class="name" style="font-weight:700">מאיה ואיתי</div>
+            <div class="quote" style="color:var(--muted)">“השירות היה סבלני ומקצועי, הכל היה מוכן בזמן ותפור לצרכים שלנו. החופה הייתה מרכז האירוע וקיבלנו המון מחמאות.”</div>
+          </article>
+          <article class="testimonial" style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)">
+            <div class="name" style="font-weight:700">נועה וגל</div>
+            <div class="quote" style="color:var(--muted)">“פתרון מושלם לחתונת שטח: איכות מעולה, מחיר הוגן והרגשה שיש מי שמחזיק לנו את היד. תודה שעשיתם לנו שקט!”</div>
+          </article>
         </div>
       </div>
     </section>
 
+    <!-- Section 3: Contact -->
     <section id="contact">
       <div class="container">
         <div class="section-header"><h2>להזמנות ויצירת קשר</h2></div>
@@ -208,8 +250,13 @@
     </section>
   </main>
 
+  <!-- Floating WhatsApp Button (classic glyph) -->
   <a class="whatsapp" id="wa-float" href="https://wa.me/972533431726" target="_blank" rel="noopener" aria-label="פתיחת וואטסאפ">
-    <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M19.11 17.2c-.29-.15-1.7-.84-1.96-.93-.26-.1-.45-.15-.64.15-.19.29-.73.93-.9 1.12-.17.2-.33.22-.62.08-.29-.15-1.21-.45-2.31-1.44-.85-.76-1.43-1.7-1.6-1.99-.17-.29-.02-.45.13-.6.13-.13.29-.33.43-.49.15-.17.19-.29.29-.48.1-.2.05-.36-.02-.51-.08-.15-.64-1.54-.88-2.11-.23-.56-.47-.49-.64-.49-.17 0-.36-.02-.56-.02s-.51.07-.78.36c-.26.29-1 1-1 2.44 0 1.43 1.02 2.81 1.16 3.01.15.2 2 3.05 4.85 4.28.68.29 1.21.46 1.62.59.68.22 1.3.19 1.79.12.55-.08 1.7-.69 1.94-1.36.24-.67.24-1.25.17-1.36-.08-.11-.26-.18-.55-.33zM16.02 3.2c-7.09 0-12.83 5.74-12.83 12.83 0 2.26.59 4.47 1.72 6.42L3.2 28.8l6.54-1.71c1.89 1.03 4.02 1.58 6.18 1.58h.01c7.09 0 12.83-5.74 12.83-12.83 0-3.43-1.34-6.66-3.78-9.1a12.762 12.762 0 0 0-9.96-4.53z"/></svg>
+    <!-- classic WhatsApp speech-bubble + phone -->
+    <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+      <path d="M16 3C9.38 3 4 8.38 4 15c0 2.08.53 4.03 1.46 5.75L4 29l8.45-1.39C14.1 28.52 15.03 29 16 29c6.62 0 12-5.38 12-12S22.62 3 16 3zm0 22c-.83 0-1.65-.12-2.43-.36l-.58-.18-4.84.8.84-4.72-.3-.49A9.06 9.06 0 0 1 7 15c0-4.97 4.03-9 9-9s9 4.03 9 9-4.03 9-9 9z"/>
+      <path d="M21.26 18.17c-.12-.2-.45-.32-.94-.55-.49-.24-2.92-1.44-3.37-1.6-.45-.16-.77-.24-1.1.24-.33.49-1.26 1.6-1.54 1.92-.28.32-.57.36-1.05.12-.49-.24-2.07-.76-3.95-2.43-1.46-1.3-2.45-2.9-2.73-3.38-.28-.49-.03-.76.21-1 .21-.21.49-.57.73-.85.24-.28.32-.49.49-.81.16-.32.08-.61-.04-.85-.12-.24-1.1-2.64-1.52-3.6-.4-.94-.8-.81-1.1-.81s-.65-.01-1.01-.01c-.36 0-.94.13-1.43.65C2.45 5.6 2 6.78 2 8.26c0 1.49 1.08 2.97 1.24 3.18.16.2 2.26 3.45 5.47 4.86 3.21 1.41 3.21.94 3.79.89.57-.05 1.86-.76 2.13-1.49.28-.73.28-1.36.2-1.49z"/>
+    </svg>
   </a>
 
   <footer><div class="container">© <span id="year"></span> חופה ישראלית · כל הזכויות שמורות</div></footer>
@@ -224,6 +271,8 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
     document.querySelectorAll('section').forEach(sec => sec.style.scrollMarginTop = '90px');
+
+    // Active menu highlight
     const sections = Array.from(document.querySelectorAll('main section')).map(s => ({id: s.id, el: s}));
     const menuLinks = Array.from(document.querySelectorAll('.menu a'));
     const io = new IntersectionObserver(entries => {
@@ -236,6 +285,7 @@
     }, {rootMargin: '-50% 0px -50% 0px', threshold: 0});
     sections.forEach(s => io.observe(s.el));
 
+    // Product details toggle
     document.querySelectorAll('[data-toggle]').forEach(btn => {
       const sel = btn.getAttribute('data-toggle');
       const panel = document.querySelector(sel);
@@ -246,6 +296,7 @@
       });
     });
 
+    // Lightbox
     (function(){
       const lb = document.getElementById('lightbox');
       const lbImg = lb.querySelector('img');
@@ -275,6 +326,7 @@
       });
     })();
 
+    // Mirror inline WhatsApp to floating button (in case you change the number)
     const wa = document.getElementById('wa-float');
     const inline = document.querySelector('#contact a[href^="https://wa.me"]');
     if(wa && inline) inline.setAttribute('href', wa.getAttribute('href'));
