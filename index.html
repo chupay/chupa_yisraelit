@@ -246,22 +246,35 @@
 
     <!-- Section 3: Contact -->
     <section id="contact">
-      <div class="container">
-        <div class="section-header"><h2>להזמנות ויצירת קשר</h2></div>
-        <form aria-label="טופס יצירת קשר">
-          <div><label for="f-name">שם</label><input id="f-name" name="name" type="text" placeholder="שם מלא" required /></div>
-          <div><label for="f-phone">נייד</label><input id="f-phone" name="phone" type="tel" placeholder="050-0000000" /></div>
-          <div><label for="f-date">תאריך מבוקש (אופציונלי)</label><input id="f-date" name="date" type="date" /></div>
-          <button type="submit">שליחה</button>
-        </form>
-        <p class="section-desc" style="margin-top:12px">
-          אפשר גם לפנות ישירות ב-
-          <a href="https://wa.me/972533431726?text=%D7%94%D7%99%D7%99%20%D7%92%D7%90%D7%99%D7%94%2C%20%D7%A8%D7%95%D7%A6%D7%94%2F%D7%A8%D7%95%D7%A6%D7%94%20%D7%9E%D7%99%D7%93%D7%A2%20%D7%A2%D7%9C%20%D7%97%D7%95%D7%A4%D7%94%20%D7%9E%D7%A1%D7%95%D7%A8%D7%AA%D7%99%D7%AA" target="_blank" rel="noopener">WhatsApp (לגאיה)</a>.
-          &nbsp;|&nbsp; מייל: <a href="mailto:example@example.com">example@example.com</a>
+    <div class="container">
+      <div class="section-header"><h2>להזמנות ויצירת קשר</h2></div>
+  
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);max-width:640px">
+        <p class="section-desc" style="margin:0 0 10px">נשמח לדבר 🙂</p>
+  
+        <p style="margin:8px 0">
+          <strong>מייל:</strong>
+          <a href="mailto:chupa.yisraelit@gmail.com">chupa.yisraelit@gmail.com</a>
+        </p>
+  
+        <p style="margin:8px 0">
+          <strong>וואטסאפ:</strong>
+          <a href="https://wa.me/972533431726" target="_blank" rel="noopener">שליחת הודעה ב-WhatsApp</a>
+        </p>
+  
+        <p style="margin:8px 0">
+          <strong>טלפון:</strong>
+          <a href="tel:0533431726">053-3431726</a>
         </p>
       </div>
-    </section>
-  </main>
+  
+      <!-- שומר על סנכרון בין הקישור המוטמע לבין הכפתור הצף (אם תשנו מספר בעתיד) -->
+      <p class="section-desc" style="margin-top:12px">
+        אפשר גם לפנות כרגיל עם הכפתור הירוק למטה משמאל.
+      </p>
+    </div>
+  </section>
+
 
   <!-- Floating WhatsApp Button (classic logo image, forced left) -->
   <a class="whatsapp" id="wa-float" href="https://wa.me/972533431726" target="_blank" rel="noopener" aria-label="פתיחת וואטסאפ">
