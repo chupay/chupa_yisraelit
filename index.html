@@ -15,7 +15,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet">
 
   <style>
-    :root{
+    :root {
       --text:#0b1a2b;
       --muted:#5c6b7a;
       --brand:#1e88e5;
@@ -29,108 +29,119 @@
       --container:1100px;
     }
 
-    html{scroll-behavior:smooth}
-    body{
+    html { scroll-behavior:smooth; }
+
+    body {
       margin:0;
-      font-family:'Heebo',system-ui,-apple-system,Segoe UI,Roboto,Heebo,Arial,Helvetica,sans-serif;
+      font-family:'Heebo', system-ui, -apple-system, Segoe UI, Roboto, Heebo, Arial, Helvetica, sans-serif;
       color:var(--text);
       line-height:1.6;
-
-      /* 🌅 רקע בהשראת הלוגו – כחול בהיר עדין עם מרכז בהיר */
-    background:
-      linear-gradient(180deg, rgba(230,240,255,0.8) 0%, rgba(255,255,255,0.95) 60%, rgba(240,248,255,1) 100%),
-      radial-gradient(circle at 20% 10%, rgba(30,136,229,0.15), transparent 60%),
-      radial-gradient(circle at 80% 90%, rgba(13,71,161,0.1), transparent 70%),
-      #ffffff;
-    background-attachment: fixed;
+      background:
+        linear-gradient(180deg, rgba(230,240,255,0.8) 0%, rgba(255,255,255,0.95) 60%, rgba(240,248,255,1) 100%),
+        radial-gradient(circle at 20% 10%, rgba(30,136,229,0.15), transparent 60%),
+        radial-gradient(circle at 80% 90%, rgba(13,71,161,0.1), transparent 70%),
+        #ffffff;
+      background-attachment: fixed;
     }
 
-    a{color:var(--brand);text-decoration:none}
-    img{max-width:100%;height:auto;display:block}
+    a { color:var(--brand); text-decoration:none; }
+    img { max-width:100%; height:auto; display:block; }
 
-    /* Nav */
-    .nav{position:sticky;top:0;z-index:1000;backdrop-filter:saturate(140%) blur(6px);background:rgba(255,255,255,.88);border-bottom:1px solid var(--border)}
-    .nav-inner{max-width:var(--container);margin-inline:auto;display:flex;align-items:center;gap:14px;padding:10px 16px}
-    .logo{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--brand-2)}
-    .logo-img{height:44px;width:auto;border-radius:8px;display:block}
-    .menu{margin-inline-start:auto;display:flex;gap:14px;flex-wrap:wrap}
-    .menu a{padding:10px 12px;border-radius:12px;color:var(--text)}
-    .menu a:hover{background:var(--card)}
-    .menu a.active{color:var(--brand-2);background:rgba(30,136,229,.08)}
+    /* === ניווט עליון === */
+    .nav {
+      position:sticky; top:0; z-index:1000;
+      backdrop-filter:saturate(140%) blur(6px);
+      background:rgba(255,255,255,.9);
+      border-bottom:1px solid var(--border);
+    }
+    .nav-inner {
+      max-width:var(--container);
+      margin-inline:auto;
+      display:flex;
+      align-items:center;
+      gap:24px;
+      padding:10px 16px;
+    }
+    .logo {
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:700;
+      color:var(--brand-2);
+    }
+    .logo-img {
+      height:68px; /* ← הגדלה */
+      width:auto;
+      border-radius:10px;
+      display:block;
+    }
+    .menu {
+      margin-inline-start:auto;
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+    .menu a {
+      padding:10px 12px;
+      border-radius:12px;
+      color:var(--text);
+    }
+    .menu a:hover { background:var(--card); }
+    .menu a.active { color:var(--brand-2); background:rgba(30,136,229,.08); }
 
-    /* Layout & Sections */
-    section{padding:56px 16px}
-    .container{max-width:var(--container);margin-inline:auto}
-    .section-header{display:flex;align-items:center;gap:10px;margin-bottom:16px}
-    .section-header h2{margin:0;font-size:clamp(20px,3.2vw,30px)}
-    .section-desc{color:var(--muted);margin:6px 0 22px}
+    /* מבנה כללי */
+    section { padding:56px 16px; }
+    .container { max-width:var(--container); margin-inline:auto; }
+    .section-header { display:flex; align-items:center; gap:10px; margin-bottom:16px; }
+    .section-header h2 { margin:0; font-size:clamp(20px,3.2vw,30px); }
+    .section-desc { color:var(--muted); margin:6px 0 22px; }
 
-    /* Hero / About */
-    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center}
-    .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,138,0,.08);color:var(--accent);padding:6px 10px;border-radius:999px;font-weight:500}
-    .title{font-size:clamp(24px,4.6vw,36px);line-height:1.2;margin:10px 0}
-    .slogan{display:none}
-    .story p{margin:0 0 10px}
-    .hero-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)}
+    /* Hero */
+    .hero { display:grid; grid-template-columns:1.2fr .8fr; gap:28px; align-items:center; }
+    .badge { display:inline-flex; align-items:center; gap:8px; background:rgba(255,138,0,.08); color:var(--accent); padding:6px 10px; border-radius:999px; font-weight:500; }
+    .title { font-size:clamp(24px,4.6vw,36px); line-height:1.2; margin:10px 0; }
+    .story p { margin:0 0 10px; }
+    .hero-card { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:16px; box-shadow:var(--shadow); }
 
-    /* Products */
-    .products{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
-    .product{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:12px}
-    .pill{display:inline-block;padding:.25rem .6rem;background:#eef5ff;color:var(--brand-2);border-radius:999px;font-size:12px}
-    .price{font-weight:800;color:var(--brand-2)}
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;border:1px solid var(--brand);color:#fff;background:var(--brand);cursor:pointer;font-weight:600}
-    .btn.secondary{background:transparent;color:var(--brand)}
-    .btn:hover{filter:brightness(1.05)}
-    .details{overflow:hidden}
-    .details-inner{padding:10px 0 0;border-top:1px dashed var(--border)}
-    .specs{margin:0;padding:0 1rem}
-    .specs li{margin:.4rem 0}
+    /* מוצרים */
+    .products { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px; }
+    .product { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:16px; box-shadow:var(--shadow); display:flex; flex-direction:column; gap:12px; }
+    .pill { display:inline-block; padding:.25rem .6rem; background:#eef5ff; color:var(--brand-2); border-radius:999px; font-size:12px; }
+    .price { font-weight:800; color:var(--brand-2); }
+    .btn { display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:12px; border:1px solid var(--brand); color:#fff; background:var(--brand); cursor:pointer; font-weight:600; }
+    .btn.secondary { background:transparent; color:var(--brand); }
+    .btn:hover { filter:brightness(1.05); }
 
-    /* Galleries */
-    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}
-    .gallery figure{margin:0;background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden}
-    .gallery img{aspect-ratio:4/3;object-fit:cover;width:100%}
-    .photos .gallery img{aspect-ratio:16/10}
+    /* גלריה */
+    .gallery { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:10px; }
+    .gallery figure { margin:0; background:#fff; border:1px solid var(--border); border-radius:12px; overflow:hidden; }
+    .gallery img { aspect-ratio:4/3; object-fit:cover; width:100%; }
 
-    /* Lightbox */
-    .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.8);display:none;align-items:center;justify-content:center;z-index:1200}
-    .lightbox.active{display:flex}
-    .lightbox img{max-width:90vw;max-height:80vh;border-radius:12px}
-    .lightbox .close,.lightbox .prev,.lightbox .next{position:absolute;background:rgba(255,255,255,.92);border:none;border-radius:999px;width:48px;height:48px;cursor:pointer;box-shadow:var(--shadow);font-size:24px}
-    .lightbox .close{top:20px;inset-inline-end:20px}
-    .lightbox .prev{left:24px}
-    .lightbox .next{right:24px}
+    /* וואטסאפ */
+    .whatsapp {
+      position:fixed; bottom:24px; left:24px;
+      z-index:1100; width:84px; height:84px;
+      border-radius:999px; background:var(--whatsapp);
+      display:flex; align-items:center; justify-content:center;
+      box-shadow:var(--shadow);
+    }
+    .whatsapp img { width:44px; height:44px; display:block; }
+    .whatsapp:hover { transform:translateY(-2px); }
 
-    /* Contact */
-    form{display:grid;gap:12px;max-width:520px}
-    label{font-weight:600}
-    input, button[type=submit]{font:inherit}
-    input{padding:12px 14px;border-radius:12px;border:1px solid var(--border);background:#fff}
-    button[type=submit]{padding:12px 14px;border-radius:12px;border:1px solid var(--brand-2);background:var(--brand-2);color:#fff;font-weight:700;cursor:pointer}
+    footer { padding:24px 16px; color:var(--muted); text-align:center; }
 
-    /* WhatsApp */
-    .whatsapp{position:fixed;bottom:24px;left:24px;z-index:1100;width:84px;height:84px;border-radius:999px;background:var(--whatsapp);display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow)}
-    .whatsapp img{width:44px;height:44px;display:block}
-    .whatsapp:hover{transform:translateY(-2px)}
-
-    /* Footer */
-    footer{padding:24px 16px;color:var(--muted);text-align:center}
-
-    /* Responsive */
     @media (max-width:800px){
-      .hero{grid-template-columns:1fr}
-      .menu{gap:4px}
-      .nav-inner{gap:12px}
-      .logo-img{height:38px}
+      .hero { grid-template-columns:1fr; }
+      .logo-img { height:54px; }
     }
   </style>
 </head>
+
 <body>
   <header class="nav">
     <div class="nav-inner">
       <a class="logo" href="#about">
-        <img class="logo-img" src="assets/logo.png" alt="חופה ישראלית – לוגו">
-        <span>חופה ישראלית</span>
+        <img class="logo-img" src="assets/logo.jpeg" alt="חופה ישראלית – לוגו">
       </a>
       <nav class="menu">
         <a href="#about">מי אנחנו</a>
@@ -140,6 +151,7 @@
       </nav>
     </div>
   </header>
+
 
 
   <main>
