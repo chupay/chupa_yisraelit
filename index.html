@@ -59,15 +59,9 @@
     gap:24px;
     padding:10px 16px;
   }
-  .logo{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    font-weight:700;
-    color:var(--brand-2);
-  }
+  .logo{display:flex;align-items:center;gap:10px}
   .logo-img{
-    height:140px;  /* 🔵 גודל מוגדל משמעותית */
+    height:140px;
     width:auto;
     border-radius:12px;
     display:block;
@@ -89,30 +83,108 @@
   /* ריווח מתחת ללוגו */
   header.nav + main { margin-top: 20px; }
 
+  /* מבנה כללי */
+  section{padding:56px 16px}
+  .container{max-width:var(--container);margin-inline:auto}
+  .section-header{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+  .section-header h2{margin:0;font-size:clamp(20px,3.2vw,30px)}
+  .section-desc{color:var(--muted);margin:6px 0 22px}
+
+  /* Hero */
+  .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center}
+  .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,138,0,.08);color:var(--accent);padding:6px 10px;border-radius:999px;font-weight:500}
+  .title{font-size:clamp(24px,4.6vw,36px);line-height:1.2;margin:10px 0}
+  .story p{margin:0 0 10px}
+  .hero-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)}
+  /* הקטנת תמונת ההירו */
+  .hero-card img{max-height:320px;object-fit:cover;width:100%}
+
+  /* מוצרים — תמונה לצד תוכן (לא מתחת) */
+  .products{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+  .product{
+    display:grid;
+    grid-template-columns: 1fr minmax(180px,240px);
+    grid-template-areas:
+      "head media"
+      "cta  media"
+      "details details";
+    align-items:start;
+    gap:14px;
+    background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)
+  }
+  .product > header{grid-area:head}
+  .product > figure{grid-area:media;margin:0;align-self:start}
+  .product > figure img{
+    width:100%;
+    height:auto;
+    max-height:220px;         /* הקטנה גלובלית לתמונות מוצר */
+    object-fit:cover;
+    border-radius:12px;
+    border:1px solid var(--border);
+  }
+  .product > div:has(.btn){grid-area:cta}
+  .details{grid-area:details;overflow:hidden}
+  .details-inner{padding:10px 0 0;border-top:1px dashed var(--border)}
+  .specs{margin:0;padding:0 1rem}
+  .specs li{margin:.4rem 0}
+  .price{font-weight:800;color:var(--brand-2)}
+  .pill{display:inline-block;padding:.25rem .6rem;background:#eef5ff;color:var(--brand-2);border-radius:999px;font-size:12px}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;border:1px solid var(--brand);color:#fff;background:var(--brand);cursor:pointer;font-weight:600}
+  .btn.secondary{background:transparent;color:var(--brand)}
+  .btn:hover{filter:brightness(1.05)}
+
+  /* גלריה — תמונות קטנות יותר */
+  .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px}
+  .gallery figure{margin:0;background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+  .gallery img{aspect-ratio:4/3;object-fit:cover;width:100%;max-height:160px}
+
+  /* וואטסאפ */
+  .whatsapp{
+    position:fixed;bottom:24px;left:24px;
+    z-index:1100;width:84px;height:84px;
+    border-radius:999px;background:var(--whatsapp);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:var(--shadow)
+  }
+  .whatsapp img{width:44px;height:44px;display:block}
+  .whatsapp:hover{transform:translateY(-2px)}
+
+  footer{padding:24px 16px;color:var(--muted);text-align:center}
+
+  /* מובייל: מחזירים לערימה אנכית לכרטיסי המוצר */
+  @media (max-width:900px){
+    .product{
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "media"
+        "head"
+        "cta"
+        "details";
+    }
+    .product > figure img{max-height:200px}
+    .hero{grid-template-columns:1fr}
+  }
   @media (max-width:800px){
-    .logo-img{height:110px;} /* 🔵 גודל גדול גם לנייד */
+    .logo-img{height:110px}
     .menu{gap:4px}
   }
 </style>
+</head>
 
-<header class="nav">
-  <div class="nav-inner">
-    <a class="logo" href="#about">
-      <img class="logo-img" src="assets/logo.jpeg" alt="חופה ישראלית – לוגו">
-    </a>
-    <nav class="menu">
-      <a href="#about">מי אנחנו</a>
-      <a href="#products">מוצרים</a>
-      <a href="#photos" data-combo="#testimonials">תמונות והמלצות</a>
-      <a href="#contact">להזמנות ויצירת קשר</a>
-    </nav>
-  </div>
-</header>
-
-
-
-
-
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="logo" href="#about">
+        <img class="logo-img" src="assets/logo.jpeg" alt="חופה ישראלית – לוגו">
+      </a>
+      <nav class="menu">
+        <a href="#about">מי אנחנו</a>
+        <a href="#products">מוצרים</a>
+        <a href="#photos" data-combo="#testimonials">תמונות והמלצות</a>
+        <a href="#contact">להזמנות ויצירת קשר</a>
+      </nav>
+    </div>
+  </header>
 
   <main>
     <!-- Section 1: About -->
@@ -202,7 +274,6 @@
     <section id="photos" class="photos">
       <div class="container">
         <div class="section-header"><h2>תמונות</h2></div>
-        <p class="section-desc">בקרוב תמונות מזוגות מרוצים :)</p>
         <div class="gallery" data-gallery="main">
           <figure><img src="assets/chuppah_front.jpg" alt="חופה מסורתית – גלריה 1" /></figure>
           <figure><img src="assets/chuppah_angle.jpg" alt="חופה מסורתית – גלריה 2" /></figure>
@@ -234,38 +305,21 @@
 
     <!-- Section 3: Contact -->
     <section id="contact">
-    <div class="container">
-      <div class="section-header"><h2>להזמנות ויצירת קשר</h2></div>
-  
-      <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);max-width:640px">
-        <p class="section-desc" style="margin:0 0 10px">נשמח לדבר 🙂</p>
-  
-        <p style="margin:8px 0">
-          <strong>מייל:</strong>
-          <a href="mailto:chupa.yisraelit@gmail.com">chupa.yisraelit@gmail.com</a>
-        </p>
-  
-        <p style="margin:8px 0">
-          <strong>וואטסאפ:</strong>
-          <a href="https://wa.me/972533431726" target="_blank" rel="noopener">שליחת הודעה ב-WhatsApp</a>
-        </p>
-  
-        <p style="margin:8px 0">
-          <strong>טלפון:</strong>
-          <a href="tel:0533431726">053-3431726</a>
-        </p>
+      <div class="container">
+        <div class="section-header"><h2>להזמנות ויצירת קשר</h2></div>
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);max-width:640px">
+          <p class="section-desc" style="margin:0 0 10px">נשמח לדבר 🙂</p>
+          <p style="margin:8px 0"><strong>מייל:</strong> <a href="mailto:chupa.yisraelit@gmail.com">chupa.yisraelit@gmail.com</a></p>
+          <p style="margin:8px 0"><strong>וואטסאפ:</strong> <a href="https://wa.me/972533431726" target="_blank" rel="noopener">שליחת הודעה ב-WhatsApp</a></p>
+          <p style="margin:8px 0"><strong>טלפון:</strong> <a href="tel:0533431726">053-3431726</a></p>
+        </div>
+        <p class="section-desc" style="margin-top:12px"></p>
       </div>
-  
-      <!-- שומר על סנכרון בין הקישור המוטמע לבין הכפתור הצף (אם תשנו מספר בעתיד) -->
-      <p class="section-desc" style="margin-top:12px">
-      </p>
-    </div>
-  </section>
+    </section>
+  </main>
 
-
-  <!-- Floating WhatsApp Button (classic logo image, forced left) -->
+  <!-- Floating WhatsApp Button -->
   <a class="whatsapp" id="wa-float" href="https://wa.me/972533431726" target="_blank" rel="noopener" aria-label="פתיחת וואטסאפ">
-    <!-- Using the classic official logo SVG hosted by Wikipedia -->
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
   </a>
 
@@ -280,7 +334,7 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-    document.querySelectorAll('section').forEach(sec => sec.style.scrollMarginTop = '90px');
+    document.querySelectorAll('section').forEach(sec => sec.style.scrollMarginTop = '110px'); // קצת יותר ריווח בגלילה בגלל לוגו גדול
 
     // Active menu highlight
     const sections = Array.from(document.querySelectorAll('main section')).map(s => ({id: s.id, el: s}));
