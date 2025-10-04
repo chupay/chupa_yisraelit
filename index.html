@@ -13,18 +13,44 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet">
+
   <style>
-    :root{--bg:#ffffff;--text:#0b1a2b;--muted:#5c6b7a;--brand:#1e88e5;--brand-2:#0d47a1;--accent:#ff8a00;--whatsapp:#25D366;--card:#f6f9fc;--border:#e6edf3;--shadow:0 10px 20px rgba(13,71,161,.08);--radius:16px;--container:1100px}
+    :root{
+      --text:#0b1a2b;
+      --muted:#5c6b7a;
+      --brand:#1e88e5;
+      --brand-2:#0d47a1;
+      --accent:#ff8a00;
+      --whatsapp:#25D366;
+      --card:#f6f9fc;
+      --border:#e6edf3;
+      --shadow:0 10px 20px rgba(13,71,161,.08);
+      --radius:16px;
+      --container:1100px;
+    }
+
     html{scroll-behavior:smooth}
-    body{margin:0;font-family:'Heebo',system-ui,-apple-system,Segoe UI,Roboto,Heebo,Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+    body{
+      margin:0;
+      font-family:'Heebo',system-ui,-apple-system,Segoe UI,Roboto,Heebo,Arial,Helvetica,sans-serif;
+      color:var(--text);
+      line-height:1.6;
+
+      /* 🌅 רקע בהשראת הלוגו – כחול בהיר עדין עם מרכז בהיר */
+      background:
+        radial-gradient(circle at 20% 0%, rgba(13,71,161,.05), transparent 40%),
+        radial-gradient(circle at 85% 100%, rgba(13,71,161,.06), transparent 45%),
+        #ffffff;
+    }
+
     a{color:var(--brand);text-decoration:none}
     img{max-width:100%;height:auto;display:block}
 
     /* Nav */
     .nav{position:sticky;top:0;z-index:1000;backdrop-filter:saturate(140%) blur(6px);background:rgba(255,255,255,.88);border-bottom:1px solid var(--border)}
-    .nav-inner{max-width:var(--container);margin-inline:auto;display:flex;align-items:center;gap:24px;padding:10px 16px}
+    .nav-inner{max-width:var(--container);margin-inline:auto;display:flex;align-items:center;gap:14px;padding:10px 16px}
     .logo{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--brand-2)}
-    .logo-mark{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--brand),var(--accent));box-shadow:var(--shadow)}
+    .logo-img{height:44px;width:auto;border-radius:8px;display:block}
     .menu{margin-inline-start:auto;display:flex;gap:14px;flex-wrap:wrap}
     .menu a{padding:10px 12px;border-radius:12px;color:var(--text)}
     .menu a:hover{background:var(--card)}
@@ -40,10 +66,9 @@
     /* Hero / About */
     .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center}
     .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,138,0,.08);color:var(--accent);padding:6px 10px;border-radius:999px;font-weight:500}
-    .title{font-size:clamp(24px,4.6vw,36px);line-height:1.2;margin:10px 0} /* smaller title */
-    .slogan{display:none} /* removed line per request */
+    .title{font-size:clamp(24px,4.6vw,36px);line-height:1.2;margin:10px 0}
+    .slogan{display:none}
     .story p{margin:0 0 10px}
-
     .hero-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)}
 
     /* Products */
@@ -81,43 +106,31 @@
     input{padding:12px 14px;border-radius:12px;border:1px solid var(--border);background:#fff}
     button[type=submit]{padding:12px 14px;border-radius:12px;border:1px solid var(--brand-2);background:var(--brand-2);color:#fff;font-weight:700;cursor:pointer}
 
-    /* BIG WhatsApp button, classic glyph, pinned bottom-left (physical left, not logical) */
-    .whatsapp{
-      position:fixed;
-      bottom:24px;
-      left:24px;          /* always left side */
-      z-index:1100;
-      width:84px;
-      height:84px;
-      border-radius:999px;
-      background:var(--whatsapp);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      box-shadow:var(--shadow)
-    }
-    .whatsapp img{width:44px;height:44px;display:block} /* classic logo image */
-    .whatsapp:focus,.whatsapp:hover{transform:translateY(-2px)}
+    /* WhatsApp */
+    .whatsapp{position:fixed;bottom:24px;left:24px;z-index:1100;width:84px;height:84px;border-radius:999px;background:var(--whatsapp);display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow)}
+    .whatsapp img{width:44px;height:44px;display:block}
+    .whatsapp:hover{transform:translateY(-2px)}
 
     /* Footer */
     footer{padding:24px 16px;color:var(--muted);text-align:center}
 
-    /* Small screens */
+    /* Responsive */
     @media (max-width:800px){
       .hero{grid-template-columns:1fr}
       .menu{gap:4px}
       .nav-inner{gap:12px}
+      .logo-img{height:38px}
     }
   </style>
 </head>
 <body>
-  <header class="nav" aria-label="ניווט ראשי">
+  <header class="nav">
     <div class="nav-inner">
-      <a class="logo" href="#about" aria-label="דף הבית">
-        <span class="logo-mark" aria-hidden="true"></span>
+      <a class="logo" href="#about">
+        <img class="logo-img" src="assets/logo.png" alt="חופה ישראלית – לוגו">
         <span>חופה ישראלית</span>
       </a>
-      <nav class="menu" role="navigation">
+      <nav class="menu">
         <a href="#about">מי אנחנו</a>
         <a href="#products">מוצרים</a>
         <a href="#photos" data-combo="#testimonials">תמונות והמלצות</a>
@@ -125,6 +138,7 @@
       </nav>
     </div>
   </header>
+
 
   <main>
     <!-- Section 1: About -->
