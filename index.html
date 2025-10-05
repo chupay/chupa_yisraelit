@@ -10,179 +10,179 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet">
 
- <style>
-  :root{
-    --text:#0b1a2b;
-    --muted:#5c6b7a;
-    --brand:#1e88e5;
-    --brand-2:#0d47a1;
-    --accent:#ff8a00;        /* כתמתם/צהבהב מהלוגו */
-    --whatsapp:#25D366;
-    --card:#f6f9fc;
-    --border:#e6edf3;
-    --shadow:0 10px 20px rgba(13,71,161,.08);
-    --radius:16px;
-    --container:1100px;
-  }
-
-  html{scroll-behavior:smooth}
-  body{
-  margin:0;
-  font-family:'Heebo',system-ui,-apple-system,Segoe UI,Roboto,Heebo,Arial,Helvetica,sans-serif;
-  color:var(--text);
-  line-height:1.6;
-
-  /* רקע מעודכן: שילוב כחול עם נגיעות זהב-צהוב */
-  background:
-    radial-gradient(circle at 15% 10%, rgba(255,193,7,0.12), transparent 60%),   /* נגיעה צהובה בפינה העליונה */
-    radial-gradient(circle at 85% 90%, rgba(255,171,0,0.10), transparent 60%),   /* נגיעה כתומה-זהובה בתחתית */
-    linear-gradient(180deg, rgba(230,240,255,0.8) 0%, rgba(255,253,245,0.95) 60%, rgba(240,248,255,1) 100%), /* תערובת רכה */
-    radial-gradient(circle at 20% 10%, rgba(30,136,229,0.15), transparent 60%),
-    radial-gradient(circle at 80% 90%, rgba(13,71,161,0.1), transparent 70%),
-    #ffffff;
-  background-attachment: fixed;
-}
-
-
-  a{color:var(--brand);text-decoration:none}
-  img{max-width:100%;height:auto;display:block}
-
-  /* ניווט עליון */
-  .nav{
-    position:sticky;top:0;z-index:1000;
-    backdrop-filter:saturate(140%) blur(6px);
-    background:rgba(255,255,255,.9);
-    border-bottom:1px solid var(--border);
-  }
-  .nav-inner{
-    max-width:var(--container);
-    margin-inline:auto;
-    display:flex;
-    align-items:center;
-    gap:24px;
-    padding:10px 16px;
-  }
-  .logo{display:flex;align-items:center;gap:10px}
-  .logo-img{
-    height:210px;  /* פי 1.5 מהקודם (140px -> 210px) */
-    width:auto;
-    border-radius:12px;
-    display:block;
-  }
-  .menu{
-    margin-inline-start:auto;
-    display:flex;
-    gap:14px;
-    flex-wrap:wrap;
-  }
-  .menu a{
-    padding:10px 12px;
-    border-radius:12px;
-    color:var(--text);
-  }
-  .menu a:hover{background:var(--card)}
-  .menu a.active{color:var(--brand-2);background:rgba(30,136,229,.08)}
-
-  /* ריווח מתחת ללוגו */
-  header.nav + main { margin-top: 20px; }
-
-  /* מבנה כללי */
-  section{padding:56px 16px}
-  .container{max-width:var(--container);margin-inline:auto}
-  .section-header{display:flex;align-items:center;gap:10px;margin-bottom:16px}
-  .section-header h2{margin:0;font-size:clamp(20px,3.2vw,30px)}
-  .section-desc{color:var(--muted);margin:6px 0 22px}
-
-  /* Hero */
-  .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center}
-  /* הוסר ה-badge לחלוטין לפי בקשה */
-  .title{
-    /* מי אנחנו – באותו גודל כמו "מוצרים" */
-    font-size:clamp(20px,3.2vw,30px);
-    line-height:1.2;
-    margin:10px 0
-  }
-  .story p{margin:0 0 10px}
-  .hero-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)}
-  .hero-card img{max-height:320px;object-fit:cover;width:100%}
-
-  /* מוצרים — תמונה לצד תוכן (לא מתחת) */
-  .products{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
-  .product{
-    display:grid;
-    grid-template-columns: 1fr minmax(180px,240px);
-    grid-template-areas:
-      "head media"
-      "cta  media"
-      "details details";
-    align-items:start;
-    gap:14px;
-    background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)
-  }
-  .product > header{grid-area:head}
-  .product > figure{grid-area:media;margin:0;align-self:start}
-  .product > figure img{
-    width:100%;
-    height:auto;
-    max-height:220px;
-    object-fit:cover;
-    border-radius:12px;
-    border:1px solid var(--border);
-  }
-  .product > div:has(.btn){grid-area:cta}
-  .details{grid-area:details;overflow:hidden}
-  .details-inner{padding:10px 0 0;border-top:1px dashed var(--border)}
-  .specs{margin:0;padding:0 1rem}
-  .specs li{margin:.4rem 0}
-  .price{font-weight:800;color:var(--brand-2)}
-  .pill{display:inline-block;padding:.25rem .6rem;background:#eef5ff;color:var(--brand-2);border-radius:999px;font-size:12px}
-  .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;border:1px solid var(--brand);color:#fff;background:var(--brand);cursor:pointer;font-weight:600}
-  .btn.secondary{background:transparent;color:var(--brand)}
-  .btn:hover{filter:brightness(1.05)}
-
-  /* גלריה — תמונות קטנות יותר */
-  .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px}
-  .gallery figure{margin:0;background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden}
-  .gallery img{aspect-ratio:4/3;object-fit:cover;width:100%;max-height:160px}
-
-  /* וואטסאפ */
-  .whatsapp{
-    position:fixed;bottom:24px;left:24px;
-    z-index:1100;width:84px;height:84px;
-    border-radius:999px;background:var(--whatsapp);
-    display:flex;align-items:center;justify-content:center;
-    box-shadow:var(--shadow)
-  }
-  .whatsapp img{width:44px;height:44px;display:block}
-  .whatsapp:hover{transform:translateY(-2px)}
-
-  footer{padding:24px 16px;color:var(--muted);text-align:center}
-
-  /* מובייל */
-  @media (max-width:900px){
-    .product{
-      grid-template-columns: 1fr;
-      grid-template-areas:
-        "media"
-        "head"
-        "cta"
-        "details";
+  <style>
+    :root{
+      --text:#0b1a2b;
+      --muted:#5c6b7a;
+      --brand:#1e88e5;
+      --brand-2:#0d47a1;
+      --accent:#ffb300;         /* זהוב-צהבהב עדין */
+      --whatsapp:#25D366;
+      --card:#f6f9fc;
+      --border:#e6edf3;
+      --shadow:0 10px 20px rgba(13,71,161,.08);
+      --radius:16px;
+      --container:1100px;
+      --nav-bg: rgba(230,240,255,0.95); /* רקע כחלחל לסרגל */
     }
-    .product > figure img{max-height:200px}
-    .hero{grid-template-columns:1fr}
-  }
-  @media (max-width:800px){
-    .logo-img{height:165px}  /* פי 1.5 מה-110 הקודם */
-    .menu{gap:4px}
-  }
-</style>
+
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:'Heebo',system-ui,-apple-system,Segoe UI,Roboto,Heebo,Arial,Helvetica,sans-serif;
+      color:var(--text);
+      line-height:1.6;
+
+      /* רקע: כחול רך עם נגיעות זהב-צהוב */
+      background:
+        radial-gradient(circle at 15% 10%, rgba(255,193,7,0.12), transparent 60%),
+        radial-gradient(circle at 85% 90%, rgba(255,171,0,0.10), transparent 60%),
+        linear-gradient(180deg, rgba(230,240,255,0.8) 0%, rgba(255,253,245,0.95) 60%, rgba(240,248,255,1) 100%),
+        radial-gradient(circle at 20% 10%, rgba(30,136,229,0.15), transparent 60%),
+        radial-gradient(circle at 80% 90%, rgba(13,71,161,0.1), transparent 70%),
+        #ffffff;
+      background-attachment: fixed;
+    }
+
+    a{color:var(--brand);text-decoration:none}
+    img{max-width:100%;height:auto;display:block}
+
+    /* === ניווט עליון (sticky) עם רקע כחלחל === */
+    .nav{
+      position:sticky;top:0;z-index:1000;
+      background: var(--nav-bg);
+      border-bottom:1px solid var(--border);
+      backdrop-filter:saturate(140%) blur(6px);
+    }
+    .nav-inner{
+      max-width:var(--container);
+      margin-inline:auto;
+      display:flex;
+      align-items:center;
+      gap:24px;
+      padding:10px 16px;
+    }
+
+    /* לוגו רספונסיבי – תמיד שומר יחס */
+    .logo{display:flex;align-items:center;gap:10px;flex:0 0 auto;}
+    .logo-img{
+      display:block;
+      width:auto;
+      height:auto;                          /* שמירה על יחס */
+      max-height: clamp(90px, 22vw, 210px); /* גובה גמיש לדסקטופ ומובייל */
+      border-radius:12px;
+      object-fit: contain;                   /* בלי מתיחה */
+    }
+
+    .menu{
+      margin-inline-start:auto;
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+    .menu a{
+      padding:10px 12px;
+      border-radius:12px;
+      color:var(--text);
+    }
+    .menu a:hover{background:var(--card)}
+    .menu a.active{color:var(--brand-2);background:rgba(30,136,229,.08)}
+
+    /* ריווח בסיסי */
+    section{padding:56px 16px}
+    .container{max-width:var(--container);margin-inline:auto}
+    .section-header{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+    .section-header h2{margin:0;font-size:clamp(20px,3.2vw,30px)}
+    .section-desc{color:var(--muted);margin:6px 0 22px}
+
+    /* Hero / מי אנחנו */
+    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center}
+    .title{
+      /* “מי אנחנו” – באותו גודל של “מוצרים” */
+      font-size:clamp(20px,3.2vw,30px);
+      line-height:1.2;margin:10px 0
+    }
+    .story p{margin:0 0 10px}
+    .hero-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)}
+    .hero-card img{max-height:320px;object-fit:cover;width:100%}
+
+    /* מוצרים – תמונה לצד תוכן */
+    .products{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+    .product{
+      display:grid;
+      grid-template-columns: 1fr minmax(180px,240px);
+      grid-template-areas:
+        "head media"
+        "cta  media"
+        "details details";
+      align-items:start;
+      gap:14px;
+      background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)
+    }
+    .product > header{grid-area:head}
+    .product > figure{grid-area:media;margin:0;align-self:start}
+    .product > figure img{
+      width:100%;
+      height:auto;
+      max-height:220px;
+      object-fit:cover;
+      border-radius:12px;
+      border:1px solid var(--border);
+    }
+    .product > div:has(.btn){grid-area:cta}
+    .details{grid-area:details;overflow:hidden}
+    .details-inner{padding:10px 0 0;border-top:1px dashed var(--border)}
+    .specs{margin:0;padding:0 1rem}
+    .specs li{margin:.4rem 0}
+    .price{font-weight:800;color:var(--brand-2)}
+    .pill{display:inline-block;padding:.25rem .6rem;background:#eef5ff;color:var(--brand-2);border-radius:999px;font-size:12px}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;border:1px solid var(--brand);color:#fff;background:var(--brand);cursor:pointer;font-weight:600}
+    .btn.secondary{background:transparent;color:var(--brand)}
+    .btn:hover{filter:brightness(1.05)}
+
+    /* גלריה */
+    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px}
+    .gallery figure{margin:0;background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+    .gallery img{aspect-ratio:4/3;object-fit:cover;width:100%;max-height:160px}
+
+    /* כפתור וואטסאפ צף */
+    .whatsapp{
+      position:fixed;bottom:24px;left:24px;
+      z-index:1100;width:84px;height:84px;
+      border-radius:999px;background:var(--whatsapp);
+      display:flex;align-items:center;justify-content:center;
+      box-shadow:var(--shadow)
+    }
+    .whatsapp img{width:44px;height:44px;display:block}
+    .whatsapp:hover{transform:translateY(-2px)}
+
+    footer{padding:24px 16px;color:var(--muted);text-align:center}
+
+    /* מובייל */
+    @media (max-width:900px){
+      .product{
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "media"
+          "head"
+          "cta"
+          "details";
+      }
+      .product > figure img{max-height:200px}
+      .hero{grid-template-columns:1fr}
+    }
+    @media (max-width:800px){
+      .menu{gap:4px}
+    }
+  </style>
 </head>
 
 <body>
   <header class="nav">
     <div class="nav-inner">
       <a class="logo" href="#about">
-        <img class="logo-img" src="assets/logo.jpeg" alt="חופה ישראלית – לוגו">
+        <img class="logo-img" src="assets/logo.jpeg" alt="חופה ישראלית – לוגו"
+             loading="eager" fetchpriority="high">
       </a>
       <nav class="menu">
         <a href="#about">מי אנחנו</a>
@@ -199,7 +199,6 @@
       <div class="container">
         <div class="hero">
           <div>
-            <!-- ה-badge הוסר -->
             <h1 class="title">מי אנחנו</h1>
             <div class="story">
               <p>חופה ישראלית נולדה איפשהו בין קריית שמונה לביירות,</p>
@@ -213,7 +212,7 @@
               <p>ככה נולדה חופה ישראלית — נגישה, פשוטה, מסורתית, ישראלית.</p>
             </div>
           </div>
-          <div class="hero-card" aria-label="תמונת מחשה">
+          <div class="hero-card" aria-label="תמונת המחשה">
             <img src="assets/gemini1.jpeg" alt="חופה מסורתית – תמונת הדגמה" />
           </div>
         </div>
@@ -341,10 +340,19 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-    /* בגלל לוגו מוגדל, קצת יותר שוליים לגלילה חלקה */
-    document.querySelectorAll('section').forEach(sec => sec.style.scrollMarginTop = '160px');
 
-    // Active menu highlight
+    /* מרווח גלילה חכם לפי גובה הסרגל בפועל */
+    function applyScrollMargins() {
+      const nav = document.querySelector('header.nav');
+      const offset = (nav?.offsetHeight || 100) + 10;
+      document.querySelectorAll('section').forEach(sec => {
+        sec.style.scrollMarginTop = offset + 'px';
+      });
+    }
+    window.addEventListener('load', applyScrollMargins);
+    window.addEventListener('resize', applyScrollMargins);
+
+    /* הדגשת פריט תפריט פעיל */
     const sections = Array.from(document.querySelectorAll('main section')).map(s => ({id: s.id, el: s}));
     const menuLinks = Array.from(document.querySelectorAll('.menu a'));
     const io = new IntersectionObserver(entries => {
@@ -357,7 +365,7 @@
     }, {rootMargin: '-50% 0px -50% 0px', threshold: 0});
     sections.forEach(s => io.observe(s.el));
 
-    // Product details toggle
+    /* פתיחה/סגירת פרטי מוצר */
     document.querySelectorAll('[data-toggle]').forEach(btn => {
       const sel = btn.getAttribute('data-toggle');
       const panel = document.querySelector(sel);
@@ -368,7 +376,7 @@
       });
     });
 
-    // Lightbox
+    /* לייטבוקס */
     (function(){
       const lb = document.getElementById('lightbox');
       const lbImg = lb.querySelector('img');
@@ -398,7 +406,7 @@
       });
     })();
 
-    // Mirror inline WhatsApp to floating button (if you change the number later)
+    /* סנכרון קישור וואטסאפ בתוכן עם הכפתור הצף (אם תשנו מספר בעתיד) */
     const wa = document.getElementById('wa-float');
     const inline = document.querySelector('#contact a[href^="https://wa.me"]');
     if(wa && inline) inline.setAttribute('href', wa.getAttribute('href'));
