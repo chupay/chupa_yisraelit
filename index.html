@@ -27,24 +27,22 @@
 
   html{scroll-behavior:smooth}
   body{
-    margin:0;
-    font-family:'Heebo',system-ui,-apple-system,Segoe UI,Roboto,Heebo,Arial,Helvetica,sans-serif;
-    color:var(--text);
-    line-height:1.6;
+  margin:0;
+  font-family:'Heebo',system-ui,-apple-system,Segoe UI,Roboto,Heebo,Arial,Helvetica,sans-serif;
+  color:var(--text);
+  line-height:1.6;
 
-    /* רקע בהשראת הלוגו: כחלחל + נגיעות צהוב עדין */
-    background:
-      /* שכבת בסיס כחולה רכה */
-      linear-gradient(180deg, rgba(230,240,255,0.8) 0%, rgba(255,255,255,0.95) 60%, rgba(240,248,255,1) 100%),
-      /* הילה כחולה עליונה-שמאלית */
-      radial-gradient(circle at 20% 10%, rgba(30,136,229,0.15), transparent 60%),
-      /* הילה כחולה תחתונה-ימנית */
-      radial-gradient(circle at 80% 90%, rgba(13,71,161,0.10), transparent 70%),
-      /* נגיעה צהובה עדינה עליונה-ימנית */
-      radial-gradient(circle at 85% 5%, rgba(255,200,0,0.10), transparent 40%),
-      #ffffff;
-    background-attachment: fixed;
-  }
+  /* רקע מעודכן: שילוב כחול עם נגיעות זהב-צהוב */
+  background:
+    radial-gradient(circle at 15% 10%, rgba(255,193,7,0.12), transparent 60%),   /* נגיעה צהובה בפינה העליונה */
+    radial-gradient(circle at 85% 90%, rgba(255,171,0,0.10), transparent 60%),   /* נגיעה כתומה-זהובה בתחתית */
+    linear-gradient(180deg, rgba(230,240,255,0.8) 0%, rgba(255,253,245,0.95) 60%, rgba(240,248,255,1) 100%), /* תערובת רכה */
+    radial-gradient(circle at 20% 10%, rgba(30,136,229,0.15), transparent 60%),
+    radial-gradient(circle at 80% 90%, rgba(13,71,161,0.1), transparent 70%),
+    #ffffff;
+  background-attachment: fixed;
+}
+
 
   a{color:var(--brand);text-decoration:none}
   img{max-width:100%;height:auto;display:block}
