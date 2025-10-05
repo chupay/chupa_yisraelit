@@ -16,7 +16,7 @@
     --muted:#5c6b7a;
     --brand:#1e88e5;
     --brand-2:#0d47a1;
-    --accent:#ff8a00;
+    --accent:#ff8a00;        /* כתמתם/צהבהב מהלוגו */
     --whatsapp:#25D366;
     --card:#f6f9fc;
     --border:#e6edf3;
@@ -32,11 +32,16 @@
     color:var(--text);
     line-height:1.6;
 
-    /* רקע בהשראת הלוגו */
+    /* רקע בהשראת הלוגו: כחלחל + נגיעות צהוב עדין */
     background:
+      /* שכבת בסיס כחולה רכה */
       linear-gradient(180deg, rgba(230,240,255,0.8) 0%, rgba(255,255,255,0.95) 60%, rgba(240,248,255,1) 100%),
+      /* הילה כחולה עליונה-שמאלית */
       radial-gradient(circle at 20% 10%, rgba(30,136,229,0.15), transparent 60%),
-      radial-gradient(circle at 80% 90%, rgba(13,71,161,0.1), transparent 70%),
+      /* הילה כחולה תחתונה-ימנית */
+      radial-gradient(circle at 80% 90%, rgba(13,71,161,0.10), transparent 70%),
+      /* נגיעה צהובה עדינה עליונה-ימנית */
+      radial-gradient(circle at 85% 5%, rgba(255,200,0,0.10), transparent 40%),
       #ffffff;
     background-attachment: fixed;
   }
@@ -61,7 +66,7 @@
   }
   .logo{display:flex;align-items:center;gap:10px}
   .logo-img{
-    height:140px;
+    height:210px;  /* פי 1.5 מהקודם (140px -> 210px) */
     width:auto;
     border-radius:12px;
     display:block;
@@ -92,11 +97,15 @@
 
   /* Hero */
   .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center}
-  .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,138,0,.08);color:var(--accent);padding:6px 10px;border-radius:999px;font-weight:500}
-  .title{font-size:clamp(24px,4.6vw,36px);line-height:1.2;margin:10px 0}
+  /* הוסר ה-badge לחלוטין לפי בקשה */
+  .title{
+    /* מי אנחנו – באותו גודל כמו "מוצרים" */
+    font-size:clamp(20px,3.2vw,30px);
+    line-height:1.2;
+    margin:10px 0
+  }
   .story p{margin:0 0 10px}
   .hero-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)}
-  /* הקטנת תמונת ההירו */
   .hero-card img{max-height:320px;object-fit:cover;width:100%}
 
   /* מוצרים — תמונה לצד תוכן (לא מתחת) */
@@ -117,7 +126,7 @@
   .product > figure img{
     width:100%;
     height:auto;
-    max-height:220px;         /* הקטנה גלובלית לתמונות מוצר */
+    max-height:220px;
     object-fit:cover;
     border-radius:12px;
     border:1px solid var(--border);
@@ -151,7 +160,7 @@
 
   footer{padding:24px 16px;color:var(--muted);text-align:center}
 
-  /* מובייל: מחזירים לערימה אנכית לכרטיסי המוצר */
+  /* מובייל */
   @media (max-width:900px){
     .product{
       grid-template-columns: 1fr;
@@ -165,7 +174,7 @@
     .hero{grid-template-columns:1fr}
   }
   @media (max-width:800px){
-    .logo-img{height:110px}
+    .logo-img{height:165px}  /* פי 1.5 מה-110 הקודם */
     .menu{gap:4px}
   }
 </style>
@@ -192,7 +201,7 @@
       <div class="container">
         <div class="hero">
           <div>
-            <span class="badge">מחיר נגיש · הרכבה קלה · חוויה שמחה</span>
+            <!-- ה-badge הוסר -->
             <h1 class="title">מי אנחנו</h1>
             <div class="story">
               <p>חופה ישראלית נולדה איפשהו בין קריית שמונה לביירות,</p>
@@ -308,7 +317,7 @@
       <div class="container">
         <div class="section-header"><h2>להזמנות ויצירת קשר</h2></div>
         <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);max-width:640px">
-          <p class="section-desc" style="margin:0 0 10px">נשמח לדבר 🙂</p>
+          <p class="section-desc" style="margin:0 0 10px">מחכים לשמוח איתכם</p>
           <p style="margin:8px 0"><strong>מייל:</strong> <a href="mailto:chupa.yisraelit@gmail.com">chupa.yisraelit@gmail.com</a></p>
           <p style="margin:8px 0"><strong>וואטסאפ:</strong> <a href="https://wa.me/972533431726" target="_blank" rel="noopener">שליחת הודעה ב-WhatsApp</a></p>
           <p style="margin:8px 0"><strong>טלפון:</strong> <a href="tel:0533431726">053-3431726</a></p>
@@ -334,7 +343,8 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-    document.querySelectorAll('section').forEach(sec => sec.style.scrollMarginTop = '110px'); // קצת יותר ריווח בגלילה בגלל לוגו גדול
+    /* בגלל לוגו מוגדל, קצת יותר שוליים לגלילה חלקה */
+    document.querySelectorAll('section').forEach(sec => sec.style.scrollMarginTop = '160px');
 
     // Active menu highlight
     const sections = Array.from(document.querySelectorAll('main section')).map(s => ({id: s.id, el: s}));
