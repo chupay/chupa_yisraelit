@@ -97,11 +97,7 @@
 
     /* Hero / מי אנחנו */
     .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center}
-    .title{
-      /* “מי אנחנו” – באותו גודל של “מוצרים” */
-      font-size:clamp(20px,3.2vw,30px);
-      line-height:1.2;margin:10px 0
-    }
+    .title{font-size:clamp(20px,3.2vw,30px);line-height:1.2;margin:10px 0}
     .story p{margin:0 0 10px}
     .hero-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)}
     .hero-card img{max-height:320px;object-fit:cover;width:100%}
@@ -158,6 +154,30 @@
 
     footer{padding:24px 16px;color:var(--muted);text-align:center}
 
+    /* === Lightbox (תיקון פריסה מלאה והסתרה כשה-src ריק) === */
+    .lightbox{
+      position:fixed;
+      top:0; right:0; bottom:0; left:0;   /* במקום inset:0 לשקילות מלאה */
+      background:rgba(0,0,0,.8);
+      display:none;                        /* מוסתר כברירת מחדל */
+      align-items:center;
+      justify-content:center;
+      z-index:1200;
+    }
+    .lightbox.active{display:flex}
+    .lightbox img{
+      max-width:90vw;max-height:80vh;border-radius:12px
+    }
+    .lightbox img[src=""]{display:none}     /* אל תציג תמונה ריקה */
+    .lightbox .close,.lightbox .prev,.lightbox .next{
+      position:absolute;background:rgba(255,255,255,.92);
+      border:none;border-radius:999px;width:48px;height:48px;
+      cursor:pointer;box-shadow:var(--shadow);font-size:24px
+    }
+    .lightbox .close{top:20px;inset-inline-end:20px}
+    .lightbox .prev{left:24px}
+    .lightbox .next{right:24px}
+
     /* מובייל */
     @media (max-width:900px){
       .product{
@@ -181,8 +201,7 @@
   <header class="nav">
     <div class="nav-inner">
       <a class="logo" href="#about">
-        <img class="logo-img" src="assets/logo.jpeg" alt="חופה ישראלית – לוגו"
-             loading="eager" fetchpriority="high">
+        <img class="logo-img" src="assets/logo.jpeg" alt="חופה ישראלית – לוגו" loading="eager" fetchpriority="high">
       </a>
       <nav class="menu">
         <a href="#about">מי אנחנו</a>
@@ -227,19 +246,14 @@
           <span class="pill">ניתן להוסיף מוצרים נוספים</span>
         </div>
         <div class="products">
-          <!-- Product Card: חופה מסורתית -->
           <article class="product" aria-labelledby="prod1-title">
             <header>
               <h3 id="prod1-title">חופה מסורתית</h3>
               <p class="section-desc">חופה מסורתית להשכרה – במבוק משויף איכותי, בד לבן 240×240 ס״מ, לולאות קשירה והרכבה קלה.</p>
               <div class="price"> מחיר: 600 ₪</div>
             </header>
-            <figure>
-              <img src="assets/chuppah_front.jpg" alt="חופה מסורתית – מבט קדמי" />
-            </figure>
-            <div>
-              <button class="btn" data-toggle="#prod1-details" aria-expanded="false" aria-controls="prod1-details">פרטים נוספים</button>
-            </div>
+            <figure><img src="assets/chuppah_front.jpg" alt="חופה מסורתית – מבט קדמי" /></figure>
+            <div><button class="btn" data-toggle="#prod1-details" aria-expanded="false" aria-controls="prod1-details">פרטים נוספים</button></div>
             <div id="prod1-details" class="details" hidden>
               <div class="details-inner">
                 <h4>מפרט ומידות</h4>
@@ -258,19 +272,14 @@
             </div>
           </article>
 
-          <!-- Upcoming Product Placeholder -->
           <article class="product" aria-labelledby="prod2-title">
             <header>
               <h3 id="prod2-title">בקרוב: חופה עומדת עצמאית</h3>
               <p class="section-desc">מוצר חדש בדרך! כאן יופיע תיאור קצר. ניתן לעדכן מידות, חומרים ויתרונות.</p>
               <div class="price">מחיר: 1200 ₪</div>
             </header>
-            <figure>
-              <img src="assets/stand.jpeg" alt="בקרוב – הדמיה" />
-            </figure>
-            <div>
-              <button class="btn secondary" disabled aria-disabled="true">פרטים נוספים (בקרוב)</button>
-            </div>
+            <figure><img src="assets/stand.jpeg" alt="בקרוב – הדמיה" /></figure>
+            <div><button class="btn secondary" disabled aria-disabled="true">פרטים נוספים (בקרוב)</button></div>
           </article>
         </div>
       </div>
@@ -331,6 +340,7 @@
 
   <footer><div class="container">© <span id="year"></span> חופה ישראלית · כל הזכויות שמורות</div></footer>
 
+  <!-- Lightbox -->
   <div class="lightbox" id="lightbox" aria-hidden="true" aria-label="צפייה בתמונה במסך מלא">
     <button class="close" title="סגירה" aria-label="סגירה">×</button>
     <button class="prev" title="הקודם" aria-label="תמונה קודמת">‹</button>
@@ -376,7 +386,7 @@
       });
     });
 
-    /* לייטבוקס */
+    /* לייטבוקס – פתיחה בטוחה וניקוי תמונה בסגירה */
     (function(){
       const lb = document.getElementById('lightbox');
       const lbImg = lb.querySelector('img');
@@ -384,15 +394,39 @@
       const btnPrev = lb.querySelector('.prev');
       const btnNext = lb.querySelector('.next');
       let currentList = []; let index = 0;
-      const open = (list, i) => { currentList = list; index = i; update(); lb.classList.add('active'); lb.setAttribute('aria-hidden','false'); };
-      const close = () => { lb.classList.remove('active'); lb.setAttribute('aria-hidden','true'); };
-      const update = () => { const img = currentList[index]; if(img){ lbImg.src = img.src; lbImg.alt = img.alt || 'תמונה מוגדלת'; } };
-      const prev = () => { index = (index - 1 + currentList.length) % currentList.length; update(); };
-      const next = () => { index = (index + 1) % currentList.length; update(); };
+
+      const update = () => {
+        const img = currentList[index];
+        if(!img){ return; }
+        lbImg.src = img.src;
+        lbImg.alt = img.alt || 'תמונה מוגדלת';
+      };
+
+      const open = (list, i) => {
+        if(!list || !list.length) return;   // אל תפתח אם אין תמונות
+        currentList = list; index = i || 0;
+        update();
+        lb.classList.add('active');
+        lb.setAttribute('aria-hidden','false');
+      };
+
+      const close = () => {
+        lb.classList.remove('active');
+        lb.setAttribute('aria-hidden','true');
+        lbImg.src = "";                     // מנקה src כדי שלא יראו אייקון שבור
+      };
+
+      const prev = () => { if(!currentList.length) return; index = (index - 1 + currentList.length) % currentList.length; update(); };
+      const next = () => { if(!currentList.length) return; index = (index + 1) % currentList.length; update(); };
+
       document.querySelectorAll('.gallery').forEach(gal => {
         const imgs = Array.from(gal.querySelectorAll('img'));
-        imgs.forEach((im, i) => { im.style.cursor = 'zoom-in'; im.addEventListener('click', () => open(imgs, i)); });
+        imgs.forEach((im, i) => {
+          im.style.cursor = 'zoom-in';
+          im.addEventListener('click', () => open(imgs, i));
+        });
       });
+
       btnClose.addEventListener('click', close);
       btnPrev.addEventListener('click', prev);
       btnNext.addEventListener('click', next);
