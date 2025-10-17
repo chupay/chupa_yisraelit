@@ -120,9 +120,21 @@
     .btn.secondary{background:transparent;color:var(--brand)}
     .btn:hover{filter:brightness(1.05)}
 
-    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px}
-    .gallery figure{margin:0;background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden}
-    .gallery img{aspect-ratio:4/3;object-fit:cover;width:100%;max-height:160px}
+    /* --- Photos strip (3 at a time) --- */
+    .photo-strip.gallery{display:flex;gap:10px;overflow:hidden;align-items:center}
+    .photo-strip img{
+      flex:0 0 auto;
+      height:160px; width:auto;
+      border-radius:12px;
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+      transition:opacity .35s ease;
+      cursor:zoom-in;
+      background:#fff;
+    }
+    @media (max-width:600px){
+      .photo-strip img{height:120px}
+    }
 
     .whatsapp{
       position:fixed;bottom:24px;left:24px;
@@ -277,14 +289,16 @@
       </div>
     </section>
 
-    <!-- Section 4: Photos -->
+    <!-- Section 4: Photos (Dynamic strip) -->
     <section id="photos" class="photos">
       <div class="container">
         <div class="section-header"><h2>תמונות</h2></div>
-        <div class="gallery" data-gallery="main">
-          <figure><img src="assets/chuppah_front.jpg" alt="חופה מסורתית - גלריה 1" /></figure>
-          <figure><img src="assets/chuppah_angle.jpg" alt="חופה מסורתית - גלריה 2" /></figure>
-          <figure><img src="assets/chuppah_full.jpg" alt="חופה מסורתית - גלריה 3" /></figure>
+
+        <!-- Dynamic photo strip: 3 thumbnails at a time -->
+        <div id="photo-strip" class="photo-strip gallery" aria-live="polite">
+          <img src="" alt="" />
+          <img src="" alt="" />
+          <img src="" alt="" />
         </div>
       </div>
     </section>
@@ -343,6 +357,7 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
+    /* מרווח גלילה חכם לפי גובה הסרגל בפועל */
     function applyScrollMargins() {
       const nav = document.querySelector('header.nav');
       const offset = (nav?.offsetHeight || 100) + 10;
@@ -353,6 +368,7 @@
     window.addEventListener('load', applyScrollMargins);
     window.addEventListener('resize', applyScrollMargins);
 
+    /* הדגשת פריט תפריט פעיל */
     const sections = Array.from(document.querySelectorAll('main section')).map(s => ({id: s.id, el: s}));
     const menuLinks = Array.from(document.querySelectorAll('.menu a'));
     const io = new IntersectionObserver(entries => {
@@ -365,6 +381,7 @@
     }, {rootMargin: '-50% 0px -50% 0px', threshold: 0});
     sections.forEach(s => io.observe(s.el));
 
+    /* פתיחה/סגירת פרטי מוצר */
     document.querySelectorAll('[data-toggle]').forEach(btn => {
       const sel = btn.getAttribute('data-toggle');
       const panel = document.querySelector(sel);
@@ -375,6 +392,47 @@
       });
     });
 
+    /* --- Dynamic Photos Strip --- */
+    const photoPool = [
+      {src:'assets/chuppah_front.jpg', alt:'חופה מסורתית – מבט קדמי'},
+      {src:'assets/chuppah_angle.jpg', alt:'חופה מסורתית – זווית'},
+      {src:'assets/chuppah_full.jpg',  alt:'חופה מסורתית – מלאה'},
+      {src:'assets/gemini1.jpeg',      alt:'חופה נישאת – הדגמה'},
+      {src:'assets/stand.jpeg',        alt:'חופה עומדת – הדמיה'},
+      {src:'assets/s2.jpeg',           alt:'חופה עומדת – תצוגה'}
+    ];
+    const strip = document.getElementById('photo-strip');
+    const stripImgs = Array.from(strip.querySelectorAll('img'));
+
+    function pickRandom(n, arr){
+      const copy = arr.slice();
+      const out = [];
+      while(out.length < Math.min(n, copy.length)){
+        const i = Math.floor(Math.random() * copy.length);
+        out.push(copy.splice(i,1)[0]);
+      }
+      return out;
+    }
+
+    function renderStrip(){
+      const set = pickRandom(3, photoPool);
+      stripImgs.forEach((img, i) => {
+        const it = set[i];
+        if(!it) return;
+        img.style.opacity = '0';
+        // swap after a tiny delay for a smoother crossfade
+        setTimeout(() => {
+          img.src = it.src;
+          img.alt = it.alt;
+          img.style.opacity = '1';
+        }, 100);
+      });
+    }
+
+    renderStrip();                    // initial
+    setInterval(renderStrip, 4500);   // rotate every ~4.5s
+
+    /* --- Lightbox with event delegation (works for dynamic images) --- */
     (function(){
       const lb = document.getElementById('lightbox');
       const lbImg = lb.querySelector('img');
@@ -389,30 +447,25 @@
         lbImg.src = img.src;
         lbImg.alt = img.alt || 'תמונה מוגדלת';
       };
-
-      const open = (list, i) => {
+      const open = (list, i=0) => {
         if(!list || !list.length) return;
-        currentList = list; index = i || 0;
+        currentList = list; index = Math.max(0, i);
         update();
         lb.classList.add('active');
         lb.setAttribute('aria-hidden','false');
       };
+      const close = () => { lb.classList.remove('active'); lb.setAttribute('aria-hidden','true'); lbImg.src=""; };
+      const prev  = () => { if(!currentList.length) return; index = (index - 1 + currentList.length) % currentList.length; update(); };
+      const next  = () => { if(!currentList.length) return; index = (index + 1) % currentList.length; update(); };
 
-      const close = () => {
-        lb.classList.remove('active');
-        lb.setAttribute('aria-hidden','true');
-        lbImg.src = "";
-      };
-
-      const prev = () => { if(!currentList.length) return; index = (index - 1 + currentList.length) % currentList.length; update(); };
-      const next = () => { if(!currentList.length) return; index = (index + 1) % currentList.length; update(); };
-
-      document.querySelectorAll('.gallery').forEach(gal => {
-        const imgs = Array.from(gal.querySelectorAll('img'));
-        imgs.forEach((im, i) => {
-          im.style.cursor = 'zoom-in';
-          im.addEventListener('click', () => open(imgs, i));
-        });
+      // Event delegation: any click on an image inside .gallery opens the lightbox
+      document.addEventListener('click', (e) => {
+        const targetImg = e.target.closest('.gallery img');
+        if(!targetImg) return;
+        const gal = targetImg.closest('.gallery');
+        const imgs = Array.from(gal.querySelectorAll('img')).filter(im => im.src);
+        const i = imgs.indexOf(targetImg);
+        open(imgs, i);
       });
 
       btnClose.addEventListener('click', close);
@@ -428,6 +481,7 @@
       });
     })();
 
+    // Mirror inline WhatsApp to floating button (if you change the number later)
     const wa = document.getElementById('wa-float');
     const inline = document.querySelector('#contact a[href^="https://wa.me"]');
     if(wa && inline) inline.setAttribute('href', wa.getAttribute('href'));
