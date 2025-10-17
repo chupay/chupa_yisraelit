@@ -120,6 +120,20 @@
     .btn.secondary{background:transparent;color:var(--brand)}
     .btn:hover{filter:brightness(1.05)}
 
+    /* --- Galleries inside product details: force 3 in-a-row thumbnails --- */
+    .product .details .gallery{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:8px;
+    }
+    .product .details .gallery figure{margin:0;background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+    .product .details .gallery img{
+      width:100%;
+      height:100px;         /* thumbnails */
+      object-fit:cover;
+      max-height:none;
+    }
+
     /* --- Photos strip (3 at a time) --- */
     .photo-strip.gallery{display:flex;gap:10px;overflow:hidden;align-items:center}
     .photo-strip img{
@@ -277,9 +291,9 @@
                 </ul>
                 <h4>גלריה</h4>
                 <div class="gallery" data-gallery="prod2">
-                  <figure><img src="assets/04A850AF-29F6-4E77-BBBF-E2DE3D47F8C0.jpeg" alt="חופה עומדת עצמאית - הדגמה" /></figure>
-                  <figure><img src="assets/B94D951E-8F8C-4EAC-8474-499CDD27DCFB.png" alt="חופה עומדת עצמאית - הדגמה" /></figure>
-                  <figure><img src="assets/BBB07450-A171-49CF-9957-C40D56B1E30F.png" alt="חופה עומדת עצמאית - הדגמה" /></figure>
+                  <figure><img src="assets/04A850AF-29F6-4E77-BBBF-E2DE3D47F8C0.jpeg" alt="חופה עומדת עצמאית - הדגמה 1" /></figure>
+                  <figure><img src="assets/B94D951E-8F8C-4EAC-8474-499CDD27DCFB.png" alt="חופה עומדת עצמאית - הדגמה 2" /></figure>
+                  <figure><img src="assets/BBB07450-A171-49CF-9957-C40D56B1E30F.png" alt="חופה עומדת עצמאית - הדגמה 3" /></figure>
                 </div>
               </div>
             </div>
@@ -357,7 +371,6 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    /* מרווח גלילה חכם לפי גובה הסרגל בפועל */
     function applyScrollMargins() {
       const nav = document.querySelector('header.nav');
       const offset = (nav?.offsetHeight || 100) + 10;
@@ -368,7 +381,6 @@
     window.addEventListener('load', applyScrollMargins);
     window.addEventListener('resize', applyScrollMargins);
 
-    /* הדגשת פריט תפריט פעיל */
     const sections = Array.from(document.querySelectorAll('main section')).map(s => ({id: s.id, el: s}));
     const menuLinks = Array.from(document.querySelectorAll('.menu a'));
     const io = new IntersectionObserver(entries => {
@@ -381,7 +393,6 @@
     }, {rootMargin: '-50% 0px -50% 0px', threshold: 0});
     sections.forEach(s => io.observe(s.el));
 
-    /* פתיחה/סגירת פרטי מוצר */
     document.querySelectorAll('[data-toggle]').forEach(btn => {
       const sel = btn.getAttribute('data-toggle');
       const panel = document.querySelector(sel);
@@ -394,13 +405,18 @@
 
     /* --- Dynamic Photos Strip --- */
     const photoPool = [
+      // Product 1 gallery
       {src:'assets/chuppah_front.jpg', alt:'חופה מסורתית – מבט קדמי'},
       {src:'assets/chuppah_angle.jpg', alt:'חופה מסורתית – זווית'},
       {src:'assets/chuppah_full.jpg',  alt:'חופה מסורתית – מלאה'},
-      {src:'assets/gemini1.jpeg',      alt:'חופה נישאת – הדגמה'},
-      {src:'assets/stand.jpeg',        alt:'חופה עומדת – הדמיה'},
-      {src:'assets/s2.jpeg',           alt:'חופה עומדת – תצוגה'}
+      // Product 2 gallery
+      {src:'assets/04A850AF-29F6-4E77-BBBF-E2DE3D47F8C0.jpeg', alt:'חופה עומדת – הדגמה 1'},
+      {src:'assets/B94D951E-8F8C-4EAC-8474-499CDD27DCFB.png', alt:'חופה עומדת – הדגמה 2'},
+      {src:'assets/BBB07450-A171-49CF-9957-C40D56B1E30F.png', alt:'חופה עומדת – הדגמה 3'},
+      // General display
+      {src:'assets/gemini1.jpeg',      alt:'חופה – הדגמה כללית'}
     ];
+
     const strip = document.getElementById('photo-strip');
     const stripImgs = Array.from(strip.querySelectorAll('img'));
 
@@ -420,7 +436,6 @@
         const it = set[i];
         if(!it) return;
         img.style.opacity = '0';
-        // swap after a tiny delay for a smoother crossfade
         setTimeout(() => {
           img.src = it.src;
           img.alt = it.alt;
@@ -429,10 +444,10 @@
       });
     }
 
-    renderStrip();                    // initial
-    setInterval(renderStrip, 4500);   // rotate every ~4.5s
+    renderStrip();
+    setInterval(renderStrip, 4500);
 
-    /* --- Lightbox with event delegation (works for dynamic images) --- */
+    /* --- Lightbox (works for all .gallery, including dynamic strip & product galleries) --- */
     (function(){
       const lb = document.getElementById('lightbox');
       const lbImg = lb.querySelector('img');
@@ -458,7 +473,6 @@
       const prev  = () => { if(!currentList.length) return; index = (index - 1 + currentList.length) % currentList.length; update(); };
       const next  = () => { if(!currentList.length) return; index = (index + 1) % currentList.length; update(); };
 
-      // Event delegation: any click on an image inside .gallery opens the lightbox
       document.addEventListener('click', (e) => {
         const targetImg = e.target.closest('.gallery img');
         if(!targetImg) return;
