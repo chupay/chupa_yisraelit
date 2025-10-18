@@ -135,19 +135,35 @@
     }
 
     /* --- Photos strip (3 at a time) --- */
-    .photo-strip.gallery{display:flex;gap:10px;overflow:hidden;align-items:center}
+    #photos .container{
+      max-width: none;         /* מבטל הגבלה – לרוחב כל העמוד */
+      padding-inline: 0;       /* בלי רווחים צדדיים */
+    }
+    
+    .photo-strip.gallery{
+      display:flex;
+      gap:12px;
+      overflow:hidden;
+      align-items:stretch;
+      padding:0 16px;          /* ריפוד קטן לקצוות המסך */
+    }
+    
     .photo-strip img{
-      flex:0 0 auto;
-      height:160px; width:auto;
-      border-radius:12px;
+      flex:1 1 0;              /* כל תמונה תתפוס שליש מהרוחב */
+      min-width:0;
+      width:100%;
+      height: clamp(220px, 34vw, 420px);  /* גבוהות יותר ורספונסיבי */
+      object-fit: cover;       /* מילוי יפה בלי עיוות */
+      border-radius:16px;
       border:1px solid var(--border);
       box-shadow:var(--shadow);
       transition:opacity .35s ease;
       cursor:zoom-in;
       background:#fff;
     }
+    
     @media (max-width:600px){
-      .photo-strip img{height:120px}
+      .photo-strip img{ height:220px; }
     }
 
     .whatsapp{
@@ -347,7 +363,7 @@
           <p style="margin:8px 0"><strong>מייל:</strong> <a href="mailto:chupa.yisraelit@gmail.com">chupa.yisraelit@gmail.com</a></p>
           <p style="margin:8px 0"><strong>וואטסאפ:</strong> <a href="https://wa.me/972533431726" target="_blank" rel="noopener">שליחת הודעה ב-WhatsApp</a></p>
           <p style="margin:8px 0"><strong>טלפון:</strong> <a href="tel:0533431726">053-3431726</a></p>
-          <p style="margin:8px 0"><strong>פייסבוק:</strong><a href="https://www.facebook.com/share/1EPXtrXHCh/" target="_blank" rel="noopener">לעמוד הפייסבוק</a></p>
+          <p style="margin:8px 0"><strong>פייסבוק:</strong> <a href="https://www.facebook.com/share/1EPXtrXHCh/" target="_blank" rel="noopener"> לעמוד הפייסבוק </a></p>
         </div>
         <p class="section-desc" style="margin-top:12px"></p>
       </div>
