@@ -3,9 +3,49 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>חופה ישראלית – עמוד נחיתה</title>
-  <meta name="description" content="חופות להשכרה בצפון - חופה מסורתית, חופות עומדות, ציוד לחתונת שטח. מחיר נגיש והרכבה קלה." />
+
+  <!-- ====== SEO Core ====== -->
+  <title>חופה ישראלית | חופות להשכרה בצפון ובחיפה – חופה מסורתית, חופות בד, חופה לחתונת שטח</title>
+  <meta name="description" content="חופה ישראלית מציעה חופות מסורתיות להשכרה בצפון ובחיפה: חופות בד איכותיות, חופות לחתונת שטח וחופות במבוק בעיצוב ישראלי – במחיר נגיש ובהרכבה קלה." />
+  <link rel="canonical" href="https://YOUR-DOMAIN.example/" />
+
+  <!-- Keywords (לא חובה אבל בסדר לשים) -->
+  <meta name="keywords" content="חופה, חופות, חופה מסורתית, חופה להשכרה, חופות להשכרה, חופה בצפון, חופות בצפון, חופה בחיפה, חופות בחיפה, חופת בד, חופות בד, חופת שטח, חופה זולה, חופה בזול, חופה ישראלית, חופת חברים, חופת במבוק, חופה לחתונה, חופות לחתונת שטח" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="חופה ישראלית – חופות להשכרה בצפון ובחיפה" />
+  <meta property="og:description" content="חופות מסורתיות, חופות בד וחופות לחתונת שטח בעיצוב ישראלי – מחיר נגיש והרכבה קלה." />
+  <meta property="og:image" content="https://YOUR-DOMAIN.example/assets/logo.jpeg" />
+  <meta property="og:type" content="website" />
   <meta property="og:locale" content="he_IL" />
+  <meta property="og:url" content="https://YOUR-DOMAIN.example/" />
+
+  <!-- Robots -->
+  <meta name="robots" content="index, follow" />
+
+  <!-- JSON-LD: LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "חופה ישראלית",
+    "url": "https://YOUR-DOMAIN.example/",
+    "description": "חופות להשכרה בצפון ובחיפה - חופה מסורתית, חופות בד וחופות לחתונת שטח בעיצוב ישראלי ומחיר נגיש.",
+    "image": "https://YOUR-DOMAIN.example/assets/logo.jpeg",
+    "telephone": "+972-53-343-1726",
+    "email": "chupa.yisraelit@gmail.com",
+    "priceRange": "₪₪",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "IL",
+      "addressRegion": "צפון",
+      "addressLocality": "חיפה"
+    },
+    "areaServed": ["חיפה","גליל","עמקים","קריות","צפון"]
+  }
+  </script>
+  <!-- ====== /SEO Core ====== -->
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -120,7 +160,7 @@
     .btn.secondary{background:transparent;color:var(--brand)}
     .btn:hover{filter:brightness(1.05)}
 
-    /* --- Galleries inside product details: force 3 in-a-row thumbnails --- */
+    /* --- Galleries inside product details: 3 in a row --- */
     .product .details .gallery{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
@@ -129,41 +169,25 @@
     .product .details .gallery figure{margin:0;background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden}
     .product .details .gallery img{
       width:100%;
-      height:100px;         /* thumbnails */
+      height:100px;
       object-fit:cover;
       max-height:none;
     }
 
     /* --- Photos strip (3 at a time) --- */
-    #photos .container{
-      max-width: none;         /* מבטל הגבלה – לרוחב כל העמוד */
-      padding-inline: 0;       /* בלי רווחים צדדיים */
-    }
-    
-    .photo-strip.gallery{
-      display:flex;
-      gap:12px;
-      overflow:hidden;
-      align-items:stretch;
-      padding:0 16px;          /* ריפוד קטן לקצוות המסך */
-    }
-    
+    .photo-strip.gallery{display:flex;gap:10px;overflow:hidden;align-items:center}
     .photo-strip img{
-      flex:1 1 0;              /* כל תמונה תתפוס שליש מהרוחב */
-      min-width:0;
-      width:100%;
-      height: clamp(220px, 34vw, 420px);  /* גבוהות יותר ורספונסיבי */
-      object-fit: cover;       /* מילוי יפה בלי עיוות */
-      border-radius:16px;
+      flex:0 0 auto;
+      height:160px; width:auto;
+      border-radius:12px;
       border:1px solid var(--border);
       box-shadow:var(--shadow);
       transition:opacity .35s ease;
       cursor:zoom-in;
       background:#fff;
     }
-    
     @media (max-width:600px){
-      .photo-strip img{ height:220px; }
+      .photo-strip img{height:120px}
     }
 
     .whatsapp{
@@ -363,7 +387,7 @@
           <p style="margin:8px 0"><strong>מייל:</strong> <a href="mailto:chupa.yisraelit@gmail.com">chupa.yisraelit@gmail.com</a></p>
           <p style="margin:8px 0"><strong>וואטסאפ:</strong> <a href="https://wa.me/972533431726" target="_blank" rel="noopener">שליחת הודעה ב-WhatsApp</a></p>
           <p style="margin:8px 0"><strong>טלפון:</strong> <a href="tel:0533431726">053-3431726</a></p>
-          <p style="margin:8px 0"><strong>פייסבוק:</strong> <a href="https://www.facebook.com/share/1EPXtrXHCh/" target="_blank" rel="noopener"> לעמוד הפייסבוק </a></p>
+          <p style="margin:8px 0"><strong>פייסבוק:</strong><a href="https://www.facebook.com/share/1EPXtrXHCh/" target="_blank" rel="noopener">לעמוד הפייסבוק</a></p>
         </div>
         <p class="section-desc" style="margin-top:12px"></p>
       </div>
@@ -422,18 +446,14 @@
 
     /* --- Dynamic Photos Strip --- */
     const photoPool = [
-      // Product 1 gallery
       {src:'assets/chuppah_front.jpg', alt:'חופה מסורתית – מבט קדמי'},
       {src:'assets/chuppah_angle.jpg', alt:'חופה מסורתית – זווית'},
       {src:'assets/chuppah_full.jpg',  alt:'חופה מסורתית – מלאה'},
-      // Product 2 gallery
       {src:'assets/04A850AF-29F6-4E77-BBBF-E2DE3D47F8C0.jpeg', alt:'חופה עומדת – הדגמה 1'},
       {src:'assets/B94D951E-8F8C-4EAC-8474-499CDD27DCFB.png', alt:'חופה עומדת – הדגמה 2'},
       {src:'assets/BBB07450-A171-49CF-9957-C40D56B1E30F.png', alt:'חופה עומדת – הדגמה 3'},
-      // General display
       {src:'assets/gemini1.jpeg',      alt:'חופה – הדגמה כללית'}
     ];
-
     const strip = document.getElementById('photo-strip');
     const stripImgs = Array.from(strip.querySelectorAll('img'));
 
@@ -464,7 +484,7 @@
     renderStrip();
     setInterval(renderStrip, 4500);
 
-    /* --- Lightbox (works for all .gallery, including dynamic strip & product galleries) --- */
+    /* --- Lightbox (all galleries) --- */
     (function(){
       const lb = document.getElementById('lightbox');
       const lbImg = lb.querySelector('img');
