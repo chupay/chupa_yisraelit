@@ -174,20 +174,41 @@
       max-height:none;
     }
 
-    /* --- Photos strip (3 at a time) --- */
-    .photo-strip.gallery{display:flex;gap:10px;overflow:hidden;align-items:center}
+        /* --- Photos strip (3 across, full width) --- */
+    .photo-strip.gallery{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr); /* 3 עמודות */
+      gap:16px;
+      align-items:stretch;
+    }
+    
     .photo-strip img{
-      flex:0 0 auto;
-      height:160px; width:auto;
+      width:100%;
+      height: clamp(220px, 28vw, 380px);  /* גדול יותר, רספונסיבי */
+      object-fit: cover;                  /* חיתוך אלגנטי בלי עיוות */
       border-radius:12px;
       border:1px solid var(--border);
       box-shadow:var(--shadow);
-      transition:opacity .35s ease;
-      cursor:zoom-in;
+      transition: opacity .35s ease;
+      cursor: zoom-in;
       background:#fff;
     }
+    
+    /* טאבלט */
+    @media (max-width:900px){
+      .photo-strip.gallery{
+        grid-template-columns: repeat(2, 1fr); /* 2 בעמודה במסכים בינוניים */
+      }
+    }
+    
+    /* מובייל */
     @media (max-width:600px){
-      .photo-strip img{height:120px}
+      .photo-strip.gallery{
+        grid-template-columns: 1fr;  /* אחת מתחת לשניה במובייל */
+      }
+      .photo-strip img{
+        height: clamp(200px, 45vw, 280px);
+      }
     }
 
     .whatsapp{
