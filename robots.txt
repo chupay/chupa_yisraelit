@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://chupay.github.io/chupa_yisraelit/sitemap.xml
