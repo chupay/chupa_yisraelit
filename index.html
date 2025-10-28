@@ -92,12 +92,12 @@
       --container:1100px;
       --nav-bg: rgba(230,240,255,0.95);
     }
-
+  
     html{scroll-behavior:smooth}
     body{
       margin:0;
       font-family:'Heebo',system-ui,-apple-system,Segoe UI,Roboto,Heebo,Arial,Helvetica,sans-serif;
-      font-size:17px;          /* ← תוספת חדשה */
+      font-size:18px; /* ← הגדלנו בסיסית את כל הטקסט באתר */
       color:var(--text);
       line-height:1.6;
       background:
@@ -109,11 +109,10 @@
         #ffffff;
       background-attachment: fixed;
     }
-
-
+  
     a{color:var(--brand);text-decoration:none}
     img{max-width:100%;height:auto;display:block}
-
+  
     .nav{
       position:sticky;top:0;z-index:1000;
       background: var(--nav-bg);
@@ -128,7 +127,7 @@
       gap:24px;
       padding:10px 16px;
     }
-
+  
     .logo{display:flex;align-items:center;gap:10px;flex:0 0 auto;}
     .logo-img{
       display:block;
@@ -138,24 +137,24 @@
       border-radius:12px;
       object-fit: contain;
     }
-
+  
     .menu{margin-inline-start:auto;display:flex;gap:14px;flex-wrap:wrap}
     .menu a{padding:10px 12px;border-radius:12px;color:var(--text)}
     .menu a:hover{background:var(--card)}
     .menu a.active{color:var(--brand-2);background:rgba(30,136,229,.08)}
-
+  
     section{padding:56px 16px}
     .container{max-width:var(--container);margin-inline:auto}
     .section-header{display:flex;align-items:center;gap:10px;margin-bottom:16px}
     .section-header h2{margin:0;font-size:clamp(20px,3.2vw,30px)}
     .section-desc{color:var(--muted);margin:6px 0 22px}
-
+  
     .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center}
-    .title{font-size:clamp(20px,3.2vw,30px);line-height:1.2;margin:10px 0}
+    .title{font-size:clamp(22px,3.2vw,32px);line-height:1.2;margin:10px 0}
     .story p{margin:0 0 10px}
     .hero-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)}
     .hero-card img{max-height:320px;object-fit:cover;width:100%}
-
+  
     .products{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
     .product{
       display:grid;
@@ -185,24 +184,42 @@
     .specs li{margin:.4rem 0}
     .price{font-weight:800;color:var(--brand-2)}
     .pill{display:inline-block;padding:.25rem .6rem;background:#eef5ff;color:var(--brand-2);border-radius:999px;font-size:12px}
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;border:1px solid var(--brand);color:#fff;background:var(--brand);cursor:pointer;font-weight:600}
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 14px;
+      border-radius:12px;
+      border:1px solid var(--brand);
+      color:#fff;
+      background:var(--brand);
+      cursor:pointer;
+      font-weight:600;
+      font-size:0.9rem; /* שומר שהכפתור לא יתנפח מדי אחרי שהבסיס עלה */
+    }
     .btn.secondary{background:transparent;color:var(--brand)}
     .btn:hover{filter:brightness(1.05)}
-
+  
     /* --- Galleries inside product details: 3 in a row --- */
     .product .details .gallery{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
       gap:8px;
     }
-    .product .details .gallery figure{margin:0;background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+    .product .details .gallery figure{
+      margin:0;
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:12px;
+      overflow:hidden
+    }
     .product .details .gallery img{
       width:100%;
       height:100px;
       object-fit:cover;
       max-height:none;
     }
-
+  
     /* --- Photos strip (3 across, full width) --- */
     .photo-strip.gallery{
       display:grid;
@@ -221,14 +238,14 @@
       cursor: zoom-in;
       background:#fff;
     }
-
+  
     .areas-desc{
       color:var(--muted);
       max-width:700px;
       line-height:1.5;
       margin:0 0 22px;
     }
-
+  
     .whatsapp{
       position:fixed;bottom:24px;left:24px;
       z-index:1100;width:84px;height:84px;
@@ -238,9 +255,9 @@
     }
     .whatsapp img{width:44px;height:44px;display:block}
     .whatsapp:hover{transform:translateY(-2px)}
-
+  
     footer{padding:24px 16px;color:var(--muted);text-align:center}
-
+  
     .lightbox{
       position:fixed; top:0; right:0; bottom:0; left:0;
       background:rgba(0,0,0,.8); display:none; align-items:center; justify-content:center; z-index:1200
@@ -249,12 +266,20 @@
     .lightbox img{max-width:90vw;max-height:80vh;border-radius:12px}
     .lightbox img[src=""]{display:none}
     .lightbox .close,.lightbox .prev,.lightbox .next{
-      position:absolute;background:rgba(255,255,255,.92);border:none;border-radius:999px;width:48px;height:48px;cursor:pointer;box-shadow:var(--shadow);font-size:24px
+      position:absolute;
+      background:rgba(255,255,255,.92);
+      border:none;
+      border-radius:999px;
+      width:48px;
+      height:48px;
+      cursor:pointer;
+      box-shadow:var(--shadow);
+      font-size:24px
     }
     .lightbox .close{top:20px;inset-inline-end:20px}
     .lightbox .prev{left:24px}
     .lightbox .next{right:24px}
-
+  
     /* --- Responsive tweaks --- */
     @media (max-width:900px){
       .product{
@@ -291,9 +316,12 @@
         width:32px;
         height:32px;
       }
+      .btn{
+        font-size:1rem; /* במובייל שיחזור להיות ברור ונוח ללחיצה */
+      }
     }
   </style>
-</head>
+
 
 <body>
   <header class="nav">
