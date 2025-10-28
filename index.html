@@ -22,6 +22,7 @@
   <!-- Robots -->
   <meta name="robots" content="index, follow" />
 
+  <!-- LocalBusiness / RentalService schema with hours + clean phone -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -30,7 +31,7 @@
     "url": "https://chupay.github.io/chupa_yisraelit/",
     "description": "חופות להשכרה בצפון ובחיפה - חופה מסורתית, חופות בד וחופות לחתונת שטח בעיצוב ישראלי ומחיר נגיש.",
     "image": "https://chupay.github.io/chupa_yisraelit/assets/logo.jpeg",
-    "telephone": "+972-53-343-1726",
+    "telephone": "+972533431726",
     "email": "chupa.yisraelit@gmail.com",
     "priceRange": "₪₪",
     "address": {
@@ -39,7 +40,13 @@
       "addressRegion": "צפון",
       "addressLocality": "חיפה"
     },
-    "areaServed": ["חיפה","גליל","עמקים","קריות","צפון"],
+    "areaServed": ["חיפה","גליל","עמקים","קריות","צפון","עמק יזרעאל","רמות מנשה"],
+    "openingHoursSpecification": [{
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "opens": "09:00",
+      "closes": "22:00"
+    }],
     "sameAs": [
       "https://www.facebook.com/share/1EPXtrXHCh/",
       "https://www.instagram.com/chupa.israelit?igsh=MXBxNzFja2M4b3BuMQ=="
@@ -64,7 +71,6 @@
     ]
   }
   </script>
-
   <!-- ====== /SEO Core ====== -->
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -195,18 +201,17 @@
       max-height:none;
     }
 
-        /* --- Photos strip (3 across, full width) --- */
+    /* --- Photos strip (3 across, full width) --- */
     .photo-strip.gallery{
       display:grid;
-      grid-template-columns: repeat(3, 1fr); /* 3 עמודות */
+      grid-template-columns: repeat(3, 1fr);
       gap:16px;
       align-items:stretch;
     }
-    
     .photo-strip img{
       width:100%;
-      height: clamp(220px, 28vw, 380px);  /* גדול יותר, רספונסיבי */
-      object-fit: cover;                  /* חיתוך אלגנטי בלי עיוות */
+      height: clamp(220px, 28vw, 380px);
+      object-fit: cover;
       border-radius:12px;
       border:1px solid var(--border);
       box-shadow:var(--shadow);
@@ -214,22 +219,12 @@
       cursor: zoom-in;
       background:#fff;
     }
-    
-    /* טאבלט */
-    @media (max-width:900px){
-      .photo-strip.gallery{
-        grid-template-columns: repeat(2, 1fr); /* 2 בעמודה במסכים בינוניים */
-      }
-    }
-    
-    /* מובייל */
-    @media (max-width:600px){
-      .photo-strip.gallery{
-        grid-template-columns: 1fr;  /* אחת מתחת לשניה במובייל */
-      }
-      .photo-strip img{
-        height: clamp(200px, 45vw, 280px);
-      }
+
+    .areas-desc{
+      color:var(--muted);
+      max-width:700px;
+      line-height:1.5;
+      margin:0 0 22px;
     }
 
     .whatsapp{
@@ -241,9 +236,6 @@
     }
     .whatsapp img{width:44px;height:44px;display:block}
     .whatsapp:hover{transform:translateY(-2px)}
-    <div style="margin-top:8px;font-size:13px">
-      <a href="keywords.html" rel="nofollow">חופות להשכרה בצפון</a>
-    </div>
 
     footer{padding:24px 16px;color:var(--muted);text-align:center}
 
@@ -261,6 +253,7 @@
     .lightbox .prev{left:24px}
     .lightbox .next{right:24px}
 
+    /* --- Responsive tweaks --- */
     @media (max-width:900px){
       .product{
         grid-template-columns: 1fr;
@@ -275,6 +268,27 @@
     }
     @media (max-width:800px){
       .menu{gap:4px}
+    }
+    @media (max-width:600px){
+      .photo-strip.gallery{
+        grid-template-columns: 1fr;
+      }
+      .photo-strip img{
+        height: clamp(200px, 45vw, 280px);
+      }
+      .logo-img{
+        max-height:80px;
+      }
+      .whatsapp{
+        width:64px;
+        height:64px;
+        bottom:16px;
+        left:16px;
+      }
+      .whatsapp img{
+        width:32px;
+        height:32px;
+      }
     }
   </style>
 </head>
@@ -295,6 +309,7 @@
   </header>
 
   <main>
+
     <!-- Section 1: About -->
     <section id="about">
       <div class="container">
@@ -307,7 +322,7 @@
             <h2 class="title">על חופה ישראלית</h2>
             <div class="story">
               <p>חופה ישראלית נולדה איפשהו בין קריית שמונה לביירות,</p>
-              <p> במהלך סבב מילואים שני בצפון האהוב שלנו</p>
+              <p>במהלך סבב מילואים שני בצפון האהוב שלנו.</p>
               <p>אחרי עוד לוויה של חבר צוות יקר,</p>
               <p>חתונה קטנה ושמחה בתנאי שטח</p>
               <p>הכניסה בכולנו אור ותקווה.</p>
@@ -318,7 +333,7 @@
             </div>
           </div>
           <div class="hero-card" aria-label="תמונת המחשה">
-            <img src="assets/gemini1.jpeg" alt="חופה מסורתית - תמונת הדגמה" />
+            <img src="assets/gemini1.jpeg" alt="חופה מסורתית - תמונת הדגמה">
           </div>
         </div>
       </div>
@@ -338,10 +353,18 @@
             <header>
               <h3 id="prod1-title">חופה נישאת</h3>
               <p class="section-desc">חופה נישאת להשכרה - במבוק משויף איכותי, בד לבן 240×240 ס״מ, לולאות קשירה והרכבה קלה.</p>
-              <div class="price"> מחיר: 500 ₪</div>
+              <div class="price">מחיר: 500 ₪</div>
             </header>
-            <figure><img src="assets/gemini1.jpeg" alt="חופה מסורתית - מבט קדמי" /></figure>
-            <div><button class="btn" data-toggle="#prod1-details" aria-expanded="false" aria-controls="prod1-details">פרטים נוספים</button></div>
+            <figure>
+              <img src="assets/gemini1.jpeg"
+                   alt="חופה מסורתית - מבט קדמי"
+                   loading="lazy">
+            </figure>
+            <div>
+              <button class="btn" data-toggle="#prod1-details" aria-expanded="false" aria-controls="prod1-details">
+                פרטים נוספים
+              </button>
+            </div>
             <div id="prod1-details" class="details" hidden>
               <div class="details-inner">
                 <h4>מפרט ומידות</h4>
@@ -352,23 +375,31 @@
                 </ul>
                 <h4>גלריה</h4>
                 <div class="gallery" data-gallery="prod1">
-                  <figure><img src="assets/chuppah_front.jpg" alt="חופה מסורתית - קדמי" /></figure>
-                  <figure><img src="assets/chuppah_angle.jpg" alt="חופה מסורתית - זווית" /></figure>
-                  <figure><img src="assets/chuppah_full.jpg" alt="חופה מסורתית - מלאה" /></figure>
+                  <figure><img src="assets/chuppah_front.jpg" alt="חופה מסורתית - קדמי" loading="lazy"></figure>
+                  <figure><img src="assets/chuppah_angle.jpg" alt="חופה מסורתית - זווית" loading="lazy"></figure>
+                  <figure><img src="assets/chuppah_full.jpg" alt="חופה מסורתית - מלאה" loading="lazy"></figure>
                 </div>
               </div>
             </div>
           </article>
 
-          <!-- Product 2: Standalone -->
+          <!-- Product 2 -->
           <article class="product" aria-labelledby="prod2-title">
             <header>
-              <h3 id="prod2-title"> חופה עומדת </h3>
-              <p class="section-desc">חופה עומדת להשכרה - הרכבה קלה, 260X260 ס"מ, במבוק איכותי, בסיסי מתכת, ומסגרת עליונה </p>
+              <h3 id="prod2-title">חופה עומדת</h3>
+              <p class="section-desc">חופה עומדת להשכרה - הרכבה קלה, 260×260 ס"מ, במבוק איכותי, בסיסי מתכת, ומסגרת עליונה.</p>
               <div class="price">מחיר: 1000 ₪</div>
             </header>
-            <figure><img src="assets/04A850AF-29F6-4E77-BBBF-E2DE3D47F8C0.jpeg" alt="חופה עומדת עצמאית - הדמיה" /></figure>
-            <div><button class="btn" data-toggle="#prod2-details" aria-expanded="false" aria-controls="prod2-details">פרטים נוספים</button></div>
+            <figure>
+              <img src="assets/04A850AF-29F6-4E77-BBBF-E2DE3D47F8C0.jpeg"
+                   alt="חופה עומדת עצמאית - הדמיה"
+                   loading="lazy">
+            </figure>
+            <div>
+              <button class="btn" data-toggle="#prod2-details" aria-expanded="false" aria-controls="prod2-details">
+                פרטים נוספים
+              </button>
+            </div>
             <div id="prod2-details" class="details" hidden>
               <div class="details-inner">
                 <h4>מפרט ומידות</h4>
@@ -380,15 +411,31 @@
                 </ul>
                 <h4>גלריה</h4>
                 <div class="gallery" data-gallery="prod2">
-                  <figure><img src="assets/04A850AF-29F6-4E77-BBBF-E2DE3D47F8C0.jpeg" alt="חופה עומדת עצמאית - הדגמה 1" /></figure>
-                  <figure><img src="assets/B94D951E-8F8C-4EAC-8474-499CDD27DCFB.png" alt="חופה עומדת עצמאית - הדגמה 2" /></figure>
-                  <figure><img src="assets/BBB07450-A171-49CF-9957-C40D56B1E30F.png" alt="חופה עומדת עצמאית - הדגמה 3" /></figure>
+                  <figure><img src="assets/04A850AF-29F6-4E77-BBBF-E2DE3D47F8C0.jpeg" alt="חופה עומדת עצמאית - הדגמה 1" loading="lazy"></figure>
+                  <figure><img src="assets/B94D951E-8F8C-4EAC-8474-499CDD27DCFB.png" alt="חופה עומדת עצמאית - הדגמה 2" loading="lazy"></figure>
+                  <figure><img src="assets/BBB07450-A171-49CF-9957-C40D56B1E30F.png" alt="חופה עומדת עצמאית - הדגמה 3" loading="lazy"></figure>
                 </div>
               </div>
             </div>
           </article>
 
         </div>
+      </div>
+    </section>
+
+    <!-- Section: Areas / Local service -->
+    <section id="areas">
+      <div class="container">
+        <div class="section-header">
+          <h2>איפה אנחנו עובדים</h2>
+        </div>
+        <p class="areas-desc">
+          חופה ישראלית מספקת חופות להשכרה בכל אזור הצפון:
+          חיפה, הקריות, הגליל המערבי, עמק יזרעאל, רמות מנשה והסביבה.
+          במקרים מסוימים ניתן להגיע גם לשרון ולמרכז בתיאום מראש.
+          אם אתם מתחתנים בחצר בבית, בטבע, על הים או בחתונה קטנה בעמק –
+          יש לנו פתרון חופה מסודר, יפה ונגיש.
+        </p>
       </div>
     </section>
 
@@ -399,9 +446,9 @@
 
         <!-- Dynamic photo strip: 3 thumbnails at a time -->
         <div id="photo-strip" class="photo-strip gallery" aria-live="polite">
-          <img src="" alt="" />
-          <img src="" alt="" />
-          <img src="" alt="" />
+          <img src="" alt="">
+          <img src="" alt="">
+          <img src="" alt="">
         </div>
       </div>
     </section>
@@ -411,97 +458,121 @@
       <div class="container">
         <div class="section-header"><h2>המלצות</h2></div>
         <div class="testimonials" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px">
+
           <article class="testimonial" style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)">
             <div class="name" style="font-weight:700">דנה ויואב</div>
-            <div class="quote" style="color:var(--muted)">“חיפשנו חופה יפה ופשוטה בלי כאב ראש. קיבלנו יחס חם, הרכבה קלה וחופה שנראתה מדהים בתמונות. ממליצים בלב מלא!”</div>
+            <div class="quote" style="color:var(--muted)">"חיפשנו חופה יפה ופשוטה בלי כאב ראש. קיבלנו יחס חם, הרכבה קלה וחופה שנראתה מדהים בתמונות. ממליצים בלב מלא!"</div>
           </article>
+
           <article class="testimonial" style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)">
             <div class="name" style="font-weight:700">איתי ומאיה</div>
-            <div class="quote" style="color:var(--muted)">“השירות היה סבלני ומקצועי, הכל היה מוכן בזמן ותפור לצרכים שלנו. החופה הייתה מרכז האירוע וקיבלנו המון מחמאות.”</div>
+            <div class="quote" style="color:var(--muted)">"השירות היה סבלני ומקצועי, הכל היה מוכן בזמן ותפור לצרכים שלנו. החופה הייתה מרכז האירוע וקיבלנו המון מחמאות."</div>
           </article>
+
           <article class="testimonial" style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)">
             <div class="name" style="font-weight:700">נועה וגל</div>
-            <div class="quote" style="color:var(--muted)">“פתרון מושלם לחתונת שטח: איכות מעולה, מחיר הוגן והרגשה שיש מי שמחזיק לנו את היד. תודה שעשיתם לנו שקט!”</div>
+            <div class="quote" style="color:var(--muted)">"עשינו חתונה קטנה בשטח ליד עין אפק וקיבלנו חופה יפהפייה במחיר הוגן ובלי הפקה יקרה. תודה שעשיתם לנו שקט!"</div>
           </article>
+
         </div>
       </div>
     </section>
-    
+
+    <!-- Section: FAQ -->
     <section id="faq">
       <div class="container">
         <div class="section-header"><h2>שאלות נפוצות על השכרת חופה</h2></div>
-    
+
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px">
           <article style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)">
             <h3 style="margin-top:0;font-size:1rem;">כמה עולה חופה להשכרה?</h3>
-            <p style="margin:0;color:var(--muted);">חופה נישאת מתחילה ב־500 ₪, וחופה עומדת יציבה (עם בסיסים) מתחילה ב־1000 ₪. המחיר כולל את כל מה שצריך לחתונה – בלי הפתעות.</p>
+            <p style="margin:0;color:var(--muted);">
+              חופה נישאת מתחילה ב־500 ₪, וחופה עומדת יציבה (עם בסיסים) מתחילה ב־1000 ₪.
+              המחיר כולל את כל מה שצריך לחתונה – בלי הפתעות.
+            </p>
           </article>
-    
+
           <article style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)">
             <h3 style="margin-top:0;font-size:1rem;">אפשר חופה לחתונה בחצר הבית או בשטח?</h3>
-            <p style="margin:0;color:var(--muted);">כן. אנחנו מספקים גם חופה שעומדת לבד על בסיסים וגם חופה שמוחזקת ע"י חברים. זה עובד מצוין בחתונות טבע, בגינה, במושב או אפילו על חוף הים.</p>
+            <p style="margin:0;color:var(--muted);">
+              כן. אנחנו מספקים גם חופה שעומדת לבד על בסיסים וגם חופה שמוחזקת ע"י חברים.
+              זה עובד מצוין בחתונות טבע, בגינה, במושב או אפילו על חוף הים.
+            </p>
           </article>
-    
+
           <article style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)">
             <h3 style="margin-top:0;font-size:1rem;">אנחנו יכולים להרכיב לבד?</h3>
-            <p style="margin:0;color:var(--muted);">החופות מגיעות בהרכבה פשוטה וברורה. מקבלים סרטון/הסבר, לוקח בערך כמה דקות להעמיד את החופה והיא מוכנה לטקס.</p>
+            <p style="margin:0;color:var(--muted);">
+              החופות מגיעות בהרכבה ברורה. מקבלים הסבר, ולוקח בערך כמה דקות להעמיד את החופה והיא מוכנה לטקס.
+            </p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- Section 3: Contact -->
+    <!-- Section 6: Contact -->
     <section id="contact">
       <div class="container">
         <div class="section-header"><h2>להזמנות ויצירת קשר</h2></div>
-    
+
         <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);max-width:640px">
           <p class="section-desc" style="margin:0 0 10px">מחכים לשמוח איתכם</p>
-    
+
           <p style="margin:8px 0">
             <strong>מייל:</strong>
             <a href="mailto:chupa.yisraelit@gmail.com">chupa.yisraelit@gmail.com</a>
           </p>
-    
+
           <p style="margin:8px 0">
             <strong>וואטסאפ:</strong>
             <a href="https://wa.me/972533431726" target="_blank" rel="noopener">שליחת הודעה ב-WhatsApp</a>
           </p>
-    
+
           <p style="margin:8px 0">
             <strong>טלפון:</strong>
             <a href="tel:0533431726">+972533431726</a>
           </p>
-    
+
           <p style="margin:8px 0">
             <strong>פייסבוק:</strong>
             <a href="https://www.facebook.com/share/1EPXtrXHCh/" target="_blank" rel="noopener">לעמוד הפייסבוק</a>
           </p>
-    
+
           <p style="margin:8px 0">
             <strong>אינסטגרם:</strong>
             <a href="https://www.instagram.com/chupa.israelit?igsh=MXBxNzFja2M4b3BuMQ==" target="_blank" rel="noopener">הודעה ב־Instagram</a>
           </p>
         </div>
-    
-        <p class="section-desc" style="margin-top:12px"></p>
+
+        <p class="section-desc" style="margin-top:12px;text-align:center;font-size:13px">
+          חופות להשכרה בצפון · חופה לחתונת שטח · חופה בחיפה והקריות
+        </p>
       </div>
     </section>
 
   </main>
 
+  <!-- Keyword helper anchor (moved out of <style>) -->
+  <div style="margin-top:8px;font-size:13px;text-align:center">
+    <a href="keywords.html" rel="nofollow">חופות להשכרה בצפון</a>
+  </div>
+
   <!-- Floating WhatsApp Button -->
   <a class="whatsapp" id="wa-float" href="https://wa.me/972533431726" target="_blank" rel="noopener" aria-label="פתיחת וואטסאפ">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" loading="lazy">
   </a>
 
-  <footer><div class="container">© <span id="year"></span> חופה ישראלית · כל הזכויות שמורות</div></footer>
+  <footer>
+    <div class="container">
+      © <span id="year"></span> חופה ישראלית · כל הזכויות שמורות
+    </div>
+  </footer>
 
   <!-- Lightbox -->
   <div class="lightbox" id="lightbox" aria-hidden="true" aria-label="צפייה בתמונה במסך מלא">
     <button class="close" title="סגירה" aria-label="סגירה">×</button>
     <button class="prev" title="הקודם" aria-label="תמונה קודמת">‹</button>
-    <img src="" alt="תמונה מוגדלת" />
+    <img src="" alt="תמונה מוגדלת">
     <button class="next" title="הבא" aria-label="תמונה הבאה">›</button>
   </div>
 
@@ -535,8 +606,13 @@
       const panel = document.querySelector(sel);
       btn.addEventListener('click', () => {
         const isOpen = !panel.hasAttribute('hidden');
-        if(isOpen){ panel.setAttribute('hidden',''); btn.setAttribute('aria-expanded','false'); }
-        else { panel.removeAttribute('hidden'); btn.setAttribute('aria-expanded','true'); }
+        if(isOpen){
+          panel.setAttribute('hidden','');
+          btn.setAttribute('aria-expanded','false');
+        } else {
+          panel.removeAttribute('hidden');
+          btn.setAttribute('aria-expanded','true');
+        }
       });
     });
 
@@ -572,6 +648,7 @@
         setTimeout(() => {
           img.src = it.src;
           img.alt = it.alt;
+          img.loading = "lazy";
           img.style.opacity = '1';
         }, 100);
       });
@@ -587,7 +664,8 @@
       const btnClose = lb.querySelector('.close');
       const btnPrev = lb.querySelector('.prev');
       const btnNext = lb.querySelector('.next');
-      let currentList = []; let index = 0;
+      let currentList = [];
+      let index = 0;
 
       const update = () => {
         const img = currentList[index];
@@ -597,14 +675,27 @@
       };
       const open = (list, i=0) => {
         if(!list || !list.length) return;
-        currentList = list; index = Math.max(0, i);
+        currentList = list;
+        index = Math.max(0, i);
         update();
         lb.classList.add('active');
         lb.setAttribute('aria-hidden','false');
       };
-      const close = () => { lb.classList.remove('active'); lb.setAttribute('aria-hidden','true'); lbImg.src=""; };
-      const prev  = () => { if(!currentList.length) return; index = (index - 1 + currentList.length) % currentList.length; update(); };
-      const next  = () => { if(!currentList.length) return; index = (index + 1) % currentList.length; update(); };
+      const close = () => {
+        lb.classList.remove('active');
+        lb.setAttribute('aria-hidden','true');
+        lbImg.src="";
+      };
+      const prev  = () => {
+        if(!currentList.length) return;
+        index = (index - 1 + currentList.length) % currentList.length;
+        update();
+      };
+      const next  = () => {
+        if(!currentList.length) return;
+        index = (index + 1) % currentList.length;
+        update();
+      };
 
       document.addEventListener('click', (e) => {
         const targetImg = e.target.closest('.gallery img');
@@ -618,7 +709,9 @@
       btnClose.addEventListener('click', close);
       btnPrev.addEventListener('click', prev);
       btnNext.addEventListener('click', next);
-      lb.addEventListener('click', (e) => { if(e.target === lb) close(); });
+      lb.addEventListener('click', (e) => {
+        if(e.target === lb) close();
+      });
       document.addEventListener('keydown', (e) => {
         if(lb.classList.contains('active')){
           if(e.key === 'Escape') close();
