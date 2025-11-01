@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#1e88e5" />
 
   <!-- ====== SEO Core ====== -->
   <title>חופה ישראלית | חופות להשכרה בצפון ובחיפה - חופה מסורתית, חופות בד, חופה לחתונת שטח</title>
@@ -10,14 +11,14 @@
   <meta name="google-site-verification" content="gBa8KBM7LwZoUTuHfbJ_-4gH4hAFXQcG2J7Mm5G8jAU" />
   <meta name="keywords" content="חופה, חופות, חופה מסורתית, חופה להשכרה, חופות להשכרה, חופה בצפון, חופות בצפון, חופה בחיפה, חופות בחיפה, חופת בד, חופות בד, חופת שטח, חופה זולה, חופה בזול, חופה ישראלית, חופת חברים, חופת במבוק, חופה לחתונה, חופות לחתונת שטח" />
   <link rel="canonical" href="https://chupay.github.io/chupa_yisraelit/" />
-  <meta property="og:url" content="https://chupay.github.io/chupa_yisraelit/" />
-  <meta property="og:image" content="https://chupay.github.io/chupa_yisraelit/assets/logo.jpeg" />
 
   <!-- Open Graph / Social -->
-  <meta property="title" content="חופה ישראלית - חופות להשכרה בצפון ובחיפה" />
+  <meta property="og:url" content="https://chupay.github.io/chupa_yisraelit/" />
+  <meta property="og:title" content="חופה ישראלית - חופות להשכרה בצפון ובחיפה" />
   <meta property="og:description" content="חופות מסורתיות, חופות בד וחופות לחתונת שטח בעיצוב ישראלי - מחיר נגיש והרכבה קלה." />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="he_IL" />
+  <meta property="og:image" content="https://chupay.github.io/chupa_yisraelit/assets/logo.jpeg" />
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
@@ -26,9 +27,12 @@
   <meta name="twitter:image" content="https://chupay.github.io/chupa_yisraelit/assets/logo.jpeg">
 
   <!-- Robots -->
-  <meta name="robots" content="index, follow" />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
 
-  <!-- LocalBusiness / RentalService schema with hours + clean phone -->
+  <!-- Preload hero image for faster LCP (לא משנה את שם/פורמט הקובץ) -->
+  <link rel="preload" as="image" href="assets/chuppah-bamboo-outdoor.webp" imagesizes="(max-width: 900px) 100vw, 50vw">
+
+  <!-- LocalBusiness / RentalService schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -46,6 +50,7 @@
       "addressRegion": "צפון",
       "addressLocality": "חיפה"
     },
+    "geo": { "@type": "GeoCoordinates", "latitude": 32.794, "longitude": 34.9896 },
     "areaServed": ["חיפה","גליל","עמקים","קריות","צפון","עמק יזרעאל","רמות מנשה"],
     "openingHoursSpecification": [{
       "@type": "OpeningHoursSpecification",
@@ -54,32 +59,86 @@
       "closes": "22:00"
     }],
     "sameAs": [
-      "https://www.facebook.com/share/1EPXtrXHCh/",
-      "https://www.instagram.com/chupa.israelit?igsh=MXBxNzFja2M4b3BuMQ=="
-    ],
-    "knowsAbout": [
-      "חופה להשכרה",
-      "השכרת חופה",
-      "חופה בצפון",
-      "חופה בחיפה",
-      "חופה מסורתית",
-      "חופה עומדת",
-      "חופת חברים",
-      "חופת בד",
-      "חופת במבוק",
-      "חתונת שטח",
-      "חתונת טבע",
-      "חתונת בית",
-      "חתונה בבית",
-      "חתונה בטבע",
-      "ציוד לחתונה",
-      "ציוד חתונה"
+      "https://www.facebook.com/chupayisraelit/",
+      "https://www.instagram.com/chupa.israelit/"
+    ]
+  }
+  </script>
+
+  <!-- FAQPage schema (מתאים למקטע ה-FAQ בדף) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {
+        "@type":"Question",
+        "name":"כמה עולה חופה להשכרה?",
+        "acceptedAnswer":{"@type":"Answer","text":"חופה נישאת מושכרת ב־500 ₪, וחופה עומדת יציבה (עם בסיסים) ב־1000 ₪. המחיר כולל את כל מה שצריך לחתונה – בלי הפתעות."}
+      },
+      {
+        "@type":"Question",
+        "name":"אפשר חופה לחתונה בחצר הבית או בשטח?",
+        "acceptedAnswer":{"@type":"Answer","text":"כן. יש חופה שעומדת לבד על בסיסים וגם חופה שמוחזקת ע\"י חברים – מתאים לגינה, לטבע או אפילו לחוף הים."}
+      },
+      {
+        "@type":"Question",
+        "name":"אנחנו יכולים להרכיב לבד?",
+        "acceptedAnswer":{"@type":"Answer","text":"כן. החופות מגיעות עם הוראות הרכבה ברורות, ולוקח כמה דקות להעמיד אותן."}
+      }
+    ]
+  }
+  </script>
+
+  <!-- מוצרי השכרה (Product + Offer) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"ItemList",
+    "itemListElement":[
+      {
+        "@type":"ListItem",
+        "position":1,
+        "item":{
+          "@type":"Product",
+          "name":"חופה נישאת",
+          "image":"https://chupay.github.io/chupa_yisraelit/assets/chuppah-bamboo-outdoor.webp",
+          "description":"חופה נישאת להשכרה - במבוק משויף איכותי, בד לבן 240×240 ס״מ, לולאות קשירה והרכבה קלה.",
+          "brand":"חופה ישראלית",
+          "offers":{
+            "@type":"Offer",
+            "priceCurrency":"ILS",
+            "price":"500",
+            "availability":"https://schema.org/InStock",
+            "url":"https://chupay.github.io/chupa_yisraelit/#products"
+          }
+        }
+      },
+      {
+        "@type":"ListItem",
+        "position":2,
+        "item":{
+          "@type":"Product",
+          "name":"חופה עומדת",
+          "image":"https://chupay.github.io/chupa_yisraelit/assets/standing-chuppah-setup.webp",
+          "description":"חופה עומדת להשכרה - הרכבה קלה, 260×260 ס\"מ, במבוק איכותי, בסיסי מתכת, ומסגרת עליונה.",
+          "brand":"חופה ישראלית",
+          "offers":{
+            "@type":"Offer",
+            "priceCurrency":"ILS",
+            "price":"1000",
+            "availability":"https://schema.org/InStock",
+            "url":"https://chupay.github.io/chupa_yisraelit/#products"
+          }
+        }
+      }
     ]
   }
   </script>
   <!-- ====== /SEO Core ====== -->
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet">
 
@@ -98,12 +157,12 @@
       --container:1100px;
       --nav-bg: rgba(230,240,255,0.95);
     }
-  
+
     html{scroll-behavior:smooth}
     body{
       margin:0;
       font-family:'Heebo',system-ui,-apple-system,Segoe UI,Roboto,Heebo,Arial,Helvetica,sans-serif;
-      font-size:18px; /* ← הגדלנו בסיסית את כל הטקסט באתר */
+      font-size:18px;
       color:var(--text);
       line-height:1.6;
       background:
@@ -115,10 +174,10 @@
         #ffffff;
       background-attachment: fixed;
     }
-  
+
     a{color:var(--brand);text-decoration:none}
     img{max-width:100%;height:auto;display:block}
-  
+
     .nav{
       position:sticky;top:0;z-index:1000;
       background: var(--nav-bg);
@@ -133,7 +192,7 @@
       gap:24px;
       padding:10px 16px;
     }
-  
+
     .logo{display:flex;align-items:center;gap:10px;flex:0 0 auto;}
     .logo-img{
       display:block;
@@ -143,18 +202,18 @@
       border-radius:12px;
       object-fit: contain;
     }
-  
+
     .menu{margin-inline-start:auto;display:flex;gap:14px;flex-wrap:wrap}
     .menu a{padding:10px 12px;border-radius:12px;color:var(--text)}
     .menu a:hover{background:var(--card)}
     .menu a.active{color:var(--brand-2);background:rgba(30,136,229,.08)}
-  
+
     section{padding:56px 16px}
     .container{max-width:var(--container);margin-inline:auto}
     .section-header{display:flex;align-items:center;gap:10px;margin-bottom:16px}
     .section-header h2{margin:0;font-size:clamp(20px,3.2vw,30px)}
     .section-desc{color:var(--muted);margin:6px 0 22px}
-  
+
     .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center}
     h1.hero-title{
       font-size:clamp(28px,4vw,40px);
@@ -163,7 +222,6 @@
       color:var(--text);
       margin:10px 0 0.4em;
     }
-    
     .hero .intro{
       font-size:1.05em;
       line-height:1.7;
@@ -172,7 +230,6 @@
       margin:0 0 1.5em;
       max-width:40ch;
     }
-    
     h2.section-title{
       font-size:clamp(20px,2.8vw,26px);
       line-height:1.3;
@@ -182,8 +239,11 @@
     }
     .story p{margin:0 0 10px}
     .hero-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)}
-    .hero-card img{max-height:320px;object-fit:cover;width:100%}
-  
+    .hero-card img{
+      max-height:320px;object-fit:cover;width:100%;
+      aspect-ratio: 4/3; /* מונע קפיצות פריסה גם בלי width/height ממשיים */
+    }
+
     .products{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
     .product{
       display:grid;
@@ -205,6 +265,7 @@
       object-fit:cover;
       border-radius:12px;
       border:1px solid var(--border);
+      aspect-ratio: 4/3;
     }
     .product > div:has(.btn){grid-area:cta}
     .details{grid-area:details;overflow:hidden}
@@ -224,37 +285,27 @@
       background:var(--brand);
       cursor:pointer;
       font-weight:600;
-      font-size:0.9rem; /* שומר שהכפתור לא יתנפח מדי אחרי שהבסיס עלה */
+      font-size:0.9rem;
     }
     .btn.secondary{background:transparent;color:var(--brand)}
     .btn:hover{filter:brightness(1.05)}
-  
-    /* --- Galleries inside product details: 3 in a row --- */
+
+    /* Galleries inside product details: 3 in a row */
     .product .details .gallery{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
       gap:8px;
     }
     .product .details .gallery figure{
-      margin:0;
-      background:#fff;
-      border:1px solid var(--border);
-      border-radius:12px;
-      overflow:hidden
+      margin:0;background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden
     }
     .product .details .gallery img{
-      width:100%;
-      height:100px;
-      object-fit:cover;
-      max-height:none;
+      width:100%;height:100px;object-fit:cover;max-height:none;aspect-ratio: auto;
     }
-  
-    /* --- Photos strip (3 across, full width) --- */
+
+    /* Photos strip (3 across, full width) */
     .photo-strip.gallery{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:16px;
-      align-items:stretch;
+      display:grid;grid-template-columns: repeat(3, 1fr);gap:16px;align-items:stretch;
     }
     .photo-strip img{
       width:100%;
@@ -266,15 +317,11 @@
       transition: opacity .35s ease;
       cursor: zoom-in;
       background:#fff;
+      aspect-ratio: 4/3;
     }
-  
-    .areas-desc{
-      color:var(--muted);
-      max-width:700px;
-      line-height:1.5;
-      margin:0 0 22px;
-    }
-  
+
+    .areas-desc{color:var(--muted);max-width:700px;line-height:1.5;margin:0 0 22px}
+
     .whatsapp{
       position:fixed;bottom:24px;left:24px;
       z-index:1100;width:84px;height:84px;
@@ -284,9 +331,9 @@
     }
     .whatsapp img{width:44px;height:44px;display:block}
     .whatsapp:hover{transform:translateY(-2px)}
-  
+
     footer{padding:24px 16px;color:var(--muted);text-align:center}
-  
+
     .lightbox{
       position:fixed; top:0; right:0; bottom:0; left:0;
       background:rgba(0,0,0,.8); display:none; align-items:center; justify-content:center; z-index:1200
@@ -295,62 +342,32 @@
     .lightbox img{max-width:90vw;max-height:80vh;border-radius:12px}
     .lightbox img[src=""]{display:none}
     .lightbox .close,.lightbox .prev,.lightbox .next{
-      position:absolute;
-      background:rgba(255,255,255,.92);
-      border:none;
-      border-radius:999px;
-      width:48px;
-      height:48px;
-      cursor:pointer;
-      box-shadow:var(--shadow);
-      font-size:24px
+      position:absolute;background:rgba(255,255,255,.92);border:none;border-radius:999px;width:48px;height:48px;cursor:pointer;box-shadow:var(--shadow);font-size:24px
     }
     .lightbox .close{top:20px;inset-inline-end:20px}
     .lightbox .prev{left:24px}
     .lightbox .next{right:24px}
-  
-    /* --- Responsive tweaks --- */
+
+    /* Responsive tweaks */
     @media (max-width:900px){
       .product{
         grid-template-columns: 1fr;
-        grid-template-areas:
-          "media"
-          "head"
-          "cta"
-          "details";
+        grid-template-areas: "media" "head" "cta" "details";
       }
       .product > figure img{max-height:200px}
       .hero{grid-template-columns:1fr}
     }
-    @media (max-width:800px){
-      .menu{gap:4px}
-    }
+    @media (max-width:800px){ .menu{gap:4px} }
     @media (max-width:600px){
-      .photo-strip.gallery{
-        grid-template-columns: 1fr;
-      }
-      .photo-strip img{
-        height: clamp(200px, 45vw, 280px);
-      }
-      .logo-img{
-        max-height:80px;
-      }
-      .whatsapp{
-        width:64px;
-        height:64px;
-        bottom:16px;
-        left:16px;
-      }
-      .whatsapp img{
-        width:32px;
-        height:32px;
-      }
-      .btn{
-        font-size:1rem; /* במובייל שיחזור להיות ברור ונוח ללחיצה */
-      }
+      .photo-strip.gallery{ grid-template-columns: 1fr; }
+      .photo-strip img{ height: clamp(200px, 45vw, 280px); }
+      .logo-img{ max-height:80px; }
+      .whatsapp{ width:64px; height:64px; bottom:16px; left:16px; }
+      .whatsapp img{ width:32px; height:32px; }
+      .btn{ font-size:1rem; }
     }
   </style>
-
+</head>
 
 <body>
   <header class="nav">
@@ -368,20 +385,17 @@
   </header>
 
   <main>
-
     <section id="about">
       <div class="container">
         <div class="hero">
           <div>
             <h1 class="hero-title">חופה ישראלית - חופות להשכרה בצפון</h1>
-    
             <p class="intro">
-              חופה ישראלית היא שירות השכרת חופה בצפון: 
+              חופה ישראלית היא שירות השכרת חופה בצפון:
               חופה נישאת או חופה עומדת לחתונת שטח או לחתונה בבית - הכל במחיר נגיש ובהקמה קלה.
             </p>
-    
+
             <h2 class="section-title">על חופה ישראלית</h2>
-    
             <div class="story">
               <p>חופה ישראלית נולדה איפשהו בין קריית שמונה לביירות,</p>
               <p>במהלך סבב מילואים שני בצפון האהוב שלנו.</p>
@@ -394,7 +408,7 @@
               <p>ככה נולדה חופה ישראלית - נגישה, פשוטה, מסורתית, ישראלית.</p>
             </div>
           </div>
-    
+
           <div class="hero-card" aria-label="תמונת המחשה">
             <img src="assets/chuppah-bamboo-outdoor.webp" alt="חופה מסורתית - תמונת הדגמה">
           </div>
@@ -402,16 +416,15 @@
       </div>
     </section>
 
-
-    <!-- Section 2: Products -->
+    <!-- Products -->
     <section id="products">
       <div class="container">
         <div class="section-header">
           <h2 class="section-title">מוצרים</h2>
           <span class="pill">ניתן להוסיף מוצרים נוספים</span>
         </div>
-        <div class="products">
 
+        <div class="products">
           <!-- Product 1 -->
           <article class="product" aria-labelledby="prod1-title">
             <header>
@@ -420,14 +433,10 @@
               <div class="price">מחיר: 500 ₪</div>
             </header>
             <figure>
-              <img src="assets/chuppah-bamboo-outdoor.webp"
-                   alt="חופה מסורתית - מבט קדמי"
-                   loading="lazy">
+              <img src="assets/chuppah-bamboo-outdoor.webp" alt="חופה מסורתית - מבט קדמי" loading="lazy">
             </figure>
             <div>
-              <button class="btn" data-toggle="#prod1-details" aria-expanded="false" aria-controls="prod1-details">
-                פרטים נוספים
-              </button>
+              <button class="btn" data-toggle="#prod1-details" aria-expanded="false" aria-controls="prod1-details">פרטים נוספים</button>
             </div>
             <div id="prod1-details" class="details" hidden>
               <div class="details-inner">
@@ -455,14 +464,10 @@
               <div class="price">מחיר: 1000 ₪</div>
             </header>
             <figure>
-              <img src="assets/standing-chuppah-setup.webp"
-                   alt="חופה עומדת עצמאית - הדמיה"
-                   loading="lazy">
+              <img src="assets/standing-chuppah-setup.webp" alt="חופה עומדת עצמאית - הדמיה" loading="lazy">
             </figure>
             <div>
-              <button class="btn" data-toggle="#prod2-details" aria-expanded="false" aria-controls="prod2-details">
-                פרטים נוספים
-              </button>
+              <button class="btn" data-toggle="#prod2-details" aria-expanded="false" aria-controls="prod2-details">פרטים נוספים</button>
             </div>
             <div id="prod2-details" class="details" hidden>
               <div class="details-inner">
@@ -487,27 +492,25 @@
       </div>
     </section>
 
-    <!-- Section: Areas / Local service -->
+    <!-- Areas -->
     <section id="areas">
       <div class="container">
         <div class="section-header">
-          <h2 class="section-title">איפה אנחנו </h2>
+          <h2 class="section-title">איפה אנחנו</h2>
         </div>
         <p class="areas-desc">
           חופה ישראלית מספקת חופות להשכרה בכל אזור הצפון:
           חיפה, הקריות, הגליל המערבי, עמק יזרעאל, רמות מנשה והסביבה.
           אם אתם מתחתנים בחצר בבית, בטבע, על הים או בחתונה קטנה בעמק –
-          יש לנו פתרון חופה מסודר, יפה ונגיש.
+          יש לנו פתרון חופה מסודר, יפה ונגיש. <a href="#products">חופות להשכרה בצפון</a>
         </p>
       </div>
     </section>
 
-    <!-- Section 4: Photos (Dynamic strip) -->
+    <!-- Photos -->
     <section id="photos" class="photos">
       <div class="container">
         <div class="section-header"><h2>תמונות</h2></div>
-
-        <!-- Dynamic photo strip: 3 thumbnails at a time -->
         <div id="photo-strip" class="photo-strip gallery" aria-live="polite">
           <img src="" alt="">
           <img src="" alt="">
@@ -516,93 +519,72 @@
       </div>
     </section>
 
-    <!-- Section 5: Testimonials -->
+    <!-- Testimonials -->
     <section id="testimonials">
       <div class="container">
         <div class="section-header"><h2>המלצות</h2></div>
         <div class="testimonials" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px">
-
           <article class="testimonial" style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)">
             <div class="name" style="font-weight:700">דנה ויואב</div>
             <div class="quote" style="color:var(--muted)">"חיפשנו חופה יפה ופשוטה בלי כאב ראש. קיבלנו יחס חם, הרכבה קלה וחופה שנראתה מדהים בתמונות. ממליצים בלב מלא!"</div>
           </article>
-
           <article class="testimonial" style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)">
             <div class="name" style="font-weight:700">איתי ומאיה</div>
             <div class="quote" style="color:var(--muted)">"השירות היה סבלני ומקצועי, הכל היה מוכן בזמן ותפור לצרכים שלנו. החופה הייתה מרכז האירוע וקיבלנו המון מחמאות."</div>
           </article>
-
           <article class="testimonial" style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)">
             <div class="name" style="font-weight:700">נועה וגל</div>
             <div class="quote" style="color:var(--muted)">"עשינו חתונה קטנה בשטח ליד עין אפק וקיבלנו חופה יפהפייה במחיר הוגן ובלי הפקה יקרה. תודה שעשיתם לנו שקט!"</div>
           </article>
-
         </div>
       </div>
     </section>
 
-    <!-- Section: FAQ -->
+    <!-- FAQ -->
     <section id="faq">
       <div class="container">
         <h2 class="section-title">שאלות נפוצות על השכרת חופה</h2>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px">
           <article style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)">
             <h3 style="margin-top:0;font-size:1rem;">כמה עולה חופה להשכרה?</h3>
-            <p style="margin:0;color:var(--muted);">
-              חופה נישאת מושכרת ב־500 ₪, וחופה עומדת יציבה (עם בסיסים) מושכרת ב־1000 ₪.
-              המחיר כולל את כל מה שצריך לחתונה - בלי הפתעות.
-            </p>
+            <p style="margin:0;color:var(--muted);">חופה נישאת מושכרת ב־500 ₪, וחופה עומדת יציבה (עם בסיסים) מושכרת ב־1000 ₪. המחיר כולל את כל מה שצריך לחתונה - בלי הפתעות.</p>
           </article>
-
           <article style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)">
             <h3 style="margin-top:0;font-size:1rem;">אפשר חופה לחתונה בחצר הבית או בשטח?</h3>
-            <p style="margin:0;color:var(--muted);">
-              כן. אנחנו מספקים גם חופה שעומדת לבד על בסיסים וגם חופה שמוחזקת ע"י חברים.
-              זה עובד מצוין בחתונות טבע, בגינה, במושב או אפילו על חוף הים.
-            </p>
+            <p style="margin:0;color:var(--muted);">כן. אנחנו מספקים גם חופה שעומדת לבד על בסיסים וגם חופה שמוחזקת ע"י חברים. זה עובד מצוין בחתונות טבע, בגינה, במושב או אפילו על חוף הים.</p>
           </article>
-
           <article style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)">
             <h3 style="margin-top:0;font-size:1rem;">אנחנו יכולים להרכיב לבד?</h3>
-            <p style="margin:0;color:var(--muted);">
-              החופות מגיעות עם הוראות הרכבה ברורות. שני חברים ולוקח כמה דקות להעמיד את החופה והיא מוכנה לטקס.
-            </p>
+            <p style="margin:0;color:var(--muted);">החופות מגיעות עם הוראות הרכבה ברורות. שני חברים ולוקח כמה דקות להעמיד את החופה והיא מוכנה לטקס.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- Section 6: Contact -->
+    <!-- Contact -->
     <section id="contact">
       <div class="container">
         <h2 class="section-title">להזמנות ויצירת קשר</h2>
-        
         <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);max-width:640px">
           <p class="section-desc" style="margin:0 0 10px">מחכים לשמוח איתכם</p>
 
-          <p style="margin:8px 0">
-            <strong>מייל:</strong>
+          <p style="margin:8px 0"><strong>מייל:</strong>
             <a href="mailto:chupa.yisraelit@gmail.com">chupa.yisraelit@gmail.com</a>
           </p>
 
-          <p style="margin:8px 0">
-            <strong>וואטסאפ:</strong>
-            <a href="https://wa.me/972533431726" target="_blank" rel="noopener">שליחת הודעה ב-WhatsApp</a>
+          <p style="margin:8px 0"><strong>וואטסאפ:</strong>
+            <a href="https://wa.me/972533431726?text=%D7%94%D7%99%D7%99%20%D7%97%D7%95%D7%A4%D7%94%20%D7%99%D7%A9%D7%A8%D7%90%D7%9C%D7%99%D7%AA%2C%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%2F%2A%2A%20%D7%91%D7%97%D7%95%D7%A4%D7%94%20%D7%9C%D7%AA%D7%90%D7%A8%D7%99%D7%9A%20..." target="_blank" rel="noopener">שליחת הודעה ב-WhatsApp</a>
           </p>
 
-          <p style="margin:8px 0">
-            <strong>טלפון:</strong>
+          <p style="margin:8px 0"><strong>טלפון:</strong>
             <a href="tel:+972533431726" aria-label="טלפון חופה ישראלית">+972-53-343-1726</a>
-
           </p>
 
-          <p style="margin:8px 0">
-            <strong>פייסבוק:</strong>
+          <p style="margin:8px 0"><strong>פייסבוק:</strong>
             <a href="https://www.facebook.com/chupayisraelit/" target="_blank" rel="noopener">לעמוד שלנו בפייסבוק</a>
           </p>
 
-          <p style="margin:8px 0">
-            <strong>אינסטגרם:</strong>
+          <p style="margin:8px 0"><strong>אינסטגרם:</strong>
             <a href="https://www.instagram.com/chupa.israelit/" target="_blank" rel="noopener" aria-label="עמוד אינסטגרם של חופה ישראלית">האינסטגרם שלנו</a>
           </p>
         </div>
@@ -612,12 +594,11 @@
         </p>
       </div>
     </section>
-
   </main>
 
-  <!-- Keyword helper anchor (moved out of <style>) -->
+  <!-- Keyword helper anchor -->
   <div style="margin-top:8px;font-size:13px;text-align:center">
-    <a href="keywords.html" rel="nofollow">חופות להשכרה בצפון</a>
+    <a href="#products" rel="nofollow">חופות להשכרה בצפון</a>
   </div>
 
   <!-- Floating WhatsApp Button -->
@@ -640,18 +621,19 @@
   </div>
 
   <script>
+    // שנה נוכחית בפוטר
     document.getElementById('year').textContent = new Date().getFullYear();
 
+    // Scroll margins כדי שתפריט דביק לא יסתיר כותרות
     function applyScrollMargins() {
       const nav = document.querySelector('header.nav');
       const offset = (nav?.offsetHeight || 100) + 10;
-      document.querySelectorAll('section').forEach(sec => {
-        sec.style.scrollMarginTop = offset + 'px';
-      });
+      document.querySelectorAll('section').forEach(sec => { sec.style.scrollMarginTop = offset + 'px'; });
     }
     window.addEventListener('load', applyScrollMargins);
     window.addEventListener('resize', applyScrollMargins);
 
+    // הדגשת קישור תפריט לפי אזור גלוי
     const sections = Array.from(document.querySelectorAll('main section')).map(s => ({id: s.id, el: s}));
     const menuLinks = Array.from(document.querySelectorAll('.menu a'));
     const io = new IntersectionObserver(entries => {
@@ -664,22 +646,18 @@
     }, {rootMargin: '-50% 0px -50% 0px', threshold: 0});
     sections.forEach(s => io.observe(s.el));
 
+    // פתיחה/סגירה של פרטי מוצר
     document.querySelectorAll('[data-toggle]').forEach(btn => {
       const sel = btn.getAttribute('data-toggle');
       const panel = document.querySelector(sel);
       btn.addEventListener('click', () => {
         const isOpen = !panel.hasAttribute('hidden');
-        if(isOpen){
-          panel.setAttribute('hidden','');
-          btn.setAttribute('aria-expanded','false');
-        } else {
-          panel.removeAttribute('hidden');
-          btn.setAttribute('aria-expanded','true');
-        }
+        if(isOpen){ panel.setAttribute('hidden',''); btn.setAttribute('aria-expanded','false'); }
+        else { panel.removeAttribute('hidden'); btn.setAttribute('aria-expanded','true'); }
       });
     });
 
-    /* --- Dynamic Photos Strip --- */
+    /* Dynamic Photos Strip */
     const photoPool = [
       {src:'assets/traditional-chuppah-front.webp', alt:'חופה מסורתית - מבט קדמי'},
       {src:'assets/traditional-chuppah-angle.webp', alt:'חופה מסורתית - זווית'},
@@ -687,82 +665,56 @@
       {src:'assets/standing-chuppah-setup.webp', alt:'חופה עומדת – הדגמה 1'},
       {src:'assets/standing-chuppah-frame.webp', alt:'חופה עומדת – הדגמה 2'},
       {src:'assets/standing-chuppah-detail.webp', alt:'חופה עומדת – הדגמה 3'},
-      {src:'assets/chuppah-bamboo-outdoor.webp',      alt:'חופה – הדגמה כללית'}
+      {src:'assets/chuppah-bamboo-outdoor.webp', alt:'חופה – הדגמה כללית'}
     ];
     const strip = document.getElementById('photo-strip');
     const stripImgs = Array.from(strip.querySelectorAll('img'));
 
     function pickRandom(n, arr){
-      const copy = arr.slice();
-      const out = [];
+      const copy = arr.slice(); const out = [];
       while(out.length < Math.min(n, copy.length)){
         const i = Math.floor(Math.random() * copy.length);
         out.push(copy.splice(i,1)[0]);
       }
       return out;
     }
-
     function renderStrip(){
       const set = pickRandom(3, photoPool);
       stripImgs.forEach((img, i) => {
-        const it = set[i];
-        if(!it) return;
+        const it = set[i]; if(!it) return;
         img.style.opacity = '0';
         setTimeout(() => {
-          img.src = it.src;
-          img.alt = it.alt;
-          img.loading = "lazy";
-          img.style.opacity = '1';
+          img.src = it.src; img.alt = it.alt; img.loading = "lazy"; img.style.opacity = '1';
         }, 100);
       });
     }
-
     renderStrip();
     setInterval(renderStrip, 4500);
 
-    /* --- Lightbox (all galleries) --- */
+    /* Lightbox לכל הגלריות */
     (function(){
       const lb = document.getElementById('lightbox');
       const lbImg = lb.querySelector('img');
       const btnClose = lb.querySelector('.close');
-      const btnPrev = lb.querySelector('.prev');
-      const btnNext = lb.querySelector('.next');
-      let currentList = [];
-      let index = 0;
+      const btnPrev = lb.querySelector(' .prev');
+      const btnNext = lb.querySelector(' .next');
+      let currentList = []; let index = 0;
 
       const update = () => {
-        const img = currentList[index];
-        if(!img){ return; }
-        lbImg.src = img.src;
-        lbImg.alt = img.alt || 'תמונה מוגדלת';
+        const img = currentList[index]; if(!img){ return; }
+        lbImg.src = img.src; lbImg.alt = img.alt || 'תמונה מוגדלת';
       };
       const open = (list, i=0) => {
         if(!list || !list.length) return;
-        currentList = list;
-        index = Math.max(0, i);
-        update();
-        lb.classList.add('active');
-        lb.setAttribute('aria-hidden','false');
+        currentList = list; index = Math.max(0, i);
+        update(); lb.classList.add('active'); lb.setAttribute('aria-hidden','false');
       };
-      const close = () => {
-        lb.classList.remove('active');
-        lb.setAttribute('aria-hidden','true');
-        lbImg.src="";
-      };
-      const prev  = () => {
-        if(!currentList.length) return;
-        index = (index - 1 + currentList.length) % currentList.length;
-        update();
-      };
-      const next  = () => {
-        if(!currentList.length) return;
-        index = (index + 1) % currentList.length;
-        update();
-      };
+      const close = () => { lb.classList.remove('active'); lb.setAttribute('aria-hidden','true'); lbImg.src=""; };
+      const prev  = () => { if(!currentList.length) return; index = (index - 1 + currentList.length) % currentList.length; update(); };
+      const next  = () => { if(!currentList.length) return; index = (index + 1) % currentList.length; update(); };
 
       document.addEventListener('click', (e) => {
-        const targetImg = e.target.closest('.gallery img');
-        if(!targetImg) return;
+        const targetImg = e.target.closest('.gallery img'); if(!targetImg) return;
         const gal = targetImg.closest('.gallery');
         const imgs = Array.from(gal.querySelectorAll('img')).filter(im => im.src);
         const i = imgs.indexOf(targetImg);
@@ -772,9 +724,7 @@
       btnClose.addEventListener('click', close);
       btnPrev.addEventListener('click', prev);
       btnNext.addEventListener('click', next);
-      lb.addEventListener('click', (e) => {
-        if(e.target === lb) close();
-      });
+      lb.addEventListener('click', (e) => { if(e.target === lb) close(); });
       document.addEventListener('keydown', (e) => {
         if(lb.classList.contains('active')){
           if(e.key === 'Escape') close();
@@ -784,7 +734,7 @@
       });
     })();
 
-    // Mirror inline WhatsApp to floating button (if you change the number later)
+    // שמירת עקביות קישור וואטסאפ בין הכפתור הצף לקישור שבקונטקט
     const wa = document.getElementById('wa-float');
     const inline = document.querySelector('#contact a[href^="https://wa.me"]');
     if(wa && inline) inline.setAttribute('href', wa.getAttribute('href'));
