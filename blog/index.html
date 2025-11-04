@@ -1,37 +1,77 @@
 ---
 layout: none
-title: "בלוג חופה ישראלית"
+title: "בלוג | חופה ישראלית"
+permalink: /blog/
 ---
 
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>בלוג חופה ישראלית – טיפים ורעיונות לחתונות שטח</title>
-  <meta name="description" content="מאמרים בנושא חופות להשכרה, חופות לחתונת שטח, עיצוב חופה בצפון ובחיפה." />
+  <title>בלוג – חופה ישראלית</title>
+  <meta name="description" content="מאמרים על חופה: מסורת, משמעות, במבוק וטבע. סדרה קצרה ומדויקת לקראת הטקס שלכם." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="{{ site.url }}{{ site.baseurl }}/blog/" />
+  <meta property="og:title" content="בלוג – חופה ישראלית" />
+  <meta property="og:description" content="מאמרים קצרים על חופות: מקורות, משמעות, ובמבוק." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="{{ site.url }}{{ site.baseurl }}/blog/" />
 </head>
-<body style="font-family:Heebo,Arial;direction:rtl;margin:0;padding:20px;max-width:900px;margin:auto;">
-  <h1>בלוג חופה ישראלית</h1>
-  <p>מאמרים, טיפים ורעיונות בנושא חופות וחתונות שטח.</p>
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="logo" href="{{ site.baseurl }}/#about">
+        <img class="logo-img" src="{{ site.baseurl }}/assets/logo.jpeg" alt="חופה ישראלית - לוגו">
+      </a>
+      <nav class="menu">
+        <a href="{{ site.baseurl }}/#about">על חופה ישראלית</a>
+        <a href="{{ site.baseurl }}/#products">מוצרים</a>
+        <a href="{{ site.baseurl }}/#photos" data-combo="#testimonials">תמונות והמלצות</a>
+        <a href="{{ site.baseurl }}/#contact">להזמנות ויצירת קשר</a>
+        <a href="{{ site.baseurl }}/blog/" class="active" data-section="blog">בלוג</a>
+      </nav>
+    </div>
+  </header>
 
-  {% for post in paginator.posts %}
-    <article style="border-bottom:1px solid #ddd;margin-bottom:20px;padding-bottom:12px;">
-      <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
-      <small>פורסם ב־{{ post.date | date: "%-d.%m.%Y" }}</small>
-      {% if post.excerpt %}
-        <p>{{ post.excerpt | strip_html | truncate: 160 }}</p>
-      {% endif %}
-    </article>
-  {% endfor %}
+  <main class="container" style="padding:40px 16px">
+    <!-- Breadcrumbs -->
+    <nav aria-label="breadcrumb" style="margin:8px 0 18px;color:#5c6b7a;font-size:.95rem">
+      <a href="{{ site.baseurl }}/">דף הבית</a> › <span aria-current="page">בלוג</span>
+    </nav>
 
-  <div style="text-align:center;margin-top:30px;">
-    {% if paginator.previous_page %}
-      <a href="{{ paginator.previous_page_path | relative_url }}">עמוד קודם</a>
-    {% endif %}
-    {% if paginator.next_page %}
-      <a href="{{ paginator.next_page_path | relative_url }}">עמוד הבא</a>
-    {% endif %}
-  </div>
+    <h1 class="section-title">החופה – בין מסורת לטבע</h1>
+    <p class="section-desc" style="max-width:60ch">
+      סדרת מאמרים קצרים: מן המקרא וחז״ל, דרך המשמעות האנושית-קהילתית, ועד החומר שמחזיק את החופה – הבמבוק.
+    </p>
+
+    <!-- רשימת המאמרים -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px">
+      {% assign featured = site.posts | sort: 'date' | reverse %}
+      {% for post in featured %}
+        <article style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)">
+          <a href="{{ site.baseurl }}{{ post.url }}" style="text-decoration:none">
+            {% if post.card_image %}
+              <img src="{{ site.baseurl }}{{ post.card_image }}" alt="{{ post.card_image_alt | default: post.title }}" style="width:100%;height:180px;object-fit:cover;border-radius:12px;margin-bottom:10px;border:1px solid var(--border)">
+            {% endif %}
+            <h2 style="margin:.2em 0 .4em;font-size:1.15rem">{{ post.title }}</h2>
+            <p class="section-desc" style="margin:0 0 .6em">{{ post.excerpt | strip_html | truncate: 140 }}</p>
+            <span class="pill">קרא עוד ›</span>
+          </a>
+        </article>
+      {% endfor %}
+    </div>
+  </main>
+
+  <!-- JSON-LD Breadcrumbs -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BreadcrumbList",
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"name":"דף הבית","item":"{{ site.url }}{{ site.baseurl }}/"},
+      {"@type":"ListItem","position":2,"name":"בלוג","item":"{{ site.url }}{{ site.baseurl }}/blog/"}
+    ]
+  }
+  </script>
 </body>
 </html>
