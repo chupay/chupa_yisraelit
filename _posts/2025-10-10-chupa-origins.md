@@ -1,4 +1,4 @@
-
+---
 layout: blog_post
 title: "שורשי החופה במקרא ובתרבות היהודית"
 description: "מהיריעה המקראית ועד טקסי הנישואין – איך הפכה החופה לסמל של הגנה, אהבה ושותפות."
@@ -6,7 +6,7 @@ permalink: /blog/chuppah-origins/
 card_image: /assets/blog/chuppah-origins-hero.webp
 card_image_alt: "חופה מסורתית תחת כיפת השמים"
 tags: ["מסורת", "חופה ביהדות", "היסטוריה"]
-
+---
 
 ## החופה – מהיריעה המקראית לטקס המודרני
 
