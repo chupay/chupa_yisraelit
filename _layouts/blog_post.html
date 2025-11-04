@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{ page.title }}</title>
+  <meta name="description" content="{{ page.description }}">
+  <link rel="canonical" href="{{ site.url }}{{ site.baseurl }}{{ page.url }}" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="{{ page.title }}" />
+  <meta property="og:description" content="{{ page.description }}" />
+  <meta property="og:url" content="{{ site.url }}{{ site.baseurl }}{{ page.url }}" />
+  {% if page.card_image %}<meta property="og:image" content="{{ site.url }}{{ site.baseurl }}{{ page.card_image }}">{% endif %}
+
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --text:#0b1a2b; --muted:#5c6b7a; --brand:#1e88e5; --deep:#0d47a1;
+      --paper:#fff; --card:#f6f9fc; --border:#e6edf3; --shadow:0 14px 28px rgba(13,71,161,.08);
+      --radius:18px; --max:900px;
+    }
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:'Heebo',system-ui,-apple-system,Segoe UI,Roboto,Arial,Helvetica,sans-serif;
+         color:var(--text);line-height:1.9;font-size:19px;
+         background:radial-gradient(1200px 800px at 85% 10%, rgba(30,136,229,.10), transparent 60%),
+                    radial-gradient(900px 700px at 10% 90%, rgba(255,193,7,0.12), transparent 60%),
+                    linear-gradient(180deg, #eef6ff 0%, #fefdf8 60%, #eff6ff 100%);}
+    .wrap{max-width:var(--max);margin-inline:auto;padding:30px 16px 70px;}
+    nav.breadcrumbs{color:var(--muted);font-size:1rem;margin:6px 0 14px}
+    nav.breadcrumbs a{color:var(--deep);text-decoration:none;border-bottom:1px dotted rgba(13,71,161,.35)}
+    header.post h1{font-size:clamp(30px,4.6vw,44px);line-height:1.2;margin:.2em 0 .4em;font-weight:800;color:#0a2342}
+    .meta{color:var(--muted);font-size:.95rem;margin-bottom:14px}
+    .tags{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 18px}
+    .tag{font-size:.85rem;background:#eef5ff;color:var(--deep);border:1px solid #d9e7ff;
+         padding:.25rem .55rem;border-radius:999px}
+    article{background:var(--paper);border:1px solid var(--border);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+    article h2{color:var(--deep);margin:1.2em 0 .4em;font-size:clamp(20px,2.6vw,26px)}
+    article h3{color:#17345a;margin:1em 0 .4em;font-size:clamp(18px,2.2vw,22px)}
+    article p{margin:.6em 0}
+    .post-cta{margin-top:22px;padding-top:14px;border-top:1px dashed var(--border);color:var(--muted)}
+    .btn{display:inline-block;margin-top:10px;padding:10px 14px;border-radius:14px;background:var(--brand);color:#fff;
+         font-weight:700;border:1px solid var(--brand);text-decoration:none;box-shadow:0 6px 16px rgba(30,136,229,.18)}
+    @media (max-width:640px){body{font-size:20px}}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <!-- Breadcrumbs -->
+    <nav class="breadcrumbs" aria-label="breadcrumb">
+      <a href="{{ site.baseurl }}/">דף הבית</a> ›
+      <a href="{{ site.baseurl }}/blog/">בלוג</a> ›
+      <span aria-current="page">{{ page.title }}</span>
+    </nav>
+
+    <header class="post">
+      <h1>{{ page.title }}</h1>
+      <div class="meta">
+        {% if page.date %}פורסם: {{ page.date | date: "%d.%m.%Y" }} · {% endif %}
+        זמן קריאה: {{ content | number_of_words | divided_by: 220 | plus: 1 }} ד׳
+      </div>
+      {% if page.tags %}
+      <div class="tags" aria-label="תגיות">
+        {% for t in page.tags %}
+          <span class="tag">#{{ t }}</span>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </header>
+
+    <article>
+      {{ content }}
+      <div class="post-cta">
+        רוצים לראות דגמי חופות? גשו אל
+        <a href="{{ site.baseurl }}/#products">עמוד המוצרים</a>
+        או <a href="{{ site.baseurl }}/#contact">צרו קשר</a>.
+      </div>
+    </article>
+  </main>
+</body>
+</html>
