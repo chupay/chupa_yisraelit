@@ -1,7 +1,9 @@
 ---
 layout: blog_post
 title: "במבוק – בין חוזק לגמישות: החומר שמחזיק את החופה"
-description: "מדוע הבמבוק מסמל חוסן וגמישות, ומה הופך אותו לבחירה טבעית לחופה."
+description: "החומר שמחזיק את החופה מחזיק גם תפיסת עולם:
+ רכות שהיא כוח, גמישות שהיא יציבות.
+ סיפורו של הצמח שהפך סמל לזוגיות חיה ונושמת."
 permalink: /blog/bamboo-chuppah/
 card_image: /assets/blog/bamboo-chuppah-hero.webp
 card_image_alt: "חופת במבוק בטבע"
