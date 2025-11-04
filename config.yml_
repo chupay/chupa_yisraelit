@@ -16,3 +16,7 @@ paginate_path: "/blog/page:num"
 markdown: kramdown
 kramdown:
   input: GFM
+
+collections:
+  posts:
+    output: true
