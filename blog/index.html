@@ -103,6 +103,12 @@ permalink: /blog/
     footer.cta{
       margin-top:26px;padding-top:16px;border-top:1px dashed var(--border);color:var(--muted);text-align:center;
     }
+    /* pager */
+    .pager{
+      margin-top:24px;display:flex;gap:10px;justify-content:center;align-items:center;
+      flex-wrap:wrap;color:var(--muted);
+    }
+    .pager .btn{margin-top:0}
     @media (max-width:640px){
       body{font-size:20px}
     }
@@ -131,7 +137,7 @@ permalink: /blog/
       {%- comment -%}
         נבחר רק פוסטים שה־URL שלהם תחת /blog/ (כדי לא לערבב עם פוסטים אחרים אם יהיו)
       {%- endcomment -%}
-      {%- assign blog_posts = site.posts | where_exp: "p", "p.url contains '/blog/'" -%}
+      {%- assign blog_posts = paginator.posts | where_exp: "p", "p.url contains '/blog/'" -%}
       {%- for post in blog_posts -%}
       <article class="card" data-title="{{ post.title | escape }}" data-desc="{{ post.description | escape }}">
         <a href="{{ site.baseurl }}{{ post.url }}" aria-label="למאמר: {{ post.title }}">
@@ -153,6 +159,17 @@ permalink: /blog/
     </section>
 
     <div id="empty" class="empty" style="display:none">לא נמצאו מאמרים התואמים לחיפוש.</div>
+
+    <!-- Pager -->
+    <nav class="pager" aria-label="דפדוף">
+      {% if paginator.previous_page %}
+        <a class="btn" href="{{ paginator.previous_page_path | prepend: site.baseurl }}">‹ הקודם</a>
+      {% endif %}
+      <span>עמוד {{ paginator.page }} מתוך {{ paginator.total_pages }}</span>
+      {% if paginator.next_page %}
+        <a class="btn" href="{{ paginator.next_page_path | prepend: site.baseurl }}">הבא ›</a>
+      {% endif %}
+    </nav>
 
     <footer class="cta">
       מחפשים חופות להשכרה? עברו אל <a href="{{ site.baseurl }}/#products">עמוד המוצרים</a> או <a href="{{ site.baseurl }}/#contact">צרו קשר</a>.
