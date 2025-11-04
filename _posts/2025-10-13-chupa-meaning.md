@@ -1,10 +1,11 @@
 ---
-layout: none
+layout: blog_post
 title: "החופה כמרחב אנושי וקהילתי"
-description: "החופה היא בית פתוח, מרחב אנושי המחבר בין פרטיות לשייכות ובין זוג לקהילה."
+description: "מחסה זמני, בית פתוח, ומפגש בין זוג לקהילה – משמעות החופה במרחב החברתי."
 permalink: /blog/chuppah-meaning/
 card_image: /assets/blog/chuppah-meaning-hero.webp
-card_image_alt: "חופה קהילתית פתוחה בטבע"
+card_image_alt: "חופה פתוחה בקהילה"
+tags: ["קהילה", "משמעות", "חופה אלטרנטיבית"]
 ---
 
 <!DOCTYPE html>
