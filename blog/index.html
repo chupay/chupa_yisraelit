@@ -1,0 +1,37 @@
+---
+layout: none
+title: "בלוג חופה ישראלית"
+---
+
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>בלוג חופה ישראלית – טיפים ורעיונות לחתונות שטח</title>
+  <meta name="description" content="מאמרים בנושא חופות להשכרה, חופות לחתונת שטח, עיצוב חופה בצפון ובחיפה." />
+</head>
+<body style="font-family:Heebo,Arial;direction:rtl;margin:0;padding:20px;max-width:900px;margin:auto;">
+  <h1>בלוג חופה ישראלית</h1>
+  <p>מאמרים, טיפים ורעיונות בנושא חופות וחתונות שטח.</p>
+
+  {% for post in paginator.posts %}
+    <article style="border-bottom:1px solid #ddd;margin-bottom:20px;padding-bottom:12px;">
+      <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+      <small>פורסם ב־{{ post.date | date: "%-d.%m.%Y" }}</small>
+      {% if post.excerpt %}
+        <p>{{ post.excerpt | strip_html | truncate: 160 }}</p>
+      {% endif %}
+    </article>
+  {% endfor %}
+
+  <div style="text-align:center;margin-top:30px;">
+    {% if paginator.previous_page %}
+      <a href="{{ paginator.previous_page_path | relative_url }}">עמוד קודם</a>
+    {% endif %}
+    {% if paginator.next_page %}
+      <a href="{{ paginator.next_page_path | relative_url }}">עמוד הבא</a>
+    {% endif %}
+  </div>
+</body>
+</html>
