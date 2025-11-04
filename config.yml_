@@ -1,0 +1,18 @@
+title: "חופה ישראלית"
+url: "https://chupay.github.io"
+baseurl: "/chupa_yisraelit"   # השאר ככה אם האתר יושב תחת פרויקט GitHub Pages
+language: he
+timezone: Asia/Jerusalem
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-paginate
+
+paginate: 6
+paginate_path: "/blog/page:num"
+
+markdown: kramdown
+kramdown:
+  input: GFM
