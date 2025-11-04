@@ -2,6 +2,7 @@ title: "חופה ישראלית"
 url: "https://chupay.github.io"
 baseurl: "/chupa_yisraelit"   # השאר ככה אם האתר יושב תחת פרויקט GitHub Pages
 language: he
+permalink: /blog/:title/
 timezone: Asia/Jerusalem
 
 plugins:
