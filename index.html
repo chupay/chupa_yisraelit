@@ -352,7 +352,7 @@
         <a href="#products">מוצרים</a>
         <a href="#photos" data-combo="#testimonials">תמונות והמלצות</a>
         <a href="#contact">להזמנות ויצירת קשר</a>
-        <a href="/chupa_yisraelit/blog/">בלוג</a>
+        <a href="/chupa_yisraelit/blog/" data-section="blog">בלוג</a>
       </nav>
     </div>
   </header>
@@ -782,6 +782,11 @@
     const wa = document.getElementById('wa-float');
     const inline = document.querySelector('#contact a[href^="https://wa.me"]');
     if(wa && inline) inline.setAttribute('href', wa.getAttribute('href'));
+    // --- Highlight "בלוג" when on blog page ---
+    const blogLink = document.querySelector('.menu a[data-section="blog"]');
+    if (blogLink && window.location.pathname.includes('/blog')) {
+      blogLink.classList.add('active');
+    }
   </script>
 </body>
 </html>
