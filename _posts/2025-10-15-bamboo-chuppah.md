@@ -5,7 +5,7 @@ description: "החומר שמחזיק את החופה מחזיק גם תפיסת
  רכות שהיא כוח, גמישות שהיא יציבות.
  סיפורו של הצמח שהפך סמל לזוגיות חיה ונושמת."
 permalink: /blog/bamboo-chuppah/
-card_image: /assets/blog/bamboo-chuppah-hero.webp
+card_image: /assets/bamboo-chuppah-hero.webp
 card_image_alt: "חופת במבוק בטבע"
 tags: ["במבוק", "עיצוב חופה", "טבע"]
 ---
