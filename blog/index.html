@@ -169,7 +169,7 @@ permalink: /blog/
         נבחר רק פוסטים שה־URL שלהם תחת /blog/ (כדי לא לערבב עם פוסטים אחרים אם יהיו)
       {%- endcomment -%}
       {%- assign blog_posts = paginator.posts | where_exp: "p", "p.url contains '/blog/'" -%}
-      {%- for post in blog_posts -%}
+      {%- for post in blog_posts reversed -%}
       <article class="card" data-title="{{ post.title | escape }}" data-desc="{{ post.description | escape }}">
         <a href="{{ site.baseurl }}{{ post.url }}" aria-label="למאמר: {{ post.title }}">
           <img
