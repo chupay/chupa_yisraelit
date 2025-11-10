@@ -4,7 +4,7 @@ title: "שורשי החופה במקרא ובתרבות היהודית"
 description: "“וּבָרָא ה' עַל כָּל מְכוֹן הַר צִיּוֹן... כִּי עַל כָּל כָּבוֹד חֻפָּה.”
  מהמסורת המקראית ועד החופות של ימינו – איך הפכה יריעה פשוטה לסמל של אהבה, הגנה ושותפות."
 permalink: /blog/chuppah-origins/
-card_image: /assets/blog/chuppah-origins-hero.webp
+card_image: /assets/chuppah-origins-hero.webp
 card_image_alt: "חופה מסורתית תחת כיפת השמים"
 tags: ["מסורת", "חופה ביהדות", "היסטוריה"]
 ---
