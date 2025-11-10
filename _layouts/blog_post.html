@@ -148,7 +148,36 @@
     }
   </style>
 </head>
+<script>
+  // הפוך את כל תמונות המאמר ל-lazy + decoding async, ושמור על יחס תקין
+  (function(){
+    const imgs = document.querySelectorAll('article img');
+    imgs.forEach(img => {
+      img.setAttribute('loading', 'lazy');
+      img.setAttribute('decoding', 'async');
 
+      // אם אין width/height – ננסה לקבע אחרי שהדפדפן ידע natural sizes
+      if (!img.hasAttribute('width') || !img.hasAttribute('height')) {
+        if (img.complete && img.naturalWidth) {
+          img.setAttribute('width', img.naturalWidth);
+          img.setAttribute('height', img.naturalHeight);
+        } else {
+          img.addEventListener('load', () => {
+            if (img.naturalWidth) {
+              img.setAttribute('width', img.naturalWidth);
+              img.setAttribute('height', img.naturalHeight);
+            }
+          }, { once: true });
+        }
+      }
+
+      // הצעת sizes כללית – טוב במיוחד לתמונות בתוכן
+      if (!img.hasAttribute('sizes')) {
+        img.setAttribute('sizes', '(max-width: 900px) 100vw, 900px');
+      }
+    });
+  })();
+</script>
 <body>
   <main class="wrap">
     <!-- Breadcrumbs -->
