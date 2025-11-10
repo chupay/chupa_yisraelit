@@ -112,6 +112,23 @@ permalink: /blog/
     @media (max-width:640px){
       body{font-size:20px}
     }
+    /* גריד מתחיל מימין לשמאל כך שהפוסט הראשון יהיה הכי ימני */
+    .grid{ direction: rtl; }
+    
+    /* תמונות אחידות, בלי קפיצות Layout */
+    .thumb{
+      aspect-ratio: 16/9;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      display: block;
+    }
+    
+    /* שיפור נגישות/קליקיות: הכפתור נראה כמו כפתור אמיתי גם בנייד */
+    .card .btn{
+      display: inline-block;
+      touch-action: manipulation;
+    }
   </style>
 </head>
 <body>
