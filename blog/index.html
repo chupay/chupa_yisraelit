@@ -172,7 +172,15 @@ permalink: /blog/
       {%- for post in blog_posts -%}
       <article class="card" data-title="{{ post.title | escape }}" data-desc="{{ post.description | escape }}">
         <a href="{{ site.baseurl }}{{ post.url }}" aria-label="למאמר: {{ post.title }}">
-          <img class="thumb" src="{{ post.card_image | default: '/assets/blog/default-card.webp' | prepend: site.baseurl }}" alt="{{ post.card_image_alt | default: post.title }}">
+          <img
+          class="thumb"
+          src="{{ post.card_image | default: '/assets/blog/default-card.webp' | prepend: site.baseurl }}"
+          alt="{{ post.card_image_alt | default: post.title }}"
+          loading="lazy"
+          decoding="async"
+          width="800" height="450"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          />
         </a>
         <div class="card-body">
           <h2><a href="{{ site.baseurl }}{{ post.url }}" style="text-decoration:none;color:inherit">{{ post.title }}</a></h2>
