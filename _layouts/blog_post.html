@@ -97,7 +97,6 @@
       margin:1em 0 .4em;
       font-size:clamp(18px,2.2vw,22px);
     }
-    /* תמונות בגוף המאמר – מלא רוחב, עגולות בעדינות, בלי גלישות */
     article img{
       max-width: 100%;
       height: auto;
@@ -131,7 +130,6 @@
     }
     @media (max-width:640px){body{font-size:20px}}
 
-    /* אייקוני שיתוף */
     .share-icon {
       width: 46px;
       height: 46px;
@@ -148,15 +146,14 @@
     }
   </style>
 </head>
+
 <script>
-  // הפוך את כל תמונות המאמר ל-lazy + decoding async, ושמור על יחס תקין
   (function(){
     const imgs = document.querySelectorAll('article img');
     imgs.forEach(img => {
       img.setAttribute('loading', 'lazy');
       img.setAttribute('decoding', 'async');
 
-      // אם אין width/height – ננסה לקבע אחרי שהדפדפן ידע natural sizes
       if (!img.hasAttribute('width') || !img.hasAttribute('height')) {
         if (img.complete && img.naturalWidth) {
           img.setAttribute('width', img.naturalWidth);
@@ -171,16 +168,15 @@
         }
       }
 
-      // הצעת sizes כללית – טוב במיוחד לתמונות בתוכן
       if (!img.hasAttribute('sizes')) {
         img.setAttribute('sizes', '(max-width: 900px) 100vw, 900px');
       }
     });
   })();
 </script>
+
 <body>
   <main class="wrap">
-    <!-- Breadcrumbs -->
     <nav class="breadcrumbs" aria-label="breadcrumb">
       <a href="{{ site.baseurl }}/">דף הבית</a> ›
       <a href="{{ site.baseurl }}/blog/">בלוג</a> ›
@@ -216,8 +212,9 @@
     <div class="share-buttons" style="margin-top:50px;text-align:center;">
       <p style="color:#4b5563;font-weight:500;margin-bottom:12px;font-size:1.1em;">שתפו את המאמר:</p>
       <div class="share-icons" style="display:flex;justify-content:center;gap:16px;">
-        <!-- Facebook -->
-        <a href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ page.url }}"
+
+        <!-- Facebook – FIXED -->
+        <a href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ site.baseurl }}{{ page.url }}"
            target="_blank" rel="noopener" aria-label="שיתוף בפייסבוק"
            class="share-icon fb" title="שתפו בפייסבוק">  
            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="#fff">
@@ -225,8 +222,9 @@
              <path fill="#fff" d="M15.12 8.45h-1.67c-.24 0-.45.21-.45.47v1.48h2.12l-.27 2.07h-1.85v5.34H10.8v-5.34H9v-2.07h1.8V8.73c0-1.67 1.23-2.93 3.06-2.93.87 0 1.62.07 1.84.1v1.93z"/>
            </svg>
         </a>
-        <!-- WhatsApp -->
-        <a href="https://api.whatsapp.com/send?text={{ page.title | url_encode }}%20{{ site.url }}{{ page.url }}"
+
+        <!-- WhatsApp – FIXED -->
+        <a href="https://api.whatsapp.com/send?text={{ page.title | url_encode }}%20{{ site.url }}{{ site.baseurl }}{{ page.url }}"
            target="_blank" rel="noopener" aria-label="שיתוף בוואטסאפ"
            class="share-icon wa" title="שתפו בוואטסאפ">
            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="#25D366">
@@ -234,8 +232,9 @@
              <path fill="#fff" d="M17.47 6.53A6.92 6.92 0 0 0 12 4a7 7 0 0 0-7 7c0 1.24.33 2.45.95 3.51l-.63 2.3 2.38-.62A7.02 7.02 0 0 0 12 18.99c3.86 0 7-3.13 7-6.99 0-1.87-.73-3.63-2.03-4.97Z"/>
            </svg>
         </a>
-        <!-- Instagram -->
-        <a href="https://www.instagram.com/?url={{ site.url }}{{ page.url }}"
+
+        <!-- Instagram – FIXED -->
+        <a href="https://www.instagram.com/?url={{ site.url }}{{ site.baseurl }}{{ page.url }}"
            target="_blank" rel="noopener" aria-label="שיתוף באינסטגרם"
            class="share-icon ig" title="שתפו באינסטגרם">
            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24">
@@ -248,10 +247,10 @@
              <path fill="#fff" d="M12 7.3a4.7 4.7 0 1 0 0 9.4 4.7 4.7 0 0 0 0-9.4Zm0 7.7a3 3 0 1 1 0-6 3 3 0 0 1 0 6Zm4.8-8.5a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0ZM18 12c0 3.3-2.7 6-6 6s-6-2.7-6-6 2.7-6 6-6 6 2.7 6 6Z"/>
            </svg>
         </a>
+
       </div>
     </div>
 
-    <!-- מאמר קודם / הבא -->
     {% if page.previous or page.next %}
     <hr style="margin:60px 0 40px;border:none;border-top:1px dashed var(--border);" />
     <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
