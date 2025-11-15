@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{{ page.title }}</title>
   <meta name="description" content="{{ page.description }}">
-  <link rel="canonical" href="{{ site.url }}{{ site.baseurl }}{{ page.url }}" />
+  <link rel="canonical" href="https://chupay.github.io{{ site.baseurl }}{{ page.url }}" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="article" />
   <meta property="og:title" content="{{ page.title }}" />
   <meta property="og:description" content="{{ page.description }}" />
-  <meta property="og:url" content="{{ site.url }}{{ site.baseurl }}{{ page.url }}" />
-  {% if page.card_image %}<meta property="og:image" content="{{ site.url }}{{ site.baseurl }}{{ page.card_image }}">{% endif %}
+  <meta property="og:url" content="https://chupay.github.io{{ site.baseurl }}{{ page.url }}" />
+  {% if page.card_image %}<meta property="og:image" content="https://chupay.github.io{{ site.baseurl }}{{ page.card_image }}">{% endif %}
 
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;800&display=swap" rel="stylesheet">
 
@@ -214,7 +214,7 @@
       <div class="share-icons" style="display:flex;justify-content:center;gap:16px;">
 
         <!-- Facebook – FIXED -->
-        <a href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ site.baseurl }}{{ page.url }}"
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://chupay.github.io{{ site.baseurl }}{{ page.url | escape }}"
            target="_blank" rel="noopener" aria-label="שיתוף בפייסבוק"
            class="share-icon fb" title="שתפו בפייסבוק">  
            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="#fff">
@@ -224,7 +224,7 @@
         </a>
 
         <!-- WhatsApp – FIXED -->
-        <a href="https://api.whatsapp.com/send?text={{ page.title | url_encode }}%20{{ site.url }}{{ site.baseurl }}{{ page.url }}"
+        <a href="https://api.whatsapp.com/send?text={{ page.title | url_encode }}%20https://chupay.github.io{{ site.baseurl }}{{ page.url | url_encode }}"
            target="_blank" rel="noopener" aria-label="שיתוף בוואטסאפ"
            class="share-icon wa" title="שתפו בוואטסאפ">
            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="#25D366">
@@ -234,7 +234,7 @@
         </a>
 
         <!-- Instagram – FIXED -->
-        <a href="https://www.instagram.com/?url={{ site.url }}{{ site.baseurl }}{{ page.url }}"
+        <a href="https://www.instagram.com/?url=https://chupay.github.io{{ site.baseurl }}{{ page.url | escape }}"
            target="_blank" rel="noopener" aria-label="שיתוף באינסטגרם"
            class="share-icon ig" title="שתפו באינסטגרם">
            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24">
