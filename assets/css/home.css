@@ -162,7 +162,7 @@ h2.section-title{
 }
 .lightbox.active{display:flex}
 .lightbox img{max-width:90vw;max-height:80vh;border-radius:12px}
-.lightbox img[src=""]{display:none}
+.lightbox img:not([src]){display:none}
 .lightbox .close,.lightbox .prev,.lightbox .next{
   position:absolute;
   background:rgba(255,255,255,.92);
@@ -175,8 +175,8 @@ h2.section-title{
   font-size:24px
 }
 .lightbox .close{top:20px;inset-inline-end:20px}
-.lightbox .prev{left:24px}
-.lightbox .next{right:24px}
+.lightbox .prev{right:24px}
+.lightbox .next{left:24px}
 
 @media (max-width:900px){
   .product{

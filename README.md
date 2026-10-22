@@ -11,7 +11,7 @@
 
 | קובץ / תיקייה | מה זה |
 |---|---|
-| `index.html` | עמוד הנחיתה – התוכן, העיצוב וה-JavaScript שלו. התפריט והפוטר מגיעים מ-`_includes/`. |
+| `index.html` | עמוד הנחיתה – התוכן. העיצוב ב-`assets/css/home.css`, ה-JavaScript ב-`assets/js/home.js`, התפריט והפוטר מ-`_includes/`. |
 | `blog/index.html` | עמוד הבלוג (`/blog/`) – רשימת המאמרים ככרטיסים, עם דפדוף. |
 | `_posts/` | מאמרי הבלוג, קובץ Markdown לכל מאמר. |
 | `_layouts/blog_post.html` | התבנית שבה מוצג כל מאמר. |
@@ -85,11 +85,11 @@ git push
 
 - **טקסטים** – לחפש את הטקסט בקובץ ולהחליף.
 - **מחירים** – מופיעים בשני מקומות: כרטיס המוצר (`class="price"`) ותשובה בשאלות הנפוצות.
-- **תמונות ברצועה המתחלפת** – רשימת `photoPool` בסקריפט בתחתית הקובץ.
+- **תמונות ברצועה המתחלפת** – רשימת `photoPool` ב-`assets/js/home.js`. כל תמונה מוצגת אותו זמן; הרצועה עוצרת כשהיא לא על המסך, כשהעכבר עליה או כשתמונה פתוחה במסך מלא.
 - **מוצר חדש** – לשכפל `<article class="product">` ולהחליף את כל המופעים של `prod1`/`prod2` (`id`, `aria-labelledby`, `aria-controls`, `data-toggle`, `data-gallery`).
 - **גלריה** – כל תמונה בתוך `class="gallery"` נפתחת במסך מלא בלחיצה.
 - **סקשן חדש** – `<section id="...">` בתוך `<main>` + קישור בתפריט ב-`_includes/site-header.html`.
-- **צבעים** – משתני CSS בתחילת `<style>` (`--brand`, `--accent` וכו').
+- **צבעים** – משתני CSS בתחילת `assets/css/home.css` (`--brand`, `--accent` וכו').
 - **WhatsApp / טלפון** – המספר מופיע בכפתור הצף (`_includes/site-footer.html`), בסקשן `#contact`, בנתוני ה-schema בראש `index.html` ובעמוד `404.html`.
 
 ### SEO
