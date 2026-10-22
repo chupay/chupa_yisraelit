@@ -144,36 +144,16 @@
       transform: translateY(-3px);
       opacity: 0.9;
     }
+    button.share-icon{border:0;padding:0;background:none;cursor:pointer;font:inherit}
+    .share-buttons{margin-top:50px;text-align:center}
+    .share-title{color:#4b5563;font-weight:500;margin-bottom:12px;font-size:1.1em}
+    .share-icons{display:flex;justify-content:center;gap:16px}
+    .share-status{min-height:1.4em;margin:10px 0 0;color:var(--muted);font-size:.9em}
+    .post-sep{margin:60px 0 40px;border:none;border-top:1px dashed var(--border)}
+    .post-nav{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+    .btn.btn-muted{background:#cfd8dc;color:#0d47a1;border-color:#cfd8dc}
   </style>
 </head>
-
-<script>
-  (function(){
-    const imgs = document.querySelectorAll('article img');
-    imgs.forEach(img => {
-      img.setAttribute('loading', 'lazy');
-      img.setAttribute('decoding', 'async');
-
-      if (!img.hasAttribute('width') || !img.hasAttribute('height')) {
-        if (img.complete && img.naturalWidth) {
-          img.setAttribute('width', img.naturalWidth);
-          img.setAttribute('height', img.naturalHeight);
-        } else {
-          img.addEventListener('load', () => {
-            if (img.naturalWidth) {
-              img.setAttribute('width', img.naturalWidth);
-              img.setAttribute('height', img.naturalHeight);
-            }
-          }, { once: true });
-        }
-      }
-
-      if (!img.hasAttribute('sizes')) {
-        img.setAttribute('sizes', '(max-width: 900px) 100vw, 900px');
-      }
-    });
-  })();
-</script>
 
 <body>
 {% include site-header.html %}
@@ -210,11 +190,11 @@
     </article>
 
     <!-- כפתורי שיתוף -->
-    <div class="share-buttons" style="margin-top:50px;text-align:center;">
-      <p style="color:#4b5563;font-weight:500;margin-bottom:12px;font-size:1.1em;">שתפו את המאמר:</p>
-      <div class="share-icons" style="display:flex;justify-content:center;gap:16px;">
+    <div class="share-buttons">
+      <p class="share-title">שתפו את המאמר:</p>
+      <div class="share-icons">
 
-        <!-- Facebook – FIXED -->
+        <!-- Facebook -->
         <a href="https://www.facebook.com/sharer/sharer.php?u=https://chupay.github.io{{ site.baseurl }}{{ page.url | escape }}"
            target="_blank" rel="noopener" aria-label="שיתוף בפייסבוק"
            class="share-icon fb" title="שתפו בפייסבוק">  
@@ -224,7 +204,7 @@
            </svg>
         </a>
 
-        <!-- WhatsApp – FIXED -->
+        <!-- WhatsApp -->
         <a href="https://api.whatsapp.com/send?text={{ page.title | url_encode }}%20https://chupay.github.io{{ site.baseurl }}{{ page.url | url_encode }}"
            target="_blank" rel="noopener" aria-label="שיתוף בוואטסאפ"
            class="share-icon wa" title="שתפו בוואטסאפ">
@@ -234,31 +214,26 @@
            </svg>
         </a>
 
-        <!-- Instagram – FIXED -->
-        <a href="https://www.instagram.com/?url=https://chupay.github.io{{ site.baseurl }}{{ page.url | escape }}"
-           target="_blank" rel="noopener" aria-label="שיתוף באינסטגרם"
-           class="share-icon ig" title="שתפו באינסטגרם">
-           <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24">
-             <linearGradient id="ig" x1="0" x2="1" y1="1" y2="0">
-               <stop offset="0%" stop-color="#f58529"/>
-               <stop offset="50%" stop-color="#dd2a7b"/>
-               <stop offset="100%" stop-color="#8134af"/>
-             </linearGradient>
-             <circle cx="12" cy="12" r="12" fill="url(#ig)"/>
-             <path fill="#fff" d="M12 7.3a4.7 4.7 0 1 0 0 9.4 4.7 4.7 0 0 0 0-9.4Zm0 7.7a3 3 0 1 1 0-6 3 3 0 0 1 0 6Zm4.8-8.5a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0ZM18 12c0 3.3-2.7 6-6 6s-6-2.7-6-6 2.7-6 6-6 6 2.7 6 6Z"/>
+        <!-- Copy link / native share (Instagram has no web share link) -->
+        <button type="button" class="share-icon copy" id="share-copy"
+                data-url="{{ site.url }}{{ site.baseurl }}{{ page.url }}" data-title="{{ page.title | escape }}"
+                aria-label="שיתוף או העתקת קישור" title="שיתוף / העתקת קישור">
+           <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" aria-hidden="true">
+             <circle cx="12" cy="12" r="12" fill="#0d47a1"/>
+             <path fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" d="M10.6 13.4a3 3 0 0 0 4.2 0l2.1-2.1a3 3 0 0 0-4.2-4.2l-.9.9M13.4 10.6a3 3 0 0 0-4.2 0l-2.1 2.1a3 3 0 0 0 4.2 4.2l.9-.9"/>
            </svg>
-        </a>
+        </button>
 
       </div>
+      <p class="share-status" id="share-status" role="status"></p>
     </div>
 
     {% if page.previous or page.next %}
-    <hr style="margin:60px 0 40px;border:none;border-top:1px dashed var(--border);" />
-    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+    <hr class="post-sep" />
+    <div class="post-nav">
       {% if page.previous %}
         <a href="{{ site.baseurl }}{{ page.previous.url }}"
-           class="btn"
-           style="background:#cfd8dc;color:#0d47a1;border-color:#cfd8dc;">
+           class="btn btn-muted">
            ‹ {{ page.previous.title }}
         </a>
       {% endif %}
@@ -271,5 +246,27 @@
 
   </main>
 {% include site-footer.html %}
+  <script>
+    // Phones/tablets: open the native share sheet. Desktop: copy the link.
+    (function(){
+      const btn = document.getElementById('share-copy');
+      const status = document.getElementById('share-status');
+      if(!btn) return;
+      btn.addEventListener('click', async () => {
+        const url = btn.dataset.url;
+        if(navigator.share && window.matchMedia('(pointer: coarse)').matches){
+          try { await navigator.share({ title: btn.dataset.title, url }); } catch(e) {}
+          return;
+        }
+        try {
+          await navigator.clipboard.writeText(url);
+          status.textContent = 'הקישור הועתק ✓';
+        } catch(e) {
+          status.textContent = url;
+        }
+        setTimeout(() => { status.textContent = ''; }, 3000);
+      });
+    })();
+  </script>
 </body>
 </html>
