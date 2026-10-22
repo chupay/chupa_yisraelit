@@ -16,7 +16,7 @@
 | `_posts/` | מאמרי הבלוג, קובץ Markdown לכל מאמר. |
 | `_layouts/blog_post.html` | התבנית שבה מוצג כל מאמר. |
 | `chuppah-haifa.html`, `outdoor-wedding.html`, `keywords.html` | עמודי SEO קצרים. |
-| `assets/` | תמונות ולוגו (בעיקר `.webp`). |
+| `assets/img/` | תמונות, לפי תיקיות: `brand/` (לוגו), `products/` (מוצרים ותמונה ראשית), `gallery/` (תמונות מאירועים), `blog/` (תמונות מאמרים). שמות קבצים באנגלית, שמתארים מה בתמונה. |
 | `_config.yml` | הגדרות Jekyll: כתובת, שפה, פלאגינים, דפדוף בבלוג. |
 | `robots.txt` | הנחיות למנועי חיפוש. מפנה ל-`sitemap.xml`. |
 | `Gemfile` | לתצוגה מקומית בלבד (לא משפיע על האתר החי). |
@@ -65,13 +65,13 @@ git push
    title: "כותרת המאמר"
    description: "תקציר קצר – מופיע בכרטיס בבלוג ובגוגל"
    permalink: /blog/short-name/
-   card_image: /assets/my-image.webp
+   card_image: /assets/img/blog/my-image.webp
    card_image_alt: "תיאור התמונה"
    tags: ["תגית", "עוד תגית"]
    ---
    ```
 3. מתחת – תוכן המאמר ב-Markdown (`##` לכותרות משנה).
-4. לשמור את התמונה ב-`assets/`.
+4. לשמור את התמונה ב-`assets/img/blog/`.
 
 המאמר יופיע אוטומטית בעמוד הבלוג וב-sitemap.
 
