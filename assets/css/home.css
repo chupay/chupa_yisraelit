@@ -1,0 +1,215 @@
+/* Homepage styles (index.html). Header/footer styles are in site-chrome.css */
+
+:root{
+  --text:#0b1a2b;
+  --muted:#5c6b7a;
+  --brand:#1e88e5;
+  --brand-2:#0d47a1;
+  --accent:#ffb300;
+  --whatsapp:#25D366;
+  --card:#f6f9fc;
+  --border:#e6edf3;
+  --shadow:0 10px 20px rgba(13,71,161,.08);
+  --radius:16px;
+  --container:1100px;
+  --nav-bg: rgba(230,240,255,0.95);
+}
+
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:'Heebo',system-ui,-apple-system,Segoe UI,Roboto,Heebo,Arial,Helvetica,sans-serif;
+  font-size:18px;
+  color:var(--text);
+  line-height:1.6;
+  background:
+    radial-gradient(circle at 15% 10%, rgba(255,193,7,0.12), transparent 60%),
+    radial-gradient(circle at 85% 90%, rgba(255,171,0,0.10), transparent 60%),
+    linear-gradient(180deg, rgba(230,240,255,0.8) 0%, rgba(255,253,245,0.95) 60%, rgba(240,248,255,1) 100%),
+    radial-gradient(circle at 20% 10%, rgba(30,136,229,0.15), transparent 60%),
+    radial-gradient(circle at 80% 90%, rgba(13,71,161,0.1), transparent 70%),
+    #ffffff;
+  background-attachment: fixed;
+}
+
+a{color:var(--brand);text-decoration:none}
+img{max-width:100%;height:auto;display:block}
+
+section{padding:56px 16px}
+.container{max-width:var(--container);margin-inline:auto}
+.section-header{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.section-header h2{margin:0;font-size:clamp(20px,3.2vw,30px)}
+.section-desc{color:var(--muted);margin:6px 0 22px}
+
+.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center}
+h1.hero-title{
+  font-size:clamp(28px,4vw,40px);
+  line-height:1.2;
+  font-weight:800;
+  color:var(--text);
+  margin:10px 0 0.4em;
+}
+.hero .intro{
+  font-size:1.05em;
+  line-height:1.7;
+  font-weight:500;
+  color:var(--muted);
+  margin:0 0 1.5em;
+  max-width:40ch;
+}
+h2.section-title{
+  font-size:clamp(20px,2.8vw,26px);
+  line-height:1.3;
+  font-weight:700;
+  color:var(--brand-2);
+  margin:0 0 .8em;
+}
+.story p{margin:0 0 10px}
+.hero-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)}
+.hero-card img{max-height:320px;object-fit:cover;width:100%}
+
+.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.product{
+  display:grid;
+  grid-template-columns: 1fr minmax(180px,240px);
+  grid-template-areas:
+    "head media"
+    "cta  media"
+    "details details";
+  align-items:start;
+  gap:14px;
+  background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)
+}
+.product > header{grid-area:head}
+.product > figure{grid-area:media;margin:0;align-self:start}
+.product > figure img{
+  width:100%;
+  height:auto;
+  max-height:220px;
+  object-fit:cover;
+  border-radius:12px;
+  border:1px solid var(--border);
+}
+.product > div:has(.btn){grid-area:cta}
+.details{grid-area:details;overflow:hidden}
+.details-inner{padding:10px 0 0;border-top:1px dashed var(--border)}
+.specs{margin:0;padding:0 1rem}
+.specs li{margin:.4rem 0}
+.price{font-weight:800;color:var(--brand-2)}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:10px 14px;
+  border-radius:12px;
+  border:1px solid var(--brand);
+  color:#fff;
+  background:var(--brand);
+  cursor:pointer;
+  font-weight:600;
+  font-size:0.9rem;
+}
+.btn.secondary{background:transparent;color:var(--brand)}
+.btn:hover{filter:brightness(1.05)}
+
+.product .details .gallery{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:8px;
+}
+.product .details .gallery figure{
+  margin:0;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:12px;
+  overflow:hidden
+}
+.product .details .gallery img{
+  width:100%;
+  height:100px;
+  object-fit:cover;
+  max-height:none;
+}
+
+.photo-strip.gallery{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:16px;
+  align-items:stretch;
+}
+.photo-strip img{
+  width:100%;
+  height: clamp(220px, 28vw, 380px);
+  object-fit: cover;
+  border-radius:12px;
+  border:1px solid var(--border);
+  box-shadow:var(--shadow);
+  transition: opacity .35s ease;
+  cursor: zoom-in;
+  background:#fff;
+}
+
+.areas-desc{
+  color:var(--muted);
+  max-width:700px;
+  line-height:1.5;
+  margin:0 0 22px;
+}
+
+.lightbox{
+  position:fixed; top:0; right:0; bottom:0; left:0;
+  background:rgba(0,0,0,.8); display:none; align-items:center; justify-content:center; z-index:1200
+}
+.lightbox.active{display:flex}
+.lightbox img{max-width:90vw;max-height:80vh;border-radius:12px}
+.lightbox img[src=""]{display:none}
+.lightbox .close,.lightbox .prev,.lightbox .next{
+  position:absolute;
+  background:rgba(255,255,255,.92);
+  border:none;
+  border-radius:999px;
+  width:48px;
+  height:48px;
+  cursor:pointer;
+  box-shadow:var(--shadow);
+  font-size:24px
+}
+.lightbox .close{top:20px;inset-inline-end:20px}
+.lightbox .prev{left:24px}
+.lightbox .next{right:24px}
+
+@media (max-width:900px){
+  .product{
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "media"
+      "head"
+      "cta"
+      "details";
+  }
+  .product > figure img{max-height:200px}
+  .hero{grid-template-columns:1fr}
+}
+@media (max-width:600px){
+  .photo-strip.gallery{ grid-template-columns: 1fr; }
+  .photo-strip img{ height: clamp(200px, 45vw, 280px); }
+  .btn{ font-size:1rem; }
+}
+
+/* Card grids: testimonials, FAQ, contact */
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.info-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)}
+.testimonial .name{font-weight:700}
+.testimonial .quote{color:var(--muted)}
+.faq-item h3{margin-top:0;font-size:1rem}
+.faq-item p{margin:0;color:var(--muted)}
+.contact-card{padding:18px;max-width:640px}
+.contact-card p{margin:8px 0}
+.contact-card .section-desc{margin:0 0 10px}
+.section-desc.tagline{margin-top:12px;text-align:center;font-size:13px}
+.keywords-link{margin-top:8px;font-size:13px;text-align:center}
+
+/* Respect reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition:none !important;}
+}
