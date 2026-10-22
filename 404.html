@@ -1,0 +1,47 @@
+---
+permalink: /404.html
+sitemap: false
+---
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="{{ site.baseurl }}/favicon.ico" sizes="48x48" />
+  <title>העמוד לא נמצא | חופה ישראלית</title>
+  <meta name="robots" content="noindex" />
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root{ --text:#0b1a2b; --muted:#5c6b7a; --brand:#1e88e5; --whatsapp:#25D366; }
+    *{ box-sizing:border-box; }
+    body{
+      margin:0; min-height:100vh; display:grid; place-items:center; padding:24px 16px;
+      font-family:"Heebo",system-ui,Arial,sans-serif; color:var(--text); text-align:center;
+      background:linear-gradient(180deg,#eef6ff 0%,#fefdf8 60%,#eff6ff 100%);
+    }
+    img{ width:140px; height:auto; }
+    h1{ margin:16px 0 8px; font-size:1.8rem; }
+    p{ margin:0 0 24px; color:var(--muted); line-height:1.7; }
+    .links{ display:flex; flex-wrap:wrap; justify-content:center; gap:12px; }
+    .btn{
+      display:inline-block; padding:.7rem 1.2rem; border-radius:999px; font-weight:700;
+      text-decoration:none; background:var(--brand); color:#fff;
+    }
+    .btn.wa{ background:var(--whatsapp); }
+    .btn.light{ background:#fff; color:var(--brand); border:1px solid #cfe0f5; }
+  </style>
+</head>
+<body>
+  <main>
+    <img src="{{ site.baseurl }}/assets/img/brand/logo.webp" alt="חופה ישראלית - לוגו" width="441" height="500">
+    <h1>אופס, העמוד לא נמצא</h1>
+    <p>ייתכן שהקישור השתנה או שהעמוד הוסר.<br>אבל החופות עדיין כאן 🙂</p>
+    <div class="links">
+      <a class="btn" href="{{ site.baseurl }}/">לדף הבית</a>
+      <a class="btn light" href="{{ site.baseurl }}/#products">לחופות שלנו</a>
+      <a class="btn light" href="{{ site.baseurl }}/blog/">לבלוג</a>
+      <a class="btn wa" href="https://wa.me/972533431726" target="_blank" rel="noopener">שלחו לנו הודעה</a>
+    </div>
+  </main>
+</body>
+</html>
