@@ -4,7 +4,7 @@ title: "החופה כמרחב אנושי וקהילתי"
 description: "החופה אינה רק טקס נישואין – היא מקום מפגש בין יחיד וקהילה, בין פרטיות לשייכות.
  בית פתוח שמזכיר שכל אהבה נולדת מול שמיים פתוחים."
 permalink: /blog/chuppah-meaning/
-card_image: /assets/img/blog/chuppah-meaning-hero.webp
+card_image: /assets/img/blog/chuppah-community-ceremony-sketch.webp
 card_image_alt: "חופה פתוחה בקהילה"
 tags: ["קהילה", "משמעות", "חופה אלטרנטיבית"]
 ---
