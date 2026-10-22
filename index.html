@@ -60,6 +60,16 @@
       "addressRegion": "צפון",
       "addressLocality": "חיפה"
     },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "חופות להשכרה",
+      "itemListElement": [
+        {"@type": "Offer", "price": "500", "priceCurrency": "ILS",
+         "itemOffered": {"@type": "Product", "name": "חופה נישאת"}},
+        {"@type": "Offer", "price": "1000", "priceCurrency": "ILS",
+         "itemOffered": {"@type": "Product", "name": "חופה עומדת"}}
+      ]
+    },
     "areaServed": ["חיפה","גליל","עמקים","קריות","צפון","עמק יזרעאל","רמות מנשה"],
     "openingHoursSpecification": [{
       "@type": "OpeningHoursSpecification",
@@ -88,6 +98,39 @@
       "חתונה בטבע",
       "ציוד לחתונה",
       "ציוד חתונה"
+    ]
+  }
+  </script>
+  <!-- FAQ schema (must match the FAQ section text) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "כמה עולה חופה להשכרה?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "חופה נישאת מושכרת ב־500 ₪, וחופה עומדת יציבה (עם בסיסים) מושכרת ב־1000 ₪. המחיר כולל את כל מה שצריך לטקס - בלי הפתעות."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "אפשר להקים את החופה בחצר או בטבע?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "בודאי. החופות שלנו מתאימות לחתונות בחצר הבית, באירועים בטבע, במושב או אפילו על חוף הים. ניתן לבחור בין חופה שעומדת בעצמה או חופה נישאת שמחוזקת על ידי חברים. שתיהן קלות להרכבה ונראות נהדר בכל מקום."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "אנחנו יכולים להרכיב לבד?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "החופות מגיעות עם הוראות הרכבה ברורות, ושני חברים מספיקים כדי להעמיד את החופה תוך כמה דקות. וזהו, החופה מוכנה לטקס."
+        }
+      }
     ]
   }
   </script>
