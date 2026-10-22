@@ -11,10 +11,12 @@
 
 | קובץ / תיקייה | מה זה |
 |---|---|
-| `index.html` | עמוד הנחיתה – כל ה-HTML, ה-CSS וה-JavaScript בקובץ אחד. Jekyll מעתיק אותו כמו שהוא. |
+| `index.html` | עמוד הנחיתה – התוכן, העיצוב וה-JavaScript שלו. התפריט והפוטר מגיעים מ-`_includes/`. |
 | `blog/index.html` | עמוד הבלוג (`/blog/`) – רשימת המאמרים ככרטיסים, עם דפדוף. |
 | `_posts/` | מאמרי הבלוג, קובץ Markdown לכל מאמר. |
 | `_layouts/blog_post.html` | התבנית שבה מוצג כל מאמר. |
+| `_includes/` | חלקים משותפים לכל העמודים: `head-common.html` (אייקונים + Google Analytics), `site-header.html` (לוגו ותפריט), `site-footer.html` (כפתור WhatsApp ופוטר). שינוי כאן משנה את כל האתר. |
+| `assets/css/site-chrome.css` | העיצוב של התפריט, הפוטר וכפתור ה-WhatsApp. |
 | `chuppah-haifa.html`, `outdoor-wedding.html`, `keywords.html` | עמודי SEO קצרים. |
 | `assets/img/` | תמונות, לפי תיקיות: `brand/` (לוגו), `products/` (מוצרים ותמונה ראשית), `gallery/` (תמונות מאירועים), `blog/` (תמונות מאמרים). שמות קבצים באנגלית, שמתארים מה בתמונה. |
 | `_config.yml` | הגדרות Jekyll: כתובת, שפה, פלאגינים, דפדוף בבלוג. |
@@ -86,9 +88,9 @@ git push
 - **תמונות ברצועה המתחלפת** – רשימת `photoPool` בסקריפט בתחתית הקובץ.
 - **מוצר חדש** – לשכפל `<article class="product">` ולהחליף את כל המופעים של `prod1`/`prod2` (`id`, `aria-labelledby`, `aria-controls`, `data-toggle`, `data-gallery`).
 - **גלריה** – כל תמונה בתוך `class="gallery"` נפתחת במסך מלא בלחיצה.
-- **סקשן חדש** – `<section id="...">` בתוך `<main>` + קישור בתפריט `<nav class="menu">`.
+- **סקשן חדש** – `<section id="...">` בתוך `<main>` + קישור בתפריט ב-`_includes/site-header.html`.
 - **צבעים** – משתני CSS בתחילת `<style>` (`--brand`, `--accent` וכו').
-- **WhatsApp / טלפון** – המספר מופיע בכפתור הצף (`id="wa-float"`), בסקשן `#contact` ובנתוני ה-schema בראש הקובץ.
+- **WhatsApp / טלפון** – המספר מופיע בכפתור הצף (`_includes/site-footer.html`), בסקשן `#contact`, בנתוני ה-schema בראש `index.html` ובעמוד `404.html`.
 
 ### SEO
 בראש `index.html`: `title`, `description`, תגיות Open Graph (תצוגה בשיתוף בוואטסאפ/פייסבוק), ונתוני schema (`application/ld+json`) עם פרטי העסק. כשמשנים טלפון, אזורים או קישורים – לעדכן גם שם.
@@ -96,5 +98,5 @@ git push
 ---
 
 ## 📊 שירותים מחוברים
-- **Google Analytics** – `G-427E24BETT` (בעמוד הנחיתה ובמאמרים).
+- **Google Analytics** – `G-427E24BETT`, בכל העמודים דרך `_includes/head-common.html`.
 - **Google Search Console** – אימות דרך תגית `google-site-verification` ב-`index.html`. לא למחוק.

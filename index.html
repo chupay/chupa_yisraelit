@@ -1,22 +1,9 @@
+---
+---
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-  
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-427E24BETT"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-  
-    gtag('config', 'G-427E24BETT');
-  </script>
-  
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="icon" href="favicon.ico" sizes="48x48" />
-  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
-  <link rel="manifest" href="site.webmanifest" />
+{% include head-common.html %}
 
   <!-- ====== SEO Core ====== -->
   <title>חופה ישראלית | חופות להשכרה בצפון ובחיפה - חופה מסורתית, חופות בד, חופה לחתונת שטח</title>
@@ -144,6 +131,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/site-chrome.css">
 
   <style>
     :root{
@@ -180,36 +168,6 @@
   
     a{color:var(--brand);text-decoration:none}
     img{max-width:100%;height:auto;display:block}
-  
-    .nav{
-      position:sticky;top:0;z-index:1000;
-      background: var(--nav-bg);
-      border-bottom:1px solid var(--border);
-      backdrop-filter:saturate(140%) blur(6px);
-    }
-    .nav-inner{
-      max-width:var(--container);
-      margin-inline:auto;
-      display:flex;
-      align-items:center;
-      gap:24px;
-      padding:10px 16px;
-    }
-  
-    .logo{display:flex;align-items:center;gap:10px;flex:0 0 auto;}
-    .logo-img{
-      display:block;
-      width:auto;
-      height:auto;
-      max-height: clamp(90px, 22vw, 210px);
-      border-radius:12px;
-      object-fit: contain;
-    }
-  
-    .menu{margin-inline-start:auto;display:flex;gap:14px;flex-wrap:wrap}
-    .menu a{padding:10px 12px;border-radius:12px;color:var(--text)}
-    .menu a:hover{background:var(--card)}
-    .menu a.active{color:var(--brand-2);background:rgba(30,136,229,.08)}
   
     section{padding:56px 16px}
     .container{max-width:var(--container);margin-inline:auto}
@@ -332,18 +290,6 @@
       margin:0 0 22px;
     }
   
-    .whatsapp{
-      position:fixed;bottom:24px;left:24px;
-      z-index:1100;width:84px;height:84px;
-      border-radius:999px;background:var(--whatsapp);
-      display:flex;align-items:center;justify-content:center;
-      box-shadow:var(--shadow)
-    }
-    .whatsapp img{width:44px;height:44px;display:block}
-    .whatsapp:hover{transform:translateY(-2px)}
-  
-    footer{padding:24px 16px;color:var(--muted);text-align:center}
-  
     .lightbox{
       position:fixed; top:0; right:0; bottom:0; left:0;
       background:rgba(0,0,0,.8); display:none; align-items:center; justify-content:center; z-index:1200
@@ -378,15 +324,9 @@
       .product > figure img{max-height:200px}
       .hero{grid-template-columns:1fr}
     }
-    @media (max-width:800px){
-      .menu{gap:4px}
-    }
     @media (max-width:600px){
       .photo-strip.gallery{ grid-template-columns: 1fr; }
       .photo-strip img{ height: clamp(200px, 45vw, 280px); }
-      .logo-img{ max-height:80px; }
-      .whatsapp{ width:64px; height:64px; bottom:16px; left:16px; }
-      .whatsapp img{ width:32px; height:32px; }
       .btn{ font-size:1rem; }
     }
 
@@ -398,20 +338,7 @@
 </head>
 
 <body>
-  <header class="nav">
-    <div class="nav-inner">
-      <a class="logo" href="#about">
-        <img class="logo-img" src="assets/img/brand/logo.webp" alt="חופה ישראלית - לוגו" loading="eager" fetchpriority="high">
-      </a>
-      <nav class="menu">
-        <a href="#about">על חופה ישראלית</a>
-        <a href="#products">מוצרים</a>
-        <a href="#photos" data-combo="#testimonials">תמונות והמלצות</a>
-        <a href="#contact">להזמנות ויצירת קשר</a>
-        <a href="blog/" data-section="blog">בלוג</a>
-      </nav>
-    </div>
-  </header>
+{% include site-header.html %}
 
   <main>
 
@@ -682,15 +609,7 @@
     <a href="keywords.html" rel="nofollow">חופות להשכרה בצפון</a>
   </div>
 
-  <a class="whatsapp" id="wa-float" href="https://wa.me/972533431726" target="_blank" rel="noopener" aria-label="פתיחת וואטסאפ">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" loading="lazy" decoding="async" width="100" height="100">
-  </a>
-
-  <footer>
-    <div class="container">
-      © <span id="year"></span> חופה ישראלית · כל הזכויות שמורות
-    </div>
-  </footer>
+{% include site-footer.html %}
 
   <div class="lightbox" id="lightbox" aria-hidden="true" aria-label="צפייה בתמונה במסך מלא">
     <button class="close" title="סגירה" aria-label="סגירה">×</button>
@@ -840,11 +759,6 @@
     const wa = document.getElementById('wa-float');
     const inline = document.querySelector('#contact a[href^="https://wa.me"]');
     if(wa && inline) inline.setAttribute('href', wa.getAttribute('href'));
-    // --- Highlight "בלוג" when on blog page ---
-    const blogLink = document.querySelector('.menu a[data-section="blog"]');
-    if (blogLink && window.location.pathname.includes('/blog')) {
-      blogLink.classList.add('active');
-    }
   </script>
 </body>
 </html>

@@ -8,14 +8,9 @@ permalink: /blog/
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-  
-  <meta charset="utf-8" />
+{% include head-common.html %}
   <title>{{ page.title }}</title>
   <meta name="description" content="{{ page.description }}" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="icon" href="{{ site.baseurl }}/favicon.ico" sizes="48x48" />
-  <link rel="apple-touch-icon" href="{{ site.baseurl }}/apple-touch-icon.png" />
-  <link rel="manifest" href="{{ site.baseurl }}/site.webmanifest" />
   <link rel="canonical" href="{{ site.url }}{{ site.baseurl }}{{ page.url }}" />
 
   <!-- Open Graph -->
@@ -26,6 +21,7 @@ permalink: /blog/
 
   <!-- Font -->
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/site-chrome.css">
 
   <style>
     :root{
@@ -136,6 +132,7 @@ permalink: /blog/
   </style>
 </head>
 <body>
+{% include site-header.html %}
   <div class="wrap">
 
     <!-- Breadcrumbs -->
@@ -251,5 +248,6 @@ permalink: /blog/
       q.addEventListener('input', filter);
     })();
   </script>
+{% include site-footer.html %}
 </body>
 </html>

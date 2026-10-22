@@ -1,0 +1,59 @@
+/* Shared header, footer and WhatsApp button (all pages with the site menu) */
+
+:root{
+  --brand-2:#0d47a1;
+  --whatsapp:#25D366;
+  --container:1100px;
+  --nav-bg:rgba(230,240,255,0.95);
+}
+
+.nav{
+  position:sticky;top:0;z-index:1000;
+  background:var(--nav-bg);
+  border-bottom:1px solid var(--border);
+  backdrop-filter:saturate(140%) blur(6px);
+}
+.nav-inner{
+  max-width:var(--container);
+  margin-inline:auto;
+  display:flex;
+  align-items:center;
+  gap:24px;
+  padding:10px 16px;
+}
+
+.logo{display:flex;align-items:center;gap:10px;flex:0 0 auto;}
+.logo-img{
+  display:block;
+  width:auto;
+  height:auto;
+  max-height:clamp(90px, 22vw, 210px);
+  border-radius:12px;
+  object-fit:contain;
+}
+
+.menu{margin-inline-start:auto;display:flex;gap:14px;flex-wrap:wrap}
+.menu a{padding:10px 12px;border-radius:12px;color:var(--text);text-decoration:none}
+.menu a:hover{background:var(--card)}
+.menu a.active{color:var(--brand-2);background:rgba(30,136,229,.08)}
+
+.whatsapp{
+  position:fixed;bottom:24px;left:24px;
+  z-index:1100;width:84px;height:84px;
+  border-radius:999px;background:var(--whatsapp);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:var(--shadow)
+}
+.whatsapp img{width:44px;height:44px;display:block}
+.whatsapp:hover{transform:translateY(-2px)}
+
+.site-footer{padding:24px 16px;color:var(--muted);text-align:center}
+
+@media (max-width:800px){
+  .menu{gap:4px}
+}
+@media (max-width:600px){
+  .logo-img{max-height:80px}
+  .whatsapp{width:64px;height:64px;bottom:16px;left:16px}
+  .whatsapp img{width:32px;height:32px}
+}

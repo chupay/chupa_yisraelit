@@ -1,22 +1,7 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-427E24BETT"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-  
-    gtag('config', 'G-427E24BETT');
-  </script>
-  
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="icon" href="{{ site.baseurl }}/favicon.ico" sizes="48x48" />
-  <link rel="apple-touch-icon" href="{{ site.baseurl }}/apple-touch-icon.png" />
-  <link rel="manifest" href="{{ site.baseurl }}/site.webmanifest" />
+{% include head-common.html %}
   <title>{{ page.title }}</title>
   <meta name="description" content="{{ page.description }}">
   <link rel="canonical" href="https://chupay.github.io{{ site.baseurl }}{{ page.url }}" />
@@ -29,6 +14,7 @@
   {% if page.card_image %}<meta property="og:image" content="https://chupay.github.io{{ site.baseurl }}{{ page.card_image }}">{% endif %}
 
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/site-chrome.css">
 
   <style>
     :root{
@@ -190,6 +176,7 @@
 </script>
 
 <body>
+{% include site-header.html %}
   <main class="wrap">
     <nav class="breadcrumbs" aria-label="breadcrumb">
       <a href="{{ site.baseurl }}/">דף הבית</a> ›
@@ -283,5 +270,6 @@
     {% endif %}
 
   </main>
+{% include site-footer.html %}
 </body>
 </html>

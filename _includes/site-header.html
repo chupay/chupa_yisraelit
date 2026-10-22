@@ -1,0 +1,23 @@
+{%- comment -%}
+  On the homepage the menu links are in-page anchors (#about), which the
+  scroll-spy script in index.html relies on. Elsewhere they point back home.
+{%- endcomment -%}
+{%- if page.url == "/" or page.url == "/index.html" -%}
+  {%- assign home = "" -%}
+{%- else -%}
+  {%- assign home = site.baseurl | append: "/" -%}
+{%- endif -%}
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="logo" href="{% if home == "" %}#about{% else %}{{ home }}{% endif %}">
+        <img class="logo-img" src="{{ site.baseurl }}/assets/img/brand/logo.webp" alt="חופה ישראלית - לוגו" width="441" height="500" loading="eager" fetchpriority="high">
+      </a>
+      <nav class="menu">
+        <a href="{{ home }}#about">על חופה ישראלית</a>
+        <a href="{{ home }}#products">מוצרים</a>
+        <a href="{{ home }}#photos">תמונות והמלצות</a>
+        <a href="{{ home }}#contact">להזמנות ויצירת קשר</a>
+        <a href="{{ site.baseurl }}/blog/"{% if page.url contains "/blog/" %} class="active" aria-current="page"{% endif %}>בלוג</a>
+      </nav>
+    </div>
+  </header>
