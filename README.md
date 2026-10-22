@@ -1,181 +1,100 @@
-# README (עברית): עמוד נחיתה RTL – חופה ישראלית
+# חופה ישראלית – אתר
 
-ברוך הבא! זהו אתר נחיתה רספונסיבי, בעברית ובכיוון ימין־לשמאל (RTL), עם תפריט דביק, עוגנים, מוצר(ים), גלריה עם מסך מלא, המלצות, וטופס יצירת קשר (דמו).
+אתר בעברית (RTL) לעסק השכרת חופות בצפון ובחיפה: עמוד נחיתה + בלוג.
 
-התיקייה כוללת:
-- `index.html` – קובץ האתר היחיד, מוכן לפתיחה בדפדפן.
-- `assets/` – תיקייה ריקה לשמירת תמונות/לוגו שתרצה להוסיף.
-
----
-
-## 📁 איך מפעילים מהר
-1. לחץ פעמיים על `index.html` – האתר ייפתח בדפדפן.
-2. עריכה: פתח את הקובץ בעורך טקסט (VS Code ממולץ).
+- כתובת האתר: https://chupay.github.io/chupa_yisraelit/
+- אחסון: GitHub Pages, נבנה אוטומטית עם Jekyll מכל דחיפה (push) לענף `main`.
 
 ---
 
-## ✍️ איך משנים טקסטים
-ב-`index.html` חפש/י את החלקים הרלוונטיים:
-- **שם העסק והסלוגן** (סעיף “מי אנחנו”):
-  ```html
-  <h1 class="title">חופה ישראלית</h1>
-  <p class="slogan">כאן יופיע הטקסט על העסק...</p>
-  ```
-  פשוט החלף את הטקסטים בין התגים.
+## 📁 מבנה התיקייה
 
-- **תיאור קצר בכל חלק**:
-  תראה הרבה אלמנטים עם המחלקה `section-desc`. החלף את הטקסט הפנימי.
+| קובץ / תיקייה | מה זה |
+|---|---|
+| `index.html` | עמוד הנחיתה – כל ה-HTML, ה-CSS וה-JavaScript בקובץ אחד. Jekyll מעתיק אותו כמו שהוא. |
+| `blog/index.html` | עמוד הבלוג (`/blog/`) – רשימת המאמרים ככרטיסים, עם דפדוף. |
+| `_posts/` | מאמרי הבלוג, קובץ Markdown לכל מאמר. |
+| `_layouts/blog_post.html` | התבנית שבה מוצג כל מאמר. |
+| `chuppah-haifa.html`, `outdoor-wedding.html`, `keywords.html` | עמודי SEO קצרים. |
+| `assets/` | תמונות ולוגו (בעיקר `.webp`). |
+| `_config.yml` | הגדרות Jekyll: כתובת, שפה, פלאגינים, דפדוף בבלוג. |
+| `robots.txt` | הנחיות למנועי חיפוש. מפנה ל-`sitemap.xml`. |
+| `Gemfile` | לתצוגה מקומית בלבד (לא משפיע על האתר החי). |
 
-- **טופס יצירת קשר** – שינוי טקסטים / תוויות:
-  ```html
-  <label for="f-name">שם</label>
-  <label for="f-phone">נייד</label>
-  <label for="f-date">תאריך מבוקש (אופציונלי)</label>
-  ```
+`sitemap.xml` ו-`feed.xml` נוצרים אוטומטית בבנייה (פלאגינים `jekyll-sitemap` ו-`jekyll-feed`) – אין לכתוב אותם ידנית.
 
 ---
 
-## 🖼️ איך מחליפים תמונות
-בתוך `index.html` חפש/י `<img src="...">` והחלף לקובץ שלך:
-```html
-<img src="assets/logo.png" alt="לוגו" />
+## 🖥️ תצוגה מקומית (לפני שמעלים לאוויר)
+
+התקנה חד-פעמית:
+1. להתקין Ruby+Devkit מ-https://rubyinstaller.org (ברירות המחדל).
+2. בתיקיית הפרויקט: `bundle install`
+
+בכל פעם:
 ```
-טיפ: שים את הקבצים שלך בתיקיית `assets/` ושנה את הנתיב בהתאם.
-
-- לגלריות יש מבנה כמו:
-```html
-<div class="gallery" data-gallery="main">
-  <figure><img src="assets/photo1.jpg" alt="תמונה 1" /></figure>
-  ...
-</div>
+bundle exec jekyll serve
 ```
-אפשר להחליף/להוסיף `<figure>...</figure>` כרצונך.
+ואז לפתוח http://localhost:4000/chupa_yisraelit/ – האתר מתעדכן אוטומטית בכל שמירה.
 
 ---
 
-## 🟢 כפתור WhatsApp
-לשינוי המספר של הכפתור הצף (תמיד משמאל־למטה) ושורת הקישור בתוך “יצירת קשר”:
-```html
-<a class="whatsapp" id="wa-float" href="https://wa.me/0000000000" ...>
+## 🚀 העלאה לאוויר
+
+GitHub Pages מפרסם רק את ענף `main`.
+מומלץ לעבוד על ענף נפרד, לבדוק מקומית, ורק אז למזג ל-`main`:
 ```
-החלף `0000000000` למספר שלך בפורמט בינלאומי (ללא +, לדוגמה: `972501234567`).  
-הקישור הפנימי בטקסט מתעדכן אוטומטית בהתאם לקישור של הכפתור הצף.
+git switch -c my-change
+# ...עריכה ובדיקה מקומית...
+git commit -am "תיאור קצר של השינוי"
+git switch main
+git merge my-change
+git push
+```
+אחרי כדקה-שתיים השינוי באוויר.
 
 ---
 
-## 🧩 הוספת מוצר חדש
-שכפל את כרטיס המוצר הקיים (בקטע `#products`) ושנה מזהים/כותרות:
-```html
-<article class="product" aria-labelledby="prod2-title">
-  <header>
-    <h3 id="prod2-title">שם המוצר החדש</h3>
-    <p class="section-desc">תיאור קצר...</p>
-  </header>
-  <figure>
-    <img src="assets/my-product.jpg" alt="שם המוצר – תמונה" />
-  </figure>
-  <div>
-    <button class="btn" data-toggle="#prod2-details" aria-expanded="false" aria-controls="prod2-details">פרטים נוספים</button>
-  </div>
-  <div id="prod2-details" class="details" hidden>
-    <div class="details-inner">
-      <h4>מפרט ומידות</h4>
-      <ul class="specs">
-        <li>מידה א׳</li>
-        <li>מידה ב׳</li>
-      </ul>
-      <h4>גלריה</h4>
-      <div class="gallery" data-gallery="prod2">
-        <figure><img src="assets/p2-1.jpg" alt="תמונה 1" /></figure>
-      </div>
-    </div>
-  </div>
-</article>
-```
-שים לב:
-- שנה את כל המופעים של `prod2` (כולל `aria-labelledby`, `id`, ו-`data-gallery`).
+## ✍️ הוספת מאמר לבלוג
 
----
-
-## 🧱 הוספת סקשן חדש
-1. הוסף `<section id="my-section"> ... </section>` במקום המתאים ב-`<main>`.
-2. הוסף קישור בתפריט העליון:
-   ```html
-   <a href="#my-section">שם הסקשן</a>
+1. ליצור קובץ ב-`_posts/` בשם `YYYY-MM-DD-short-name.md` (התאריך בשם הקובץ הוא תאריך הפרסום).
+2. בראש הקובץ:
+   ```yaml
+   ---
+   layout: blog_post
+   title: "כותרת המאמר"
+   description: "תקציר קצר – מופיע בכרטיס בבלוג ובגוגל"
+   permalink: /blog/short-name/
+   card_image: /assets/my-image.webp
+   card_image_alt: "תיאור התמונה"
+   tags: ["תגית", "עוד תגית"]
+   ---
    ```
-3. כדי שהגלילה תשב יפה מתחת לתפריט הדביק: אין צורך לשנות כלום – כל ה-`section` מקבלים `scroll-margin-top` בסקריפט.
+3. מתחת – תוכן המאמר ב-Markdown (`##` לכותרות משנה).
+4. לשמור את התמונה ב-`assets/`.
 
-דוגמה בסיסית לסקשן:
-```html
-<section id="faq">
-  <div class="container">
-    <div class="section-header">
-      <h2>שאלות נפוצות</h2>
-    </div>
-    <p class="section-desc">כאן טקסט לדוגמה...</p>
-  </div>
-</section>
-```
+המאמר יופיע אוטומטית בעמוד הבלוג וב-sitemap.
 
 ---
 
-## 🎨 שינוי צבעים / פונט
-לכל הצבעים יש משתנים בתחילת ה-CSS:
-```css
-:root{
-  --brand:#1e88e5;
-  --brand-2:#0d47a1;
-  --accent:#ff8a00;
-}
-```
-- החלף לערכים שלך (למשל HEX).  
-- הפונט מוגדר ל-Heebo מ-Google Fonts. אפשר להחליף לקו״פונט/Assistant/Inter וכו׳.
+## 🛠️ עריכת עמוד הנחיתה (`index.html`)
+
+סקשנים לפי סדר: `#about` · `#products` · `#areas` · `#photos` · `#testimonials` · `#faq` · `#contact`
+
+- **טקסטים** – לחפש את הטקסט בקובץ ולהחליף.
+- **מחירים** – מופיעים בשני מקומות: כרטיס המוצר (`class="price"`) ותשובה בשאלות הנפוצות.
+- **תמונות ברצועה המתחלפת** – רשימת `photoPool` בסקריפט בתחתית הקובץ.
+- **מוצר חדש** – לשכפל `<article class="product">` ולהחליף את כל המופעים של `prod1`/`prod2` (`id`, `aria-labelledby`, `aria-controls`, `data-toggle`, `data-gallery`).
+- **גלריה** – כל תמונה בתוך `class="gallery"` נפתחת במסך מלא בלחיצה.
+- **סקשן חדש** – `<section id="...">` בתוך `<main>` + קישור בתפריט `<nav class="menu">`.
+- **צבעים** – משתני CSS בתחילת `<style>` (`--brand`, `--accent` וכו').
+- **WhatsApp / טלפון** – המספר מופיע בכפתור הצף (`id="wa-float"`), בסקשן `#contact` ובנתוני ה-schema בראש הקובץ.
+
+### SEO
+בראש `index.html`: `title`, `description`, תגיות Open Graph (תצוגה בשיתוף בוואטסאפ/פייסבוק), ונתוני schema (`application/ld+json`) עם פרטי העסק. כשמשנים טלפון, אזורים או קישורים – לעדכן גם שם.
 
 ---
 
-## 🖥️ העלאה לאוויר (3 דרכים קלות)
-
-### 1) Netlify (מומלץ למבנה הזה)
-- היכנס ל- https://www.netlify.com
-- לאחר הרשמה → Drag & Drop של **כל התיקייה** או ZIP.
-- תקבל קישור `https://something.netlify.app`
-- עדכון גרסה: מייצרים ZIP חדש/מעדכנים את הקובץ ומגררים שוב.
-
-### 2) Vercel
-- https://vercel.com → “Add New Project” → גרור את התיקייה/ZIP.
-- תקבל כתובת `vercel.app`.
-- עדכון = העלאה מחדש.
-
-### 3) GitHub Pages
-- צור repo ב-GitHub והעלה את `index.html`.
-- בהגדרות → Pages → הפעלה מ-main/root.
-- כתובת תראה כמו `https://username.github.io/reponame/`.
-
----
-
-## 🔧 חיבור טופס אמיתי (אופציונלי)
-כרגע הטופס מציג alert דמו. אם תרצה לשלוח מיילים בפועל:
-- שירותים קלים: Netlify Forms / Formspree / Getform.  
-- או לכתוב endpoint קטן (Serverless) ב-Vercel/Netlify שיקבל POST וישלח מייל.
-
----
-
-## 📐 תמיכה RTL ושיקולים
-- לכל הדף `dir="rtl"` + `lang="he"`.  
-- התפריט דביק, הגלילה חלקה, והעוגנים מודגשים.  
-- איקונים/חיצים/כיווניות בגלריה הותאמו (prev/next).
-
----
-
-## ❓ שאלות נפוצות
-- **למה הגלילה לא נעצרת נכון מתחת לתפריט?**  
-  לכל `section` יש `scroll-margin-top: 90px` בתסריט. אם תשנה גובה תפריט – עדכן את הערך.
-- **איך מחליפים את שם האתר בטאב הדפדפן?**  
-  תג `<title>...` בראש העמוד.
-- **איך מוסיפים פאביקון?**  
-  הוסף בקובץ `<head>`:
-  ```html
-  <link rel="icon" href="assets/favicon.ico">
-  ```
-
-בהצלחה! ✨
+## 📊 שירותים מחוברים
+- **Google Analytics** – `G-427E24BETT` (בעמוד הנחיתה ובמאמרים).
+- **Google Search Console** – אימות דרך תגית `google-site-verification` ב-`index.html`. לא למחוק.

@@ -21,3 +21,12 @@ kramdown:
 collections:
   posts:
     output: true
+
+# Files that stay in the repo but are not published
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor/
+  - .jekyll-cache/
+  - .sass-cache/
